@@ -1,0 +1,1087 @@
+[Message]
+
+;================================================================================
+{SetMsgColor = BLUE}
+ 80 00, "      GC        (%010d ms), Spare Not Enough gEmergencyH2FCnt:0x%04X,gsCacheInfo.u16FullCacheBlockCnt:0x%04X,gsCacheInfo.u16DynamicSpareCnt:0x%04X", 4 2 2 2
+ 80 01, "      GC        (%010d ms), GC Start Caller: 0x%04X, gsGcInfo.u32GcFlag:0x%08X", 4 2 4
+ 80 02, "      GC        (%010d ms), GcStr~ GC flag: 0x%04X ", 4 2
+ 80 03, "      GC        (%010d ms), GC Start state: 0x%04X flow: 0x%04X ", 4 2 2
+ 80 04, "      GC        (%010d ms), TotalSpareCnt: 0x%04X, SLCSpareCnt: 0x%04X, DynamicSpareCnt: 0x%04X, SLCFullCnt: 0x%04X, TLCFullCnt: 0x%04X, GcCachebTime: 0x%08X, Gc Idle", 4 2 2 2 2 2 4
+ 80 05, "      GC        (%010d ms), GC state cGcStateIdle Finish!", 4
+ 80 06, "      GC        (%010d ms), Total GcSrcBlkCnt: 0x%04X ", 4 2
+ 80 07, "      GC        (%010d ms), gsGcInfo.u32TotalSrcBlkVpc: 0x%08X ", 4 4
+ 80 08, "      GC        (%010d ms), GC des block: 0x%04X ", 4 2
+ 80 09, "      GC        (%010d ms), GC state cGcBuildSrc Finish!", 4
+ 80 0A, "      GC        (%010d ms), cGcMoveData , GC While 01: gsGcInfo.u32GcSrcF4kPtr = 0x%04X , gsGcInfo.u32GCInfoTabSize = 0x%04X , gsGcInfo.u16RemainF2h4k = 0x%04X", 4 2 2 2
+ 80 0B, "      GC        (%010d ms), cGcMoveData , GC While 02 : gsGcInfo.uLoadGCTabIdx = 0x%04X , gsGcInfo.uPartTabSizeInBank =  0x%04X", 4 2 2
+ 80 0C, "      GC        (%010d ms), cGcDesFailAbort enter: rmChkHdmaCmdFifoDpt: 0x%04X, rmChkBopCmdFifoDpt: 0x%04X, rmHmbPrdQueTrigIdx: 0x%04X, rmHmbPrdQueHeadIdx: 0x%04X", 4 2 2 2 2
+ 80 0D, "      GC        (%010d ms), rHdmaCtrl[rcHdmaCmdQDepth]=0x%04X", 4 2
+ 80 0E, "      GC        (%010d ms), rBopCtrl[rcBopCmdFifoDpt]=0x%04X", 4 2
+ 80 0F, "      GC        (%010d ms), u32ProgFifoTail=0x%04X, u32ProgFifoHead=0x%04X, TsbBufFlag=0x%08X, RaidBufFlag=0x%08X", 4 2 2 4 4
+ 80 10, "      GC        (%010d ms), GC state cGcMoveData Finish!", 4
+ 80 11, "      GC        (%010d ms), GC state cGcFlushH2F bgdClnCacheblkProc emergency!", 4
+ 80 12, "      GC        (%010d ms), Gc Done!!", 4
+ 80 13, "      GC        (%010d ms), gsCacheInfo.u16SLCSpareCnt: 0x%04X ", 4 2
+ 80 14, "      GC        (%010d ms), gsCacheInfo.u16DynamicSpareCnt: 0x%04X ", 4 2
+ 80 15, "      GC        (%010d ms), gsCacheInfo.u16FullCacheBlockCnt: 0x%04X ", 4 2
+ 80 16, "      GC        (%010d ms), gsCacheInfo.u16TLCFullCacheBlockCnt: 0x%04X ", 4 2
+ 80 17, "      GC        (%010d ms), gsGcInfo.u32GcCachebTime: 0x%04X ", 4 2
+ 80 18, "      GC        (%010d ms), GC state cGcFlushH2F Finish!", 4
+ 80 19, "      GC        (%010d ms), GC End", 4
+ 80 1A, "      GC        (%010d ms), GC Vpc need to rebuild!", 4
+ 80 1B, "      GC        (%010d ms), zero VPC source block: 0x%04X ", 4 2
+ 80 1C, "      GC        (%010d ms), GC source block cnt: 0x%04X ", 4 2
+ 80 1D, "      GC        (%010d ms), GC source block: 0x%04X ", 4 2
+ 80 1E, "      GC        (%010d ms), GC source VPC: 0x%08X ", 4 4
+ 80 1F, "      GC        (%010d ms), GC flow: 0x%04X, S2TAmpFtr: 0x%04X, T2TOpFtr: 0x%04X, MaxSrcBlkCnt: 0x%04X, TotalSrcBlkCnt: 0x%04X, TotalSrcBlkVpc: 0x%08X ", 4 2 2 2 2 2 4
+ 80 20, "      GC        (%010d ms), Spare Not Enough", 4
+ 80 21, "      GC        (%010d ms), SetDirtyCdm Bgd T2T", 4
+ 80 22, "      GC        (%010d ms), Empty AvgVpc: 0x%04X, T2TOpFactor: 0x%04X ", 4 2 2
+ 80 23, "      GC        (%010d ms), chkHmbStsChg, gsHmbInfo.uHmbStsChg: 0x%04X, gsGcInfo.uGcDesBlkCnt: 0x%04X ", 4 2 2
+ 80 24, "      GC        (%010d ms), srchGcSrcF2hTab , GC While 03 : u32GcSrcBlkVpc =  0x%04X , uGcSrcBlkPtr = 0x%04X, GcSrcFblk = 0x%04X", 4 2 2 2
+ 80 25, "      GC        (%010d ms), Load Partial GcInfo from HMB, GcTabIdx: 0x%04X, GcDesF2hTabBank: 0x%04X", 4 2 2
+ 80 26, "      GC        (%010d ms), Load Partial GcInfo from Wpro, GcTabIdx: 0x%04X, GcDesF2hTabBank: 0x%04X", 4 2 2
+ 80 27, "      GC        (%010d ms), Receive D0 to D3 or Reset! Exit GC!", 4
+ 80 28, "      GC        (%010d ms), HardwareSrch, Blk=0x%04X, BlkVpc=0x%08x, mChkMlcMoBit=0x%04x,", 4 2 4 2
+ 80 29, "      GC        (%010d ms), GetSlcBlockStep1: u16StartBlock=0x%04X, u16EndBlock=0x%04X", 4 2 2
+ 80 2A, "      GC        (%010d ms), GetSlcBlockStep2: u16StartBlock=0x%04X, u16EndBlock=0x%04X, uMode=0x%04x", 4 2 2 2
+ 80 2B, "      GC        (%010d ms), GetSlcBlockStep3 SLCVpc<Avg!", 4
+ 80 2C, "      GC        (%010d ms), GetSlcBlockStep4  not find Src block!", 4
+ 80 2D, "      GC        (%010d ms), GC source blkcnt=0x%04X, blk=0x%04X, VPC=0x%08X, SLCStart=0x%04X, TLCStart=0x%04X, NextStartBlk=0x%04X, NextEndBlk=0x%04X ", 4 2 2 4 2 2 2 2
+ 80 2E, "      GC        (%010d ms), MoreVpcflow, OrgMaxSrcBlkCnt: 0x%04X", 4 2
+ 80 2F, "      GC        (%010d ms), Add One SourceBlk, again; GcSrcBlkCnt: 0x%04X ", 4 2
+ 80 30, "      GC        (%010d ms), Kevin Flow step: 0x%04X", 4 2
+ 80 31, "      GC        (%010d ms), Kevin Flow TLCspare: 0x%04X ,TLCfull: 0x%04X SLCspare: 0x%04X, SLCFull: 0x%04X ", 4 2 2 2 2
+ 80 32, "      GC        (%010d ms), GC source block cnt: 0x%04X block: 0x%04X VPC: 0x%08X ", 4 2 2 4
+ 80 33, "      GC        (%010d ms), bgdClnH2fTabblkProc Start gsCacheInfo.u16DynamicSpareCnt:0x%04X, uH2fTabBlockCnt:0x%04X, u32BgdGcEndTime:0x%08X", 4 2 2 4
+ 80 34, "      GC        (%010d ms), H2fTabBlockCnt over Threhold, Cnt: 0x%04X ", 4 2
+ 80 35, "      GC        (%010d ms), Set Power On Gc, Spare information:", 4
+ 80 36, "      GC        (%010d ms), gsGcInfo.u32GcLeastBudget: 0x%08X ", 4 4
+ 80 37, "      GC        (%010d ms), SLCQ over Threhold SLCQ Cnt: 0x%04X ", 4 2
+ 80 38, "      GC        (%010d ms),  Start Background GC ", 4
+ 80 39, "      GC        (%010d ms),  End Background GC ", 4
+ 80 3A, "      GC        (%010d ms),  Start PowerOnExtra GC ", 4
+ 80 3B, "      GC        (%010d ms),  Need to do Force Clean ", 4
+ 80 3C, "      GC        (%010d ms),  End PowerOnExtra GC ", 4
+ 80 3D, "      GC        (%010d ms), Gc flow: 0x%04X, ProcTime: 0x%08X, BuildSrcTabTime: 0x%08X, MoveDataTime: 0x%08X, FlushF2hTabTime: 0x%08X", 4 2 4 4 4 4
+ 80 3E, "      GC        (%010d ms), TotalSpareCnt: 0x%04X, SLCSpareCnt: 0x%04X, DynamicSpareCnt: 0x%04X, SLCFullCacheBlockCnt: 0x%04X, TLCFullCacheBlockCnt: 0x%04X, Gc Done", 4 2 2 2 2 2
+ 80 3F, "      GC        (%010d ms),  IometerChk Cancle !!!!", 4
+ 80 40, "      GC        (%010d ms),  RanCmd= 0x%08X,SeqCmd= 0x%08X ", 4 4 4
+ 80 41, "      GC        (%010d ms),  Seqlen=0x%08X ", 4 4
+ 80 42, "      GC        (%010d ms),  Iometer1ThrChk Cancle !!!!", 4
+ 80 43, "      GC        (%010d ms), CDM_Triger", 4
+ 80 44, "      GC        (%010d ms), Cancel CDMPrepare!", 4
+ 80 45, "      GC        (%010d ms), CDM_non & Init, over 1200M", 4
+ 80 46, "      GC        (%010d ms), Iometer On!!!!", 4
+ 80 47, "      GC        (%010d ms), Iometer1Thr On!!!!", 4
+ 80 48, "      GC        (%010d ms), Iometer RecoveryCheck On!!!!", 4
+ 80 49, "      GC        (%010d ms),  RanCmd_RecoveryCheck= 0x%08X,SeqCmd_RecoveryCheck= 0x%08X ", 4 4 4
+ 80 4A, "      GC        (%010d ms),  Seqlen_RecoveryCheck=0x%08X ", 4 4
+ 80 4B, "      GC        (%010d ms), Do PlpScpflow on Gc: 0x%02X ", 4 1
+ 80 4C, "      GC        (%010d ms), PCIE ERROR current prd: 0x%04X , LBA:0x%08X", 4 2 4
+ 80 4D, "      GC        (%010d ms), CDM PrePare ,g32CDM_WSctrCnt=0x%08x ", 4 4
+ 80 4E, "      GC        (%010d ms), CDM_Triger Cancel,5mins", 4
+ 80 4F, "      GC        (%010d ms), Cancel IOMeterChk RanCmd= 0x%08X,SeqCmd= 0x%08X ", 4 4 4
+
+
+;================================================================================
+{SetMsgColor = GREEN}
+ 81 00, "      FTL       (%010d ms), FlushF2hStr=0x%04X,End=0x%04X ,HBlkNum=0x%04X", 4 2 2 2
+ 81 01, "      FTL       (%010d ms), PrePopSpareBlk! u16Fblock=0x%04x", 4 2
+ 81 02, "      FTL       (%010d ms), EraseFail:PrePopSpareBlk! u16Fblock=0x%04x", 4 2
+ 81 03, "      FTL       (%010d ms), Break GC because shut down cmd", 4
+ 81 04, "      FTL       (%010d ms), Break GC because D3 Hot cmd", 4
+ 81 05, "      FTL       (%010d ms),  progH2fTable() Start u16SbufPtr = 0x%04X ,u16Hblock = 0x%04X ,u16RwOpt = 0x%04X ,u16Caller = 0x%04X ,uSpecialOpt = 0x%04X ", 4 2 2 2 2 2
+ 81 06, "      FTL       (%010d ms), moveRisk Blk:0x%04X,VPC:0x%04X_%04X,ERS:0x%04X", 4 2 2 2 2
+ 81 07, "      FTL       (%010d ms), StopBgdClean, IdealTlcBlkCnt =0x%04X, TLCFullCacheBlockCnt=0x%04X", 4 2 2
+ 81 08, "      FTL       (%010d ms), StopBgdClean, Meet CdmblkThr TotalSpareBlockCnt=0x%04X", 4 2
+ 81 09, "      FTL       (%010d ms), gsCacheInfo.u16SLCSpareCnt=0", 4
+ 81 0A, "      FTL       (%010d ms), gsCacheInfo.u16DynamicSpareCnt=0", 4
+ 81 0B, "      FTL       (%010d ms), gsCacheInfo.u16SpareBlockCnt=0", 4
+ 81 0C, "      FTL       (%010d ms), (g32StaticSLCTotalEC*2): 0x%08X vs(g32DynamicSLCTotalEC*3): 0x%08X", 4 4 4
+ 81 0D, "      FTL       (%010d ms),  popSprBlk() SLC Blk = 0x%04X ,SLCSprBlkCnt = 0x%04X ,TLCSprBlkCnt = 0x%04X ,uPopOpt = 0x%04X, SlcQCnt=0x%04x", 4 2 2 2 2 2
+ 81 0E, "      FTL       (%010d ms),  popSprBlk() TLC Blk = 0x%04X ,SLCSprBlkCnt = 0x%04X ,TLCSprBlkCnt = 0x%04X ,uPopOpt = 0x%04X, SlcQCnt=0x%04x ", 4 2 2 2 2 2
+ 81 0F, "      FTL       (%010d ms), postFlashAddrInfoW DelNode u16PrdInfoIdx:0x%04X, uFuaDone:0x%04X", 4 2 2
+
+
+;================================================================================
+{SetMsgColor = RED}
+ 82 00, "      NandHandle (%010d ms),  PCIe Wr: This time Should Flush F2h immediately.", 4
+
+
+;================================================================================
+{SetMsgColor = BLACK}
+ 83 00, "      BuildLink (%010d ms), Find Temp Block", 4
+ 83 01, "      BuildLink (%010d ms), Info1 Fail", 4
+ 83 02, "      BuildLink (%010d ms), Info2 Fail", 4
+ 83 03, "      BuildLink (%010d ms),  i2cSetPS4CoreIndex[0]=0x%04X,i2cSetPS4CoreIndex[1]=0x%04X  ", 4 2 2
+ 83 04, "      BuildLink (%010d ms),  u16TotalIdx=0x%04x , u16TotalNewBadCnt=0x%04x , u16ProgFailFblkCnt=0x%04x , u16EraseFailFblkCnt=0x%04x, InitialFormat=0x%04x", 4 2 2 2 2 2
+ 83 05, "      BuildLink (%010d ms),  uFailType=0x%04x , Para1=0x%04x , Para2=0x%04x , Para3=0x%04x", 4 2 2 2 2
+ 83 06, "      BuildLink (%010d ms),  FNWD=0x%08X_%08X  ", 4 4 4
+ 83 07, "      BuildLink (%010d ms),  rdlinkFunc() ", 4
+ 83 08, "      BuildLink (%010d ms),  rdlinkFunc() ResumeFromPs4 = 0x%04X", 4 2
+ 83 09, "      BuildLink (%010d ms),  HostWrSecCnt: 0x%08X%08X ", 4 4 4
+ 83 0A, "      BuildLink (%010d ms),  g16PushSpareCnt: 0x%04X ", 4 2
+ 83 0B, "      BuildLink (%010d ms),  Boot from Qboot (POR)", 4
+ 83 0C, "      BuildLink (%010d ms),  Boot from Qboot (PS4_Resume)", 4
+ 83 0D, "      BuildLink (%010d ms),  Boot need Rebuild (SPOR)", 4
+ 83 0E, "      BuildLink (%010d ms),  Wpro: 0x%04X ", 4 2
+ 83 0F, "      BuildLink (%010d ms),  SPOR Cnt: 0x%08X ", 4 4
+ 83 10, "      BuildLink (%010d ms),  POR  Cnt: 0x%08X ", 4 4
+ 83 11, "      BuildLink (%010d ms),  Active H2f: 0x%04X ", 4 2
+ 83 12, "      BuildLink (%010d ms),  Keep Qboot, Dx_state=0x%04X ", 4 2
+ 83 13, "      BuildLink (%010d ms),  __enable_irq();", 4
+ 83 14, "      BuildLink (%010d ms),  rebuH2fTableInfo() end", 4
+ 83 15, "      BuildLink (%010d ms),  rebuCacheF2hTable() end", 4
+ 83 16, "      BuildLink (%010d ms),  progCacheInfoTab() end", 4
+ 83 17, "      BuildLink (%010d ms),  saveIndexBlockCore0() end", 4
+ 83 18, "      BuildLink (%010d ms),  saveWproBadInfoCore0() end", 4
+ 83 19, "      BuildLink (%010d ms),  Build Link Finish! ", 4
+ 83 1A, "      BuildLink (%010d ms), Reload Debuginfo, PCIE Link Down:0x%08X, CPL:0x%08X,Malformed TLP:0x%08X", 4 4 4 4
+ 83 1B, "      BuildLink (%010d ms), Reload CRCCnt from EventLog, LCRC Cnt:0x%08X, ECRC Cnt:0x%08X", 4 4 4
+ 83 1C, "      BuildLink (%010d ms),  relinkSaveQBDummy! uFailType=0x%04x", 4 2
+ 83 1D, "      BuildLink (%010d ms),  relinkSaveDummyQBAnalysis! CacheInfo isn't Valid", 4
+ 83 1E, "      BuildLink (%010d ms),  Save Event Log ", 4
+ 83 1F, "      BuildLink (%010d ms),  MT1Duration=%04d MT2Duration=%04d MT3Duration=%04d ", 4 2 2 2
+ 83 20, "      BuildLink (%010d ms), setInjuredInfo uWhichInfo: 0x%04X, uOpt: 0x%04X", 4 2 2
+ 83 21, "      BuildLink (%010d ms),  chkVpCnt start!", 4
+ 83 22, "      BuildLink (%010d ms),  u32pTsb0[0x%04x]=0x%08x, g32arCacheBlkVpCnt=0x%08x", 4 2 4 4
+ 83 23, "      BuildLink (%010d ms),  H2Fblk_VPC_missmatch", 4
+ 83 24, "      BuildLink (%010d ms),  Wpro_VPC_missmatch", 4
+ 83 25, "      BuildLink (%010d ms),  RAID_VPC_missmatch", 4
+ 83 26, "      BuildLink (%010d ms),  rmSetPp ", 4
+ 83 27, "      BuildLink (%010d ms),  Core Power VSET=0x13", 4
+ 83 28, "      BuildLink (%010d ms),  Core Power VSET=0x15", 4
+ 83 29, "      BuildLink (%010d ms),  Core Power VSET=0x10", 4
+ 83 2A, "      BuildLink (%010d ms),  rmClrPp ", 4
+ 83 2B, "      BuildLink (%010d ms), cWproQBWithDumyW gJdgBootGCFlag=0x%04X, gsFtlDbg.u16DummyFailType=0x%04X ", 4 2 2
+ 83 2C, "      BuildLink (%010d ms),  SlcSortQCnt mismatch! g16DataBlkCnt=0x%04x, u16RescanSLCQCnt=0x%04x ", 4 2 2
+ 83 2D, "      BuildLink (%010d ms), chkPwrOnByQBootInfo() Start  gsQBootInfo.ubQBootValid = 0x%04X", 4 2
+ 83 2E, "      BuildLink (%010d ms), chkPwrOnByQBootInfo() End gWproEccFail  return False", 4
+ 83 2F, "      BuildLink (%010d ms),  gPowerDownMode = 0x%04X, uResumeFromPs4 = 0x%04X", 4 2 2
+ 83 30, "      BuildLink (%010d ms),  gPowerDownMode = 0x%02X, uResumeFromPs4 = 0x%02X, u32UGSDPwrOnCnt = 0x%08X", 4 1 1 4
+ 83 31, "      BuildLink (%010d ms), chkPwrOnByQBootInfo() End  return True", 4
+ 83 32, "      BuildLink (%010d ms), chkPwrOnByQBootInfo() End  return False", 4
+ 83 33, "      BuildLink (%010d ms), cWproCacheInfo exist! u16ActH2fTabFblk=0x%04x, u16H2fTabFreePagePtr=0x%04x, g32BkH2fTabBlkSerial=0x%08x", 4 2 2 4
+ 83 34, "      BuildLink (%010d ms),  move1 Progfst:0x%04X,u32ProgFifoHead:0x%04X,u32UpdFifoPtr:0x%04X,u32SrchFifoPtr:0x%04X,uMaskTgtPtr:0x%04X,u16MskRptF2hBasePtr:0x%04X", 4 2 2 2 2 2 2
+ 83 35, "      BuildLink (%010d ms),  move new blk:0x%04X  ", 4 2
+ 83 36, "      BuildLink (%010d ms),  move src blk:0x%04X  ", 4 2
+ 83 37, "      BuildLink (%010d ms),  move cacheFreePtr:0x%04X_%04X ReStar:0x%04X ", 4 2 2 2
+ 83 38, "      BuildLink (%010d ms), u16ActiveCacheBlock:0x%04X,uF2hTabBank:0x%04X,u32SrchF4kBase:0x%04X_%04X,u32CacheBlkSerial:0x%04X", 4 2 2 2 2 2
+ 83 39, "      BuildLink (%010d ms), u16FluCacheBlock:0x%04X,uFlushCacheBlkBank:0x%04X,u32SrchF4kBaseFlu:0x%04X_%04X,u32FluBlkSerial:0x%04X", 4 2 2 2 2 2
+ 83 3A, "      BuildLink (%010d ms), cEob1stF2h:u324kNumOfDesFblk:0x%04X, u16DmaSctrCnt:0x%04X ", 4 2 2
+ 83 3B, "      BuildLink (%010d ms), cEob2ndF2h:u324kNumOfDesFblk:0x%04X, u16DmaSctrCnt:0x%04X ", 4 2 2
+ 83 3C, "      BuildLink (%010d ms), cEobRaid:u324kNumOfDesFblk:0x%04X, u16DmaSctrCnt:0x%04X ", 4 2 2
+ 83 3D, "      BuildLink (%010d ms), movRky: wrPos:0x%04X_%04X, GcQue:0x%04X, uChkF2hRegion|ubBgdProcF:0x%04X, u16OccFSkipSize:0x%04X ", 4 2 2 2 2 2
+ 83 3E, "      BuildLink (%010d ms), flushMov:src[0x%04X,0x%04X]des:[0x%04X,0x%04X]flu[0x%04X,0x%04X]", 4 2 2 2 2 2 2
+ 83 3F, "      BuildLink (%010d ms),  move cacheFreePtr:0x%04X_%04X ReEnd:0x%04X ", 4 2 2 2
+ 83 40, "      BuildLink (%010d ms),  move2 Progfst:0x%04X,u32ProgFifoHead:0x%04X,u32UpdFifoPtr:0x%04X,u32SrchFifoPtr:0x%04X,uMaskTgtPtr:0x%04X,u16MskRptF2hBasePtr:0x%04X", 4 2 2 2 2 2 2
+ 83 41, "      BuildLink (%010d ms), Before flushCacheF2hTab, progCacheInfoTab End! ", 4
+ 83 42, "      BuildLink (%010d ms), cross bank!, startbank =0x%04x, endbank=0x%04x", 4 2 2
+ 83 43, "      BuildLink (%010d ms), Origin u16StartRiskPgPtr=0x%04x,u16EndRiskPgPtr=0x%04x, u16FirstEmptyPgPtr=0x%04x,", 4 2 2 2
+ 83 44, "      BuildLink (%010d ms),  modify uRiskyStartBank to the end page of current u16StartRiskPgPtr=0x%04x, uRiskyStartBank=0x%04x", 4 2 2
+ 83 45, "      BuildLink (%010d ms), 2.u16RiskyStartPagePtr:0x%04X,u16FirstEmptyPagePtr:0x%04X,u16RiskyEndPagePtr:0x%04X,u16RiskyFreePagePtr:0x%04X,uRiskyBank:[0x%04X,0x%04X,0x%04X] ", 4 2 2 2 2 2 2 2
+ 83 46, "      BuildLink (%010d ms), rebuCnt:0x%04X,rebuBlk:[0x%04X,0x%04X],rebuBank:[0x%04X,0x%04X] ", 4 2 2 2 2 2
+ 83 47, "      BuildLink (%010d ms),  BkActCheBlk1:[0x%04X,0x%04X,0x%04X,0x%04X] ", 4 2 2 2 2
+ 83 48, "      BuildLink (%010d ms),  BkFlsCheBlk1:[0x%04X,0x%04X,0x%04X,0x%04X] ", 4 2 2 2 2
+ 83 49, "      BuildLink (%010d ms),  BkActCheBlk2:[0x%04X,0x%04X,0x%04X,0x%04X] ", 4 2 2 2 2
+ 83 4A, "      BuildLink (%010d ms),  BkFlsCheBlk2:[0x%04X,0x%04X,0x%04X,0x%04X] ", 4 2 2 2 2
+ 83 4B, "      BuildLink (%010d ms), flushCacheF2hInRdlink,u16FBlock=0x%04x,uF2hTabBank =0x%04x  ", 4 2 2
+ 83 4C, "      BuildLink (%010d ms), ActH2fTabFblk is NULL, set BkH2fTabBlkSerial to gsCacheInfo! SN=0x%08x", 4 4
+ 83 4D, "      BuildLink (%010d ms), Cache Block: 0x%04X ", 4 2
+ 83 4E, "      BuildLink (%010d ms), rebuildInfoBlk Func: 0x%04X", 4 2
+ 83 4F, "      BuildLink (%010d ms), Create temp Block fail", 4
+ 83 50, "      BuildLink (%010d ms), initErasedSysSprBlkCore0 Info1", 4
+ 83 51, "      BuildLink (%010d ms), initErasedSysSprBlkCore0 Info2", 4
+ 83 52, "      BuildLink (%010d ms), rebuildInfoBlk", 4
+ 83 53, "      BuildLink (%010d ms), Have Qboot, but it's an invalid Qboot, gPowerDownMode: 0x%04X ", 4 2
+ 83 54, "      BuildLink (%010d ms), mSetDummyWrite! FailType=0x%04x, Need InitialCard=0x%04x", 4 2 2
+ 83 55, "      BuildLink (%010d ms),  chkLastWproIsQBoot() u16WproInfoFreePagePtr = 0x%04X ,uGood = 0x%04X", 4 2 2
+ 83 56, "      BuildLink (%010d ms), cCDM_Triger AvgTLC=0x%04X, AvgSLC=0x%04X", 4 2 2
+ 83 57, "      BuildLink (%010d ms), GTR On", 4
+ 83 58, "      BuildLink (%010d ms), GTR Off", 4
+ 83 59, "      BuildLink (%010d ms),  debugLoop! uFailType=0x%04x", 4 2
+
+
+;================================================================================
+{SetMsgColor = PURPLE}
+ 84 00, "      Host      (%010d ms),  garSysBlock: 0x%02X 0x%02X 0x%02X 0x%02X 0x%02X 0x%02X 0x%02X 0x%02X ", 4 1
+ 84 01, "      Host      (%010d ms),  gSysOption: 0x%04X ", 4 2
+ 84 02, "      Host      (%010d ms),   Firmware Commit: Slot=0x%02X, CA=0x%02X ", 4 1 1
+ 84 03, "      Host      (%010d ms),   FWCommit: ReturnPass ", 4
+ 84 04, "      Host      (%010d ms),   Firmware Image Download: NUMD=0x%08X, Offset=0x%08X ", 4 4 4
+ 84 05, "      Host      (%010d ms),   Nand is different : 0x%02X - 0x%02X", 4 1 1
+ 84 06, "      Host      (%010d ms),   return error at next command ", 4
+ 84 07, "      Host      (%010d ms),   FWDL Step1: RD FW ", 4
+ 84 08, "      Host      (%010d ms),   FWDL Step1: Same EXT FW ", 4
+ 84 09, "      Host      (%010d ms),   FWDL Step2: IFW2 is old :0x%02X-0x%02X ", 4 1 1
+ 84 0A, "      Host      (%010d ms),   FWDL Step3: ReturnPass ", 4
+ 84 0B, "      Host      (%010d ms), GetSrc Forloop start! mGetGcFlow=0x%04X, u16StartBlock=0x%04X, u16EndBlock= 0x%04X, uMode=0x%04X", 4 2 2 2 2
+ 84 0C, "      Host      (%010d ms),  SMART Critical Warning=0x%02X, uSpareAvaliable=0x%02X, u16KelvinTemp=0x%04X, uDriveUsedPercentage=0x%04X", 4 1 1 2 2
+ 84 0D, "      Host      (%010d ms), Block_SLC=0x%04X, Avg_SLC=0x%04X, Block_TLC=0x%04X, Avg_TLC=0x%04X", 4 2 2 2 2
+ 84 0E, "      Host      (%010d ms), SLC NAND Write: L=0x%08X, M=0x%08X ", 4 4 4
+ 84 0F, "      Host      (%010d ms), Total NAND Write: L=0x%08X, M=0x%08X ", 4 4 4
+ 84 10, "      Host      (%010d ms),   Get Log: LID=0x%02X, gsNamespace.uActiveBitMap=0x%02X ", 4 1 1
+ 84 11, "      Host      (%010d ms),   Number of Dwords=0x%08X, Offset Lower=0x%08X ", 4 4 4
+ 84 12, "      Host      (%010d ms),   u32NUMDOverflowChk=0x%08X, Offset Upper=0x%08X ", 4 4 4
+ 84 13, "      Host      (%010d ms),   uPSDT=0x%02X, LSP=0x%02X ", 4 1 1
+ 84 14, "      Host      (%010d ms),  Invalid Prp Offset ", 4
+ 84 15, "      Host      (%010d ms),  Sanitize in progress, Current issued Get Log Page LID=0x%04X ", 4 2
+ 84 16, "      Host      (%010d ms),  Sanitize failed, Current issued Get Log Page LID=0x%04X ", 4 2
+ 84 17, "      Host      (%010d ms), H2fBlk is Full, pushH2fBlk! H2fBlk[0x%04x]=0x%04x, H2fBlkCnt=0x%04x, CacheInfo.u32H2fSn=0x%08x, gcTime=0x%08x", 4 2 2 2 4 4
+ 84 18, "      Host      (%010d ms), jdgH2fTabBlockFull! H2fVpC[0x%04x]=0x%04x, H2fBlk[0x%04x]=0x%04x, H2fBlkCnt=0x%04x, gcTime=0x%08x", 4 2 2 2 2 2 4
+ 84 19, "      Host      (%010d ms),  VDT18 Fail(ISR) ", 4
+ 84 1A, "      Host      (%010d ms),  VDT23 Fail(ISR) ", 4
+ 84 1B, "      Host      (%010d ms),  VDT 2.7 Fail (ISR) ", 4
+ 84 1C, "      Host      (%010d ms),  VDT23 inVDT27 Fail ", 4
+ 84 1D, "      Host      (%010d ms),  WDT Timeout !! (ISR)", 4
+ 84 1E, "      Host      (%010d ms),  WDT Extension Timeout !! (ISR)", 4
+ 84 1F, "      Host      (%010d ms),  Log Block full. halt... ", 4
+ 84 20, "      Host      (%010d ms),  Delay_Dis_Reset, BgdGC=0x%04X ,FGdGC=0x%04X", 4 2 2
+ 84 21, "      Host      (%010d ms),  PCIe Reset P11(ISR), Link State=0x%02X ,CurPs=%02d", 4 1 1
+ 84 22, "      Host      (%010d ms),  GPIO25 Detect but PLP disable, gHandlePlpScpFlow=0x%04X ", 4 2
+ 84 23, "      Host      (%010d ms),  VDT FIO 1.2V Fail(ISR) ", 4
+ 84 24, "      Host      (%010d ms),  FWRQ_RDY(ISR) ", 4
+ 84 25, "      Host      (%010d ms),  Doorbell(ISR) ", 4
+ 84 26, "      Host      (%010d ms),  ISR16-Other(ISR) ", 4
+ 84 27, "      Host      (%010d ms),  NVMe NSSR(ISR), Link State=0x%04X ", 4 2
+ 84 28, "      Host      (%010d ms),  NVMe Reset(ISR), Link State=0x%04X ", 4 2
+ 84 29, "      Host      (%010d ms),  NVMe EN (cc_en on)(ISR), Link State=0x%04X ", 4 2
+ 84 2A, "      Host      (%010d ms),  PCIe Function Level RST(ISR), Link State=0x%04X ", 4 2
+ 84 2B, "      Host      (%010d ms),  NVMe Shut Down Notification(ISR), Link State=0x%04X ", 4 2
+ 84 2C, "      Host      (%010d ms),  NVMe SHN Change 1->0 Clr Interrput(ISR), Link State=0x%04X ", 4 2
+ 84 2D, "      Host      (%010d ms), PCIe Link down(ISR) in PCIeIrq0, Link State=0x%04X ", 4 2
+ 84 2E, "      Host      (%010d ms), PCIe Link down(ISR) , Link State=0x%04X ", 4 2
+ 84 2F, "      Host      (%010d ms),  CPL time out(ISR), Link State=0x%04X ", 4 2
+ 84 30, "      Host      (%010d ms),  CPL TO Stop Fetch CMD, ChkBridgeAxiRwFlushBsy=0x%04X ", 4 2
+ 84 31, "      Host      (%010d ms),  PRD PDTR0=0x%04X ", 4 2
+ 84 32, "      Host      (%010d ms),  PRD PDTR1=0x%04X ", 4 2
+ 84 33, "      Host      (%010d ms),  LCRC=0x%04X%04X ", 4 2 2
+ 84 34, "      Host      (%010d ms),  Dx to D0 (ISR), Link State=0x%04X ", 4 2
+ 84 35, "      Host      (%010d ms),  D0 to Dx=0x%04X (ISR), Link State=0x%04X ", 4 2 2
+ 84 36, "      Host      (%010d ms),  PCIe DxState Change (ISR) ", 4
+ 84 37, "      Host      (%010d ms),  LTSSM_Trace0(ISR), Link Stare=0x%04X ", 4 2
+ 84 38, "      Host      (%010d ms),  LTSSM_Trace1(ISR), Link State=0x%04X ", 4 2
+ 84 39, "      Host      (%010d ms),  Lane Num=0x%04X, DM0=0x%04X, DM2=0x%04X ", 4 2 2 2
+ 84 3A, "      Host      (%010d ms),  Host Tx Preset value=0x%04X ", 4 2
+ 84 3B, "      Host      (%010d ms),  Lane Num=0x%04X, KIS=0x%04X ", 4 2 2
+ 84 3C, "      Host      (%010d ms),  Lane Num=0x%04X, EQC=0x%04X ", 4 2 2
+ 84 3D, "      Host      (%010d ms),  Lane Num=0x%04X, TAP1=0x%04X ", 4 2 2
+ 84 3E, "      Host      (%010d ms),  Lane Num=0x%04X, TAP2=0x%04X ", 4 2 2
+ 84 3F, "      Host      (%010d ms),  Lane Num=0x%04X, TAP3=0x%04X ", 4 2 2
+ 84 40, "      Host      (%010d ms),  Lane Num=0x%04X, OFFV=0x%04X ", 4 2 2
+ 84 41, "      Host      (%010d ms),  Lane Num=0x%04X, SQA=0x%04X ", 4 2 2
+ 84 42, "      Host      (%010d ms),  Lane Num=0x%04X, RX OFFC=0x%04X ", 4 2 2
+ 84 43, "      Host      (%010d ms),  Lane Num=0x%04X, RT=0x%04X ", 4 2 2
+ 84 44, "      Host      (%010d ms),  Malform TLP(ISR), log0=0x%08X, log1=0x%08X ", 4 4 4
+ 84 45, "      Host      (%010d ms),  Malform TLP(ISR), log2=0x%08X, log3=0x%08X ", 4 4 4
+ 84 46, "      Host      (%010d ms),  Malform TLP(ISR), Link State=0x%04X ", 4 2
+ 84 47, "      Host      (%010d ms),  DHY src0(ISR), Link State=0x%04X ", 4 2
+ 84 48, "      Host      (%010d ms),  DHY src1(ISR), Link State=0x%04X ", 4 2
+ 84 49, "      Host      (%010d ms),  DHY src2(ISR), Link State=0x%04X ", 4 2
+ 84 4A, "      Host      (%010d ms),  DPHY src3(ISR), Link State=0x%04X ", 4 2
+ 84 4B, "      Host      (%010d ms),  APHY Error Cnt (ISR), Link State=0x%04X, Lane=0x%04X, Error Counts=0x%04X ", 4 2 2 2
+ 84 4C, "      Host      (%010d ms),  DPHY Error Cnt (ISR), Link State=0x%04X, Lane=0x%04X, Error Counts=0x%04X ", 4 2 2 2
+ 84 4D, "      Host      (%010d ms), uWuncCnt=0x%04X, HBlock=0x%04X, u16HPage=0x%04X, uBitMap=0x%04X", 4 2 2 2 2
+ 84 4E, "      Host      (%010d ms), over MaxUNCLAACnt Clr Wunc Table", 4
+ 84 4F, "      Host      (%010d ms), g32HostTotalDataSectorCnt=0x%08X, gEmergencyH2FCnt=0x%04X, uGcH2fTabbHiThr=0x%04X, uGcH2fTabbLoThr=0x%04X, gMaxH2fTabBlkNum=0x%04X", 4 4 2 2 2 2
+ 84 50, "      Host      (%010d ms),  Host ShutDown notification", 4
+ 84 51, "      Host      (%010d ms),  Host Shutdown notification End ", 4
+ 84 52, "      Host      (%010d ms),  Plp/Scp Assert Done! RtcTimeCnt=0x%04X, PlpScpCompleteCnt=%08d", 4 2 4
+ 84 53, "      Host      (%010d ms),  Sanitize in progress, IO OP=0x%04X ", 4 2
+ 84 54, "      Host      (%010d ms),  Sanitize failed, IO OP=0x%04X ", 4 2
+ 84 55, "      Host      (%010d ms),  serRwCmdQue cNvmeCmdWriteZero Strat", 4
+ 84 56, "      Host      (%010d ms),  serRwCmdQue Clear garNonAlignZero", 4
+ 84 57, "      Host      (%010d ms),  garNonAlignZero not clear gsWZCnt=0x%04X", 4 2
+ 84 58, "      Host      (%010d ms), WUNC Save To Wpro Delete uWuncCnt=0x%04X", 4 2
+ 84 59, "      Host      (%010d ms), Early GC OFF", 4
+ 84 5A, "      Host      (%010d ms),  Early GC ON ,g32EarIOcnt =0x%08x , u32EarTimer=%08x", 4 4 4
+ 84 5B, "      Host      (%010d ms), mClrDataBlockBit issue: Have been cleared! u16Fblock=0x%04x", 4 2
+ 84 5C, "      Host      (%010d ms), mSetDataBlockBit issue: Have been set! u16Fblock=0x%04x", 4 2
+ 84 5D, "      Host      (%010d ms),  Sanitize in progress, Current issued ADMIN OP=0x%04X ", 4 2
+ 84 5E, "      Host      (%010d ms),  Sanitize failed, Current issued ADMIN OP=0x%04X ", 4 2
+ 84 5F, "      Host      (%010d ms),   VU Function Code=0x%02X, Mode Code=0x%02X ", 4 1 1
+ 84 60, "      Host      (%010d ms),   DW13=0x%08X, DW14=0x%08X ", 4 4 4
+ 84 61, "      Host      (%010d ms),  Set Feature PS, SV=0x%04X, Attr=0x%08X", 4 2 4
+ 84 62, "      Host      (%010d ms),  DstInProgress() ", 4
+ 84 63, "      Host      (%010d ms), nvmeAdminPM mSetDummyWrite! FailType=0x%04x", 4 2
+ 84 64, "      Host      (%010d ms),  Get Feature PS, FID=0x%04X, SEL=0x%04X ", 4 2 2
+ 84 65, "      Host      (%010d ms),  PLP_EN=0x%04X ", 4 2
+ 84 66, "      Host      (%010d ms),  PLP_Dis=0x%04X ", 4 2
+ 84 67, "      Host      (%010d ms),  PLP_default=0x%04X ", 4 2
+ 84 68, "      Host      (%010d ms),  Enable resumeHmbSetting", 4
+ 84 69, "      Host      (%010d ms),   APST Entery :0x%04X, Power State: 0x%04X,  Idle Time: 0x%08X", 4 2 2 4
+ 84 6A, "      Host      (%010d ms),   Delete I/O Submission Queue: QID=0x%04X ", 4 2
+ 84 6B, "      Host      (%010d ms),   Create I/O Submission Queue: QSIZE=0x%04X, QID=0x%04X, CQID=0x%04X, QPRIO=0x%02X, PC=0x%02X", 4 2 2 2 1 1
+ 84 6C, "      Host      (%010d ms),   Delete I/O Completion Queue: QID=0x%04X ", 4 2
+ 84 6D, "      Host      (%010d ms),   Create I/O Completion Queue: QSIZE=0x%04X, QID=0x%04X, IV=0x%04X, IEN=0x%02X, PC=0x%02X", 4 2 2 2 1 1
+ 84 6E, "      Host      (%010d ms),   Identify: CNTID=0x%04X, CNS=0x%04X ", 4 2 2
+ 84 6F, "      Host      (%010d ms),   Set Features: FID=0x%02X, SV=0x%02X, Attr=0x%08X", 4 1 1 4
+ 84 70, "      Host      (%010d ms),  Lightswitch disable HMB opt ", 4
+ 84 71, "      Host      (%010d ms),  SetFeature Fake HMB gChkFlag=0x%04X, NormalBehavior=0x%04X AbnormalBehavior=0x%04X, g16SlcSortQCnt=0x%04X", 4 2 2 2 2
+ 84 72, "      Host      (%010d ms),  Dont HMB gsHmbInfo.uHmbValid=0x%04X ", 4 2
+ 84 73, "      Host      (%010d ms),  HMB MR=0 and HMB invalid !!", 4
+ 84 74, "      Host      (%010d ms),  Enable_SCP_PLP(Save)", 4
+ 84 75, "      Host      (%010d ms),  Disable_SCP_PLP(Save)", 4
+ 84 76, "      Host      (%010d ms),  Enable_SCP_PLP(No Save)", 4
+ 84 77, "      Host      (%010d ms),  Disable_SCP_PLP(No Save)", 4
+ 84 78, "      Host      (%010d ms),   Get Features: FID=0x%02X, SEL=0x%02X ", 4 1 1
+ 84 79, "      Host      (%010d ms), TmpSel=0x%04X, TypeSel=0x%04X ", 4 2 2
+ 84 7A, "      Host      (%010d ms), cNvmeFeatTempThresh StatusInvalidField gsSmart.usCnt.u16FeatureFID4failCnt=0x%04X", 4 2
+ 84 7B, "      Host      (%010d ms),  GetFeature FID 04h Cnt=0x%04X, GetFeature FID 04h InvalidCnt=0x%04X ", 4 2 2
+ 84 7C, "      Host      (%010d ms),   Format NVM: SES=0x%02X, PIL=0x%02X, PI=0x%02X, MSET=0x%02X, LBAF=0x%04X ", 4 1 1 1 1 2
+ 84 7D, "      Host      (%010d ms),  NVMe Device Selt-test Command Received, Selt-Test Code=0x%04X ", 4 2
+ 84 7E, "      Host      (%010d ms),  NVMe Device Selt-test Start time at %08d ms ", 4 4
+ 84 7F, "      Host      (%010d ms),  NVMe Device Selt-Test Abort, No DST under Progress. ", 4
+ 84 80, "      Host      (%010d ms),  NVMe Device Selt-Test Abort, Current DST Operation=0x%04X ", 4 2
+ 84 81, "      Host      (%010d ms),  ExtendedDst Finish ", 4
+ 84 82, "      Host      (%010d ms),  NVMe Device Self-test Processing Segment=0x%04X ", 4 2
+ 84 83, "      Host      (%010d ms),  NVMe Device Self-test Completed,  FailSegmentBitMap=0x%04X,  DSTPeriod=%08d ms ", 4 2 4
+ 84 84, "      Host      (%010d ms),   AER exceed limit ", 4
+ 84 85, "      Host      (%010d ms), Hmb size=0x%08X", 4 4
+ 84 86, "      Host      (%010d ms),  Hmb Enable Fail, HSIZE<MHMMIN.", 4
+ 84 87, "      Host      (%010d ms),  Hmb Enable Fail, Descriptor Entry Memory OverLapping.", 4
+ 84 88, "      Host      (%010d ms),  Hmb Enable Fail, Hmb not enough within 256 entry.", 4
+ 84 89, "      Host      (%010d ms),  Hmb Enable success", 4
+ 84 8A, "      Host      (%010d ms),   Namespace Management: SEL=0x%04X ", 4 2
+ 84 8B, "      Host      (%010d ms),   Namespace Attachment: SEL=0x%04X ", 4 2
+ 84 8C, "      Host      (%010d ms),   Abort Command: CID=0x%04X, SQID=0x%04X ", 4 2 2
+ 84 8D, "      Host      (%010d ms),  Current TimeStamp = 0x%04X%04X%04X", 4 2 2 2
+ 84 8E, "      Host      (%010d ms),  u32LbaH=%08x ", 4 4
+ 84 8F, "      Host      (%010d ms),  u32LbaL=%08x ", 4 4
+ 84 90, "      Host      (%010d ms),  u32Nlb=%08x ", 4 4
+ 84 91, "      Host      (%010d ms),  LbaOutofRange ", 4
+ 84 92, "      Host      (%010d ms),  u32Size=%08x ", 4 4
+ 84 93, "      Host      (%010d ms), Reload from Eventlog, Urgent Shutdown Cnt:0x%08X, MT1 Time:0x%08X, MT2 Time:0x%08X, MT3 Time:0x%08X", 4 4 4 4 4
+ 84 94, "      Host      (%010d ms),  Chk WPRO cWproFeaturePg fail", 4
+ 84 95, "      Host      (%010d ms),  Chk WPRO cWproGetLogPg fail", 4
+ 84 96, "      Host      (%010d ms),  Resume Extended Dst ", 4
+ 84 97, "      Host      (%010d ms),  gpGetLog->usDstLog.u32NvmeDstStartTimeMs=%08d ", 4 4
+ 84 98, "      Host      (%010d ms),  short DST aborted by cold/warm boot ", 4
+ 84 99, "      Host      (%010d ms), PCIe Init, Link State=0x%04X ", 4 2
+ 84 9A, "      Host      (%010d ms),  resetNvmeIp(), Invalid write DB, bitmap=0x%08X ", 4 4
+ 84 9B, "      Host      (%010d ms),  resetNvmeIp(), Pop cmd cnt=0x%08X ", 4 4
+ 84 9C, "      Host      (%010d ms), Hmb reset, flip buffer flag", 4
+ 84 9D, "      Host      (%010d ms),  resetNvmeIp(), Write Empty=%04d, Read Empty=%04d, PrdPdtr0: 0x%04X, PrdPdtr1: 0x%04X ", 4 2 2 2 2
+ 84 9E, "      Host      (%010d ms),  resetNvmeIp(), PcieChkFlr: 0x%04X, ClrHmbF: 0x%04X, ChkRstPw1: 0x%04X ", 4 2 2 2
+ 84 9F, "      Host      (%010d ms),  resetNvmeIp(), Write Empty=%04d, Read Empty=%04d ", 4 2 2
+ 84 A0, "      Host      (%010d ms),  NVMe Reset done, Link State=0x%04X ", 4 2
+ 84 A1, "      Host      (%010d ms),  NSSR occurred, Link State=0x%04X", 4 2
+ 84 A2, "      Host      (%010d ms), rPcie[rcPcieIntr0Offset]=0x%04X,rPcie[rcPcieIntr0Offset]=0x%04X", 4 2 2
+ 84 A3, "      Host      (%010d ms),  Shutdown complete, Link State=0x%04X ", 4 2
+ 84 A4, "      Host      (%010d ms),  PERST Dis LTSSM ", 4
+ 84 A5, "      Host      (%010d ms),  NVMe EN (set cc_rdy),  Link State=0x%04X ", 4 2
+ 84 A6, "      Host      (%010d ms),  PCIe Link Status : GEN=0x%04X , LANE=0x%04X", 4 2 2
+ 84 A7, "      Host      (%010d ms),  PRP Error, uCmdType = 0x%04X, uError = 0x%04X ", 4 2 2
+ 84 A8, "      Host      (%010d ms),  PRP1 HiDWORD=0x%08X,  LoDWORD=0x%08X ", 4 4 4
+ 84 A9, "      Host      (%010d ms),  PRP2 HiDWORD=0x%08X,  LoDWORD=0x%08X ", 4 4 4
+ 84 AA, "      Host      (%010d ms),  rstFwDlInfo(uRstTag) = 0x%04X ", 4 2
+ 84 AB, "      Host      (%010d ms),  Time gap: 0x%08X. Over 180s reset NormalBehavior ", 4 4
+ 84 AC, "      Host      (%010d ms),  gDisHMBCnt_NormalBehavior: 0x%04X  gDisHMBCnt_AbnormalBehavior: 0x%04X ", 4 2 2
+ 84 AD, "      Host      (%010d ms),  NVMe Flush Cmd ", 4
+ 84 AE, "      Host      (%010d ms),  NVMe WZERO Cmd, Wzeroflag=0x%04X ", 4 2
+ 84 AF, "      Host      (%010d ms),  NVMe WUNC Cmd u32Slba=0x%08X, u32Nlb=0x%04X", 4 4 2
+ 84 B0, "      Host      (%010d ms), initWuncTableVar", 4
+ 84 B1, "      Host      (%010d ms),  WUNC Check Start u32WUNCSlba=0x%08X", 4 4
+ 84 B2, "      Host      (%010d ms),  WUNC First u32WUNCSlba=0x%08X, u32WUNCNlb=0x%04X, uWuncCnt=0x%04X", 4 4 2 2
+ 84 B3, "      Host      (%010d ms),  WUNC Second u32WUNCSlba=0x%08X, u32WUNCNlb=0x%04X, uWuncCnt=0x%04X", 4 4 2 2
+ 84 B4, "      Host      (%010d ms), WUNC u16HBlock=0x%04X,u16HPage=0x%04X,uBitMap=0x%04X,uWuncCnt=0x%04X", 4 2 2 2 2
+ 84 B5, "      Host      (%010d ms), over MaxUNCLAACnt uWuncCnt=0x%04X, HBlock=0x%04X, u16HPage=0x%04X, uBitMap=0x%04X", 4 2 2 2 2
+ 84 B6, "      Host      (%010d ms),  NVMe Compare Cmd ", 4
+ 84 B7, "      Host      (%010d ms),  NVMe compare Cmd, error uOriginStartSct=0x%02X, u32PartialNlb=0x%08X", 4 1 4
+ 84 B8, "      Host      (%010d ms),  NVMe compare Cmd,  u32comparefialcnt=0x%08X", 4 4
+ 84 B9, "      Host      (%010d ms),  PHY Setting readback error, Addr=0x%04X, ExpVal=0x%02X, ActVal=0x%02X ", 4 2 1 1
+ 84 BA, "      Host      (%010d ms),  GPIO25 Assert, gHandlePlpScpFlow=0x%04X, PlpScpGpioInitCnt=%08d", 4 2 4
+ 84 BB, "      Host      (%010d ms),  GPIO25 De-Assert, gHandlePlpScpFlow=0x%04X ", 4 2
+ 84 BC, "      Host      (%010d ms), Read Cmd u16HBlock=0x%04X, u16HPage=0x%04X, gStartSector=0x%04X, uReadSctrCnt=0x%04X", 4 2 2 2 2
+ 84 BD, "      Host      (%010d ms), Read Cmd u16HBlock=0x%04X, u16HPage=0x%04X, uBitMap=0x%04X", 4 2 2 2
+ 84 BE, "      Host      (%010d ms), Read Cmd Return UNC uChkBitmap=0x%04X,uReadSctrCnt=0x%04X,uBitMap=0x%04X", 4 2 2 2
+ 84 BF, "      Host      (%010d ms), postFAddrInfoSeqR Read Cmd u16HBlock=0x%04X,u16HPage=0x%04X,gStartSector=0x%04X, g32RestSctrCnt=0x%04X", 4 2 2 2 2
+ 84 C0, "      Host      (%010d ms),  g32FPageNoTran=0x%08X, g16H2fTabSize=0x%04X ", 4 4 2
+ 84 C1, "      Host      (%010d ms),  gsPrdInfo.uSeqRTrigCnt=0x%04X ,mChkHandlePcieErrF=0x%04X", 4 2 2
+ 84 C2, "      Host      (%010d ms), WriteZeroFillup u32LBA=0x%08X, uSCnt=0x%04X", 4 4 2
+ 84 C3, "      Host      (%010d ms), Src is dummy u32LBA=0x%08X", 4 4
+ 84 C4, "      Host      (%010d ms), Src Block=0x%04X, sectorH=0x%04X, g32FPageNoTran=0x%08X", 4 2 2 4
+ 84 C5, "      Host      (%010d ms), WriteZeroFillup gsRwCtrl.u32FreeSrcFifoHead=0x%04X", 4 2
+ 84 C6, "      Host      (%010d ms), WriteZeroFillup uStartSctr=0x%04X, uEndSctr=0x%04X, g16WriteBufPtr=0x%04X", 4 2 2 2
+ 84 C7, "      Host      (%010d ms), WriteZeroFillup bopClrRam u32DesAddr=0x%08X", 4 4
+ 84 C8, "      Host      (%010d ms), PostWriteZeroFlow u32LBA=0x%08X, uSCnt=0x%04X, g16WriteBufPtr=0x%04X", 4 4 2 2
+ 84 C9, "      Host      (%010d ms), PostWriteZeroFlow initNewFblkProc", 4
+ 84 CA, "      Host      (%010d ms), PostWriteZeroFlow WriteZeroFillup", 4
+ 84 CB, "      Host      (%010d ms), PostWriteZeroFlow invPlaneBufFlagCore0", 4
+ 84 CC, "      Host      (%010d ms),  cNvmeCmdWriteZero g16HBlock=0x%04X, g16arH2fTabPtr=0x%04X, g16arH2fTabBlk=0x%04X", 4 2 2 2
+ 84 CD, "      Host      (%010d ms), PostWriteZeroFlow gsRwCtrl.uCachePtr=0x%04X ,g16HBlock=0x%04X, g16HPage=0x%04X", 4 2 2 2
+ 84 CE, "      Host      (%010d ms), PostWriteZeroFlow setProgFifoOpt", 4
+ 84 CF, "      Host      (%010d ms), PostWriteZeroFlow chkBufOccupy g16WriteBufPtr=0x%04X", 4 2
+ 84 D0, "      Host      (%010d ms), PostWriteZeroFlow End", 4
+ 84 D1, "      Host      (%010d ms), PostWriteZeroFlow Error LBA/Scnt", 4
+ 84 D2, "      Host      (%010d ms),  uHmbStsChg! endOfBgdClnCacheblkProc before servRw!", 4
+ 84 D3, "      Host      (%010d ms),  serRwCmdQue Start ", 4
+ 84 D4, "      Host      (%010d ms),  CDMPrepare Cancel, RW over 2S ", 4
+ 84 D5, "      Host      (%010d ms),  IOMeterTrig Over 120mins! ", 4
+ 84 D6, "      Host      (%010d ms),  IOMeter going %08d S", 4 4
+ 84 D7, "      Host      (%010d ms),  IOMeterTrig_Recoverychk Over 4hrs! ", 4
+ 84 D8, "      Host      (%010d ms),  IOMeter_Recoverychk going %08d S", 4 4
+ 84 D9, "      Host      (%010d ms), PostWriteZeroFlow Start gsWZCnt=0x%04X", 4 2
+ 84 DA, "      Host      (%010d ms), gsCacheInfo.u16ActiveCacheBlock=0x%04x , gsCacheInfo.u32CacheFreePagePtr =0x%08x, g16SlcSortQCnt=0x%04x", 4 2 4 2
+ 84 DB, "      Host      (%010d ms),  serRwCmdQue End, CurPs=%04d", 4 2
+ 84 DC, "      Host      (%010d ms),  gJdgBootGCFlag set!! Flag=0x%04x", 4 2
+ 84 DD, "      Host      (%010d ms),  gsRwCtrl.ubDelayTrigHost=0x%04X ", 4 2
+ 84 DE, "      Host      (%010d ms), Emergency PopSpareBlock g16PushSpareCnt =0x%04X", 4 2
+ 84 DF, "      Host      (%010d ms), chkPushSpareQ: mChkPoppedBit=0! blk=0x%04X, DummyFailType=0x%04X", 4 2 2
+ 84 E0, "      Host      (%010d ms), Emergency chkTrimHblockChg g16PushSpareCnt =0x%04X", 4 2
+ 84 E1, "      Host      (%010d ms),  NVMe WZERO Cmd u32TrimLBA=0x%08X, u32TrimSctrCnt=0x%04X", 4 4 2
+ 84 E2, "      Host      (%010d ms),  First u32TrimLBA=0x%08X, uSCnt=0x%04X", 4 4 2
+ 84 E3, "      Host      (%010d ms),  Second u32TrimLBA=0x%08X, uSCnt=0x%04X", 4 4 2
+ 84 E4, "      Host      (%010d ms),  Not enough 4K ", 4
+ 84 E5, "      Host      (%010d ms),  LBA = 0x%08X align 4K , u32TrimSctrCnt = 0x%04X, uTmpTrimSctrCnt = 0x%04X", 4 4 2 2
+ 84 E6, "      Host      (%010d ms),  NVMe Trim Cmd NSID=%08x ", 4 4
+ 84 E7, "      Host      (%010d ms),  DataSetManagemaent Invaild Ns Format : 0x%08X", 4 4
+ 84 E8, "      Host      (%010d ms),  Non Deallocate Attribute", 4
+ 84 E9, "      Host      (%010d ms),  Not Support DataSetManagemaent", 4
+ 84 EA, "      Host      (%010d ms),  IOMeter_RecoveryChk Not enough 100M in Trim cmd", 4
+ 84 EB, "      Host      (%010d ms), SLC&TLC Vpc = 0, Save CahceInfoTable!", 4
+ 84 EC, "      Host      (%010d ms), ProcessTrim () End!", 4
+ 84 ED, "      Host      (%010d ms), setWproPagePtr uOrgBlkIdx=0x%04X, u16arWproBlk=0x%04X", 4 2 2
+ 84 EE, "      Host      (%010d ms), setWproPagePtr no wpro exist", 4
+ 84 EF, "      Host      (%010d ms), Emergency SwapWproBlk g16PushSpareCnt =0x%04X", 4 2
+ 84 F0, "      Host      (%010d ms), SwapWproBlk Start!", 4
+ 84 F1, "      Host      (%010d ms), swapWproBlk End! gsWproInfo.uCnt=0x%04x", 4 2
+ 84 F2, "      Host      (%010d ms), SwapWproSpecialCase,  WproBlkCnt=0x%04X, WproFreePagePtr=0x%04X", 4 2 2
+ 84 F3, "      Host      (%010d ms), Wpro EccFail uWproIdx =0x%04X", 4 2
+ 84 F4, "      Host      (%010d ms), chkWproData Fail,  uWproIdx=0x%04X uEccFail=0x%04X,", 4 2 2
+ 84 F5, "      Host      (%010d ms), Write clear u16HBlock[uIdx]=0x%04X,u16HPage[uIdx]=0x%04X,uWuncCnt=0x%04X", 4 2 2 2
+ 84 F6, "      Host      (%010d ms), Write clear uStartSct=0x%04X,uWriteSctrCnt=0x%04X,uBitMap=0x%04X", 4 2 2 2
+ 84 F7, "      Host      (%010d ms), Write clear u16HBlock[uIdx]=0x%04X,u16HPage[uIdx]=0x%04X, uWuncCnt=0x%04X", 4 2 2 2
+
+
+;================================================================================
+{SetMsgColor = OLIVE}
+ 85 00, "      PS        (%010d ms), Assert in Ps4, handlePlpScpFlow", 4
+ 85 01, "      PS        (%010d ms), Assert in Ps4 but de-assert before handlePlpScpFlow, PlpScpGpioInitCnt=%08d", 4 4
+ 85 02, "      PS        (%010d ms),  Boot from power off 0x%04X", 4 2
+ 85 03, "      PS        (%010d ms),  gsRdlinkInfo.u16BkActiveGcDesBlock 0x%04X", 4 2
+ 85 04, "      PS        (%010d ms),  Assert ClkReq(ISR) ", 4
+ 85 05, "      PS        (%010d ms),  L1 time out, CLKREQ-Deassert ", 4
+ 85 06, "      PS        (%010d ms),  L1 time out, CLKREQ-Assert ", 4
+ 85 07, "      PS        (%010d ms),  L1 time out ", 4
+ 85 08, "      PS        (%010d ms),  LowPower RetryCnt =%04d ", 4 2
+ 85 09, "      PS        (%010d ms), Emergency chkPushSpareQCore0", 4
+ 85 0A, "      PS        (%010d ms), Emergency progCacheInfoTab", 4
+ 85 0B, "      PS        (%010d ms),  NSID Err", 4
+ 85 0C, "      PS        (%010d ms),  PS>3 ASPM Dis", 4
+ 85 0D, "      PS        (%010d ms),  Host set feature - Power state=0x%02X, CurPS=0x%02X ", 4 1 1
+ 85 0E, "      PS        (%010d ms),  D3hot doesn't into PS34 ", 4
+ 85 0F, "      PS        (%010d ms),  CQ busy: QID=0x%04X, HeadDB=0x%08X, TailDB=0x%08X ", 4 2 4 4
+ 85 10, "      PS        (%010d ms),  SQ busy: QID=0x%04X, TailDB=0x%08X, HeadDB=0x%08X ", 4 2 4 4
+ 85 11, "      PS        (%010d ms),  busy: sq_cmd_buf ", 4
+ 85 12, "      PS        (%010d ms),  busy: hwcq ", 4
+ 85 13, "      PS        (%010d ms),  busy: dmacq ", 4
+ 85 14, "      PS        (%010d ms),  busy: fwcq ", 4
+ 85 15, "      PS        (%010d ms),  busy: fwrq ", 4
+ 85 16, "      PS        (%010d ms),  busy: prd ", 4
+ 85 17, "      PS        (%010d ms),  busy: unex_engine ", 4
+ 85 18, "      PS        (%010d ms),  chkHostIdle busy: NVMe Idle Bitmap=0x%04X ", 4 2
+ 85 19, "      PS        (%010d ms),  chkHostIdle busy: Get new cmd ", 4
+ 85 1A, "      PS        (%010d ms),  chkHostIdle busy: NVMe reset ", 4
+ 85 1B, "      PS        (%010d ms),  chkHostIdle busy: NVMe shutdown ", 4
+ 85 1C, "      PS        (%010d ms),  chkHostIdle busy: PCIe link down ", 4
+ 85 1D, "      PS        (%010d ms),  chkHostIdle busy: PCIe reset-P11", 4
+ 85 1E, "      PS        (%010d ms),  ChkHostIdle busy: Pending AER ", 4
+ 85 1F, "      PS        (%010d ms),  ChkHostIdle busy: FW download ", 4
+ 85 20, "      PS        (%010d ms),  ChkCpuErr_HostEnL1 ", 4
+ 85 21, "      PS        (%010d ms),  g32APSTTimeGap=0x%08Xms ", 4 4
+ 85 22, "      PS        (%010d ms),  idleBgTime=0x%08Xms", 4 4
+ 85 23, "      PS        (%010d ms),  Host idle=0x%04X ", 4 2
+ 85 24, "      PS        (%010d ms),  NVMe PS4 Shutdown Proc Start ", 4
+ 85 25, "      PS        (%010d ms),  hdlHipmProc(), Try to enter L1.2 ", 4
+ 85 26, "      PS        (%010d ms),  Deassert=0x%04X, EnL1=0x%04X, EnL0s=0x%04X ", 4 2 2 2
+ 85 27, "      PS        (%010d ms),  ClkPS, Support=0x%04X, Enable=0x%04X ", 4 2 2
+ 85 28, "      PS        (%010d ms),  ASPML11, Support=0x%04X, Enable=0x%04X ", 4 2 2
+ 85 29, "      PS        (%010d ms),  ASPML12, Support=0x%04X, Enable=0x%04X ", 4 2 2
+ 85 2A, "      PS        (%010d ms), hdlHipmProc(), PsChg=0x%04X", 4 2
+ 85 2B, "      PS        (%010d ms), goto setSuspendMo(), Next PS=%04d", 4 2
+ 85 2C, "      PS        (%010d ms),  Host not EnAspm !!!!", 4
+ 85 2D, "      PS        (%010d ms), ApstOperationToPs3=0x%04X  u32Itpt=0x%08X ms ", 4 2 4
+ 85 2E, "      PS        (%010d ms),  APST From PS0x%04X to PS0x%04X, idle time=0x%08X ms ", 4 2 2 4
+
+
+;================================================================================
+{SetMsgColor = MAGENTA}
+ 86 00, "      RAID      (%010d ms), g16arRaidParityBlk[0x%04X]: 0x%04X ", 4 2 2
+
+
+;================================================================================
+{SetMsgColor = MAROON}
+ 87 00, "      Admin     (%010d ms),  Firmware Download InvalidPrpOffset ", 4
+ 87 01, "      Admin     (%010d ms),  Corepwr_Param1=0x%04X ,VSET=0x%04X", 4 2 2
+ 87 02, "      Admin     (%010d ms),  VscChkVpc() gGcTotalSlcVpc=0x%08X, SumSlcVp=0x%08X", 4 4 4
+ 87 03, "      Admin     (%010d ms),  VscChkVpc() gGcTotalTlcVpc=0x%08X, SumTlcVp=0x%08X", 4 4 4
+ 87 04, "      Admin     (%010d ms),  chkVpCnt0() u16Fblock=0x%04X", 4 2
+ 87 05, "      Admin     (%010d ms),  chkVpCnt1() u16Fblock=0x%04X, VPC=0x%08X", 4 2 4
+ 87 06, "      Admin     (%010d ms),  chkVpCnt2() u16Fblock=0x%04X, VPC=0x%08X", 4 2 4
+ 87 07, "      Admin     (%010d ms),  chkVpCnt2() TLCBlk=0x%04X, u16Fblock=0x%04X, RealVPC=0x%08X, tableVPC=0x%08X", 4 2 2 4 4
+ 87 08, "      Admin     (%010d ms),  nvmeLiteonVendorDataIn() ", 4
+ 87 09, "      Admin     (%010d ms),  Admin Cmd OpCode=0x%04X, NSID=0x%08X", 4 2 4
+ 87 0A, "      Admin     (%010d ms), Namespace Create", 4
+ 87 0B, "      Admin     (%010d ms), Create NSID=0x%04X, Size=0x%08X", 4 2 4
+ 87 0C, "      Admin     (%010d ms), Namespace Delete", 4
+ 87 0D, "      Admin     (%010d ms), Delete All", 4
+ 87 0E, "      Admin     (%010d ms), Delete NSID=0x%04X, Unused Size=0x%08X", 4 2 4
+
+
+;================================================================================
+{SetMsgColor = NAVY}
+ 88 00, "      ASSERT HANG (%010d ms), ARM error handler IFAR: 0x%08X ", 4 4
+ 88 01, "      ASSERT HANG (%010d ms), ARM error handlerr IFSR: 0x%08X, 1 bit error cpu status: 0x%04X, 2 bits error cpu status: 0x%04X", 4 4 2 2
+ 88 02, "      ASSERT HANG (%010d ms), ARM error handler DFAR: 0x%08X ", 4 4
+ 88 03, "      ASSERT HANG (%010d ms), ARM error handlerr DFSR: 0x%08X, 1 bit error cpu status: 0x%04X, 2 bits error cpu status: 0x%04X", 4 4 2 2
+ 88 04, "      ASSERT HANG (%010d ms),  NVMe DMA error, DMA error bitmap=0x%04X ", 4 2
+ 88 05, "      ASSERT HANG (%010d ms),  DMA Status [x]=0x%08X, [X+1]=0x%08X ", 4 4 4
+ 88 06, "      ASSERT HANG (%010d ms),  DMA Status [0]=0x%08X, [1]=0x%08X ", 4 4 4
+ 88 07, "      ASSERT HANG (%010d ms),  DMA Status [2]=0x%08X, [3]=0x%08X ", 4 4 4
+ 88 08, "      ASSERT HANG (%010d ms),  DMA Status [4]=0x%08X, [5]=0x%08X ", 4 4 4
+ 88 09, "      ASSERT HANG (%010d ms),  DMA Status [6]=0x%08X, [7]=0x%08X ", 4 4 4
+ 88 0A, "      ASSERT HANG (%010d ms),  TSB_Bus_TIMEOUT(PCIE OR LDPC), Address = 0x%08X, Package Length = 0x%04X, Source = 0x%04X ", 4 4 2 2
+ 88 0B, "      ASSERT HANG (%010d ms),  BVAC_Bus_TIMEOUT, Address = 0x%08X, Package Length = 0x%04X, Source = 0x%04X ", 4 4 2 2
+ 88 0C, "      ASSERT HANG (%010d ms),  TSB_Bus_TIMEOUT(FLASH), Address = 0x%08X, Package Length = 0x%04X, Source = 0x%04X ", 4 4 2 2
+ 88 0D, "      ASSERT HANG (%010d ms),  CPU_Bus_TIMEOUT, Address = 0x%08X ", 4 4
+ 88 0E, "      ASSERT HANG (%010d ms), TSB ECC 2-bit uncorrectable error, Info=0x%08x, Addr(8byte align)=0x%08x", 4 4 4
+ 88 0F, "      ASSERT HANG (%010d ms), TSB ECC RMW 2-bit uncorrectable error, Info=0x%08x, Addr(8byte align)=0x%08x", 4 4 4
+ 88 10, "      ASSERT HANG (%010d ms), TSB4 ECC 2-bit uncorrectable error, Info=0x%08x, Addr(8byte align)=0x%08x", 4 4 4
+ 88 11, "      ASSERT HANG (%010d ms), TSB4 ECC RMW 2-bit uncorrectable error, Info=0x%08x, Addr(8byte align)=0x%08x", 4 4 4
+ 88 12, "      ASSERT HANG (%010d ms),  Uart trigger save log ", 4
+ 88 13, "      ASSERT HANG (%010d ms),  PCIE_AXI_W_TIMEOUT ", 4
+ 88 14, "      ASSERT HANG (%010d ms),  PCIE_AXI_R_TIMEOUT ", 4
+ 88 15, "      ASSERT HANG (%010d ms),  AES2TSB_W_TIMEOUT ", 4
+ 88 16, "      ASSERT HANG (%010d ms),  AES2TSB_R_DRAM_TIMEOUT ", 4
+ 88 17, "      ASSERT HANG (%010d ms),  AES2TSB_R_SRAM_TIMEOUT ", 4
+ 88 18, "      ASSERT HANG (%010d ms), TSB ECC RMW 1-bit correctable error, Info=0x%08x, Addr(8byte align)=0x%08x", 4 4 4
+ 88 19, "      ASSERT HANG (%010d ms), Error Bitmap=0x%08x%08x", 4 4 4
+ 88 1A, "      ASSERT HANG (%010d ms), TSB ECC 1-bit correctable error, Info=0x%08x, Addr(8byte align)=0x%08x", 4 4 4
+ 88 1B, "      ASSERT HANG (%010d ms), TSB4 ECC RMW 1-bit correctable error, Info=0x%08x, Addr(8byte align)=0x%08x", 4 4 4
+ 88 1C, "      ASSERT HANG (%010d ms), TSB4 ECC 1-bit correctable error, Info=0x%08x, Addr(8byte align)=0x%08x", 4 4 4
+ 88 1D, "      ASSERT HANG (%010d ms), rmChkCpuErr=0x%04x, rmGetCfgErrAddr=0x%08x", 4 2 4
+ 88 1E, "      ASSERT HANG (%010d ms), gMasterState=0x%04x, gXadmldle=0x%04x", 4 2 2
+ 88 1F, "      ASSERT HANG (%010d ms), E2E : User Data happened CRC error, Prd:0x%04X, Addr:0x%08X, Len:0x%08X, E2E Addr:0x%08X", 4 2 4 4 4
+ 88 20, "      ASSERT HANG (%010d ms),  GetFrdIdxFromE2EFail(): O32_AES_Default_Key0_0=0x%08X, O32_AES_Default_Key0_1=0x%08X ", 4 4 4
+ 88 21, "      ASSERT HANG (%010d ms),  GetFrdIdxFromE2EFail(): O32_AES_P0_Key0_0=0x%08X, O32_AES_P0_Key0_1=0x%08X ", 4 4 4
+ 88 22, "      ASSERT HANG (%010d ms),  GetFrdIdxFromE2EFail(): O32_AES_P1_Key0_0=0x%08X, O32_AES_P1_Key0_1=0x%08X ", 4 4 4
+ 88 23, "      ASSERT HANG (%010d ms), RdlinkDiffF Block0=0x%04X, FBlock1=0x%04X, BFBlock0=0x%04X ,BFBlock1=0x%04X, PageNoTran=0x%04X", 4 2 2 2 2 2
+ 88 24, "      ASSERT HANG (%010d ms), PCIe Wr Error1!!! sRwCtrl.u16OccFSkipSize=0x%04x, gsGcInfo.uGcQueueCnt=0x%04X", 4 2 2
+ 88 25, "      ASSERT HANG (%010d ms), PCIe Wr Error2!!! u32Temp1=0x%08x, u16Temp2=0x%04X", 4 4 2
+
+
+;================================================================================
+{SetMsgColor = TEAL}
+ 8A 00, "      Thermal/PS (%010d ms),  Standby Mode Entry ,idle time=0x%04X ms", 4 2
+ 8A 01, "      Thermal/PS (%010d ms),  PS3 State resume, CurPs=%02d, Wake Isr=0x%02X", 4 1 1
+ 8A 02, "      Thermal/PS (%010d ms),  PS3 State resume, CurPs=%02d, Wake Isr=0x%02X, LastMTState=%04d", 4 1 1 2
+ 8A 03, "      Thermal/PS (%010d ms),  PS4 State abort, CurPs=%02d, Wake Isr=0x%02X", 4 1 1
+ 8A 04, "      Thermal/PS (%010d ms),  Standby Mode resume, CurPs=%02d, Wake Isr=0x%02X", 4 1 1
+ 8A 05, "      Thermal/PS (%010d ms),  rmGetPcieIntr01Sts=0x%08X ", 4 4
+ 8A 06, "      Thermal/PS (%010d ms), abort BGDGC PWONRTC=%08x, g32BgdGCSkip10min=0x%08X", 4 4 4
+ 8A 07, "      Thermal/PS (%010d ms),  Enter High temperature Urgent Shutdown Hang ", 4
+ 8A 08, "      Thermal/PS (%010d ms),  Sensor0 output=%04d ", 4 2
+ 8A 09, "      Thermal/PS (%010d ms),  Sensor1 output=%04d ", 4 2
+ 8A 0A, "      Thermal/PS (%010d ms),  NormalizationTemperature=%04d ", 4 2
+ 8A 0B, "      Thermal/PS (%010d ms),  gSaveEventLog=1 ", 4
+
+
+;================================================================================
+{SetMsgColor = NAVY}
+ 8B 00, "      SYS       (%010d ms), rdlinkFunc For cSecurErase or cSanitize Flag = 0x%08X", 4 4
+ 8B 01, "      SYS       (%010d ms), _EN_KEEP_RW_ON_ERROR crelinkWhileInitialFormat gsFtlDbg.u16DummyFailType:0x%04X", 4 2
+ 8B 02, "      SYS       (%010d ms), _EN_KEEP_RW_ON_ERROR crelinkWhileInitialFormat loadDiffTabCore0", 4
+ 8B 03, "      SYS       (%010d ms), _EN_KEEP_RW_ON_ERROR crelinkWhileInitialFormat readWproPageCore0", 4
+ 8B 04, "      SYS       (%010d ms), _EN_KEEP_RW_ON_ERROR cWproErrorInfo", 4
+ 8B 05, "      SYS       (%010d ms), _EN_KEEP_RW_ON_ERROR cWproEventLog", 4
+ 8B 06, "      SYS       (%010d ms), _EN_KEEP_RW_ON_ERROR cWproGetLogPg", 4
+ 8B 07, "      SYS       (%010d ms), _EN_KEEP_RW_ON_ERROR crelinkWhileInitialFormat saveWproBadInfoCore0", 4
+ 8B 08, "      SYS       (%010d ms),  SLCSpareBlockCnt = 0x%04X ,TLCSpareBlockCnt = 0x%04X ,SLCFullCacheBlockCnt = 0x%04X, TLCFullCacheBlockCnt = 0x%04X, g16SlcSortQCnt = 0x%04X, g16PushSpareCnt=0x%04X", 4 2 2 2 2 2 2
+ 8B 09, "      SYS       (%010d ms),  ActiveCacheBlock = 0x%04X ,CacheFreePagePtr = 0x%08X ,CacheF2hTabFreePtr = 0x%04X", 4 2 4 2
+ 8B 0A, "      SYS       (%010d ms),  g16StaticBound = 0x%04X", 4 2
+ 8B 0B, "      SYS       (%010d ms),  g16OrgBadBlockCnt = 0x%04X ,g16LaterBadBlockCnt = 0x%04X ,gsBadInfo.u16TotalNewBadCnt = 0x%04X ,u16TotalTlcFblkCap = 0x%04X ,g16TLCGCSpareCnt_Ori = 0x%04X ,g16TLCGCSpareCnt_Run = 0x%04X", 4 2 2 2 2 2 2
+ 8B 0C, "      SYS       (%010d ms),  Invalid Doorbell, CQ bitmap=0x%04X, SQ bitmap=0x%04X ", 4 2 2
+ 8B 0D, "      SYS       (%010d ms), saveQBInfo() Start uMode = 0x%04X", 4 2
+ 8B 0E, "      SYS       (%010d ms), saveQBInfo() End  uMode = 0x%04X", 4 2
+ 8B 0F, "      SYS       (%010d ms),  Run Time Keep Smart ", 4
+ 8B 10, "      SYS       (%010d ms),  AuxNvmeIdle = 0x%04X(0=cmd don't cpl)", 4 2
+ 8B 11, "      SYS       (%010d ms),  CqDbMatch = 0x%04X(0=CQ mismatch) ", 4 2
+ 8B 12, "      SYS       (%010d ms),  CmdRdy = 0x%04X(1=Hw fetch,Fw don't handle) ", 4 2
+ 8B 13, "      SYS       (%010d ms),  NvmeCondition = 0x%08X ,UartHold=0x%04X", 4 4 2
+ 8B 14, "      SYS       (%010d ms),  SanitizeInProgress = 0x%04X,AsyncEvent= 0x%04X,DstInProgress= 0x%04X ", 4 2 2 2
+ 8B 15, "      SYS       (%010d ms),  gApstPs3ToPs4 = 0x%04X,PsChg= 0x%04X,ShnFlag= 0x%04X ", 4 2 2 2
+ 8B 16, "      SYS       (%010d ms),  IspCodePerEndOffset = 0x%04X,AuthPass= 0x%04X, cc =0x%04X", 4 2 2 2
+ 8B 17, "      SYS       (%010d ms), Ps4ResumeTime>=400ms ,Ps4ResumeTime = %08d ms", 4 4
+ 8B 18, "      SYS       (%010d ms), Ps4ResumeTime = %08d ms", 4 4
+ 8B 19, "      SYS       (%010d ms), BootTime>=400ms ,BootTime = %08d ms", 4 4
+ 8B 1A, "      SYS       (%010d ms), BootTime = %08d ms", 4 4
+ 8B 1B, "      SYS       (%010d ms),  SLCSpareBlockCnt = 0x%04X ,TLCSpareBlockCnt = 0x%04X ,SLCFullCacheBlockCnt = 0x%04X ,TLCFullCacheBlockCnt = 0x%04X", 4 2 2 2 2
+ 8B 1C, "      SYS       (%010d ms),  backupAesKey(0)", 4
+ 8B 1D, "      SYS       (%010d ms),  PS3 Timer=0x%04X ms ", 4 2
+ 8B 1E, "      SYS       (%010d ms),  backupAesKey(1)", 4
+ 8B 1F, "      SYS       (%010d ms),  initAes", 4
+
+
+;================================================================================
+{SetMsgColor = BLUE}
+ 8C 00, "      PcieErr   (%010d ms),  PCIe Wr: Prog Head=0x%04X, Tail=0x%04X, Trig=0x%04X, F2h=0x%04X", 4 2 2 2 2
+ 8C 01, "      PcieErr   (%010d ms),  PCIe Wr: F2h=0x%04X, GcTyp=0x%04X, Last4kCnt=0x%04X", 4 2 2 2
+ 8C 02, "      PcieErr   (%010d ms), PCIe Wr: Fill Tail BufPtr=0x%04X, FshPtr=0x%04X.", 4 2 2
+ 8C 03, "      PcieErr   (%010d ms),  PCIe Wr: Fill Program Des=0x%04X, Sectors=0x%04X.", 4 2 2
+ 8C 04, "      PcieErr   (%010d ms), PCIe Wr: Wait last Des is done.", 4
+ 8C 05, "      PcieErr   (%010d ms),  PCIe Wr: Fill Blk=0x%04X, Page=0x%04X, Ch=0x%04X, Intlv=0x%04X.", 4 2 2 2 2
+ 8C 06, "      PcieErr   (%010d ms),  PCIe Wr: E2e check fail, Invaild garDesF2hInfo, u4kCntPtr=0x%04X, HBlk=0x%04X, HPage=0x%04X.", 4 2 2 2
+ 8C 07, "      PcieErr   (%010d ms),  PCIe Wr: ChkF2hRegion: Org = 0x%04X, New = 0x%04X", 4 2 2
+ 8C 08, "      PcieErr   (%010d ms),  PCIe Wr: Org Occupy Size = 0x%04X", 4 2
+ 8C 09, "      PcieErr   (%010d ms),  PCIe Wr: Org Occupy Ptr = 0x%04X", 4 2
+ 8C 0A, "      PcieErr   (%010d ms),  PCIe Wr: How Far to Reach = 0x%04X", 4 2
+ 8C 0B, "      PcieErr   (%010d ms),  PCIe Wr: New Occupy Size = 0x%04X", 4 2
+ 8C 0C, "      PcieErr   (%010d ms),  PCIe Wr: New Occupy Ptr = 0x%04X", 4 2
+ 8C 0D, "      PcieErr   (%010d ms),  PCIe Wr: Skip GC this time.", 4
+ 8C 0E, "      PcieErr   (%010d ms),  PCIe Wr: After-Prog Head=0x%04X, Tail=0x%04X, Trig=0x%04X,", 4 2 2 2
+ 8C 0F, "      PcieErr   (%010d ms),  PCIe Write Error Counts : 0x%04X ", 4 2
+ 8C 10, "      PcieErr   (%010d ms), PCIE ERROR current prd: 0x%04X , LBA:0x%08X, u16LastWrStopBufPtr:0x%08X", 4 2 4 4
+ 8C 11, "      PcieErr   (%010d ms),  PCIe Read Error Counts : 0x%04X ", 4 2
+ 8C 12, "      PcieErr   (%010d ms),  PCIe Wr: Flush F2h Table.", 4
+
+
+;================================================================================
+{SetMsgColor = RED}
+ 8D 00, "      CommandErr (%010d ms),  u32Nlb=%08x ", 4 4
+ 8D 01, "      CommandErr (%010d ms),  not support SGL ", 4
+ 8D 02, "      CommandErr (%010d ms),  NSID=%08x ", 4 4
+ 8D 03, "      CommandErr (%010d ms),  Error Completion=0x%04X ", 4 2
+
+
+;================================================================================
+{SetMsgColor = LIME}
+ A0 00, "      Core1     (%010d ms), SLC mode", 4
+ A0 01, "      Core1     (%010d ms), TLC mode", 4
+ A0 02, "      Core1     (%010d ms), Ch: 0x%04X,Intlv: 0x%04X,CE: 0x%04X,Die: 0x%04X", 4 2 2 2 2
+ A0 03, "      Core1     (%010d ms), Plane:0x%04X,Block: 0x%04X,Page: 0x%04X,Sector: 0x%04X", 4 2 2 2 2
+ A0 04, "      Core1     (%010d ms), uOpTyp: 0x%04X,uRwHalfKb: 0x%04X,u16BufPtr: 0x%04X,uSrcIdx: 0x%04X", 4 2 2 2 2
+ A0 05, "      Core1     (%010d ms), PE Cnt: 0x%04X", 4 2
+ A0 06, "      Core1     (%010d ms), ____gsRwCtrl.uChReadFifoHead[(CH:0x%04X)]: %04d ,SrcIndex= %04d ,RwHalfKb&SectorH= 0x%04X ,uDmaCnt= 0x%04X", 4 2 2 2 2 2
+ A0 07, "      Core1     (%010d ms), gsRwCtrl.uChReadFifoTrig[(CH:0x%04X)]: %04d ,SrcIndex= %04d ,RwHalfKb&SectorH= 0x%04X ,uDmaCnt= 0x%04X", 4 2 2 2 2 2
+ A0 08, "      Core1     (%010d ms), gsRwCtrl.uChReadFifoTail[(CH:0x%04X)]: %04d ,SrcIndex= %04d ,RwHalfKb&SectorH= 0x%04X ,uDmaCnt= 0x%04X", 4 2 2 2 2 2
+ A0 09, "      Core1     (%010d ms), gsRwCtrl.uChPreFifoHead[(CH:0x%04X)]: %04d ,SrcIndex= %04d ,RwHalfKb&SectorH= 0x%04X ,uDmaCnt= 0x%04X", 4 2 2 2 2 2
+ A0 0A, "      Core1     (%010d ms), gsRwCtrl.uChPreFifoTail[(CH:0x%04X)]: %04d ,SrcIndex= %04d ,RwHalfKb&SectorH= 0x%04X ,uDmaCnt= 0x%04X", 4 2 2 2 2 2
+ A0 0B, "      Core1     (%010d ms), ***gSpareCnt: 0x%04X, gWaitSpareTyp: 0x%04X, gSparePtrHead: 0x%04X, gSparePtrTail: 0x%04X", 4 2 2 2 2
+ A0 0C, "      Core1     (%010d ms), gsRwCtrl.uChProgFifoHead[(CH:0x%04X)]: %04d ,DesIndex= %04d ,RwHalfKb&SectorH= 0x%04X ,uSprOpt= 0x%04X", 4 2 2 2 2 2
+ A0 0D, "      Core1     (%010d ms), gsRwCtrl.uChProgFifoTrig[(CH:0x%04X)]: %04d ,DesIndex= %04d ,RwHalfKb&SectorH= 0x%04X ,uSprOpt= 0x%04X", 4 2 2 2 2 2
+ A0 0E, "      Core1     (%010d ms), gsRwCtrl.uChProgFifoTail[(CH:0x%04X)]: %04d ,DesIndex= %04d ,RwHalfKb&SectorH= 0x%04X ,uSprOpt= 0x%04X", 4 2 2 2 2 2
+ A0 0F, "      Core1     (%010d ms), rTsbCtrl[rcBuf0Flag+( 0x%04X)] : 0x%04X", 4 2 2
+ A0 10, "      Core1     (%010d ms), rTsbCtrl[rcBuf0RaidFlag+( 0x%04X)] : 0x%04X", 4 2 2
+ A0 11, "      Core1     (%010d ms), Max Pf Proc Time", 4
+ A0 12, "      Core1     (%010d ms), u32PfProcTime: %08D", 4 4
+ A0 13, "      Core1     (%010d ms), gsCacheInfo.u32CacheFreePagePtr =: 0x%04X  ", 4 2
+ A0 14, "      Core1     (%010d ms), gsRwCtrl.u16ProgPageOfst=: 0x%04X  ", 4 2
+ A0 15, "      Core1     (%010d ms), uF2HRemSize =: 0x%04X  ", 4 2
+ A0 16, "      Core1     (%010d ms), Erase fail, Block=0x%04X, CH=0x%04X, CE=0x%04X", 4 2 2 2
+ A0 17, "      Core1     (%010d ms), getFeatureByChCeDie()->uCh: 0x%04X ,uCe: 0x%04X uDieIndex: 0x%04X uAddr: 0x%04X ", 4 2 2 2 2
+ A0 18, "      Core1     (%010d ms), ## Read Status Ready!!##", 4
+ A0 19, "      Core1     (%010d ms), Toggle Read 4 byte ->P0: 0x%04X ,P1: 0x%04X P2: 0x%04X P3: 0x%04X ", 4 2 2 2 2
+ A0 1A, "      Core1     (%010d ms), SDR Read 1 byte ->P0: 0x%04X ", 4 2
+ A0 1B, "      Core1     (%010d ms), SDR Read 1 byte ->P1: 0x%04X ", 4 2
+ A0 1C, "      Core1     (%010d ms), SDR Read 1 byte ->P2: 0x%04X ", 4 2
+ A0 1D, "      Core1     (%010d ms), SDR Read 1 byte ->P3: 0x%04X ", 4 2
+ A0 1E, "      Core1     (%010d ms), setFlashFeatureForInterface()->u16FlashClk: 0x%04X ,g16FlashClkForThermal: 0x%04X g16FlashClock: 0x%04X ", 4 2 2 2
+ A0 1F, "      Core1     (%010d ms), ## setFlashFeatureForInterface End ##", 4
+ A0 20, "      Core1     (%010d ms), #### setFlashDriverStrength() ####", 4
+ A0 21, "      Core1     (%010d ms), #### setFlashToggleSpecific() ####", 4
+ A0 22, "      Core1     (%010d ms), ## changeFlashClockForThermal() start ##", 4
+ A0 23, "      Core1     (%010d ms), ## changeFlashClockForThermal() End ##", 4
+ A0 24, "      Core1     (%010d ms), Vth Center AR: 0x%04X BR: 0x%04X CR: 0x%04X DR: 0x%04X ", 4 2 2 2 2
+ A0 25, "      Core1     (%010d ms), Vth Center ER: 0x%04X FR: 0x%04X GR: 0x%04X SLC: 0x%04X ", 4 2 2 2 2
+ A0 26, "      Core1     (%010d ms), ## Retry in Raid Decode ##", 4
+ A0 27, "      Core1     (%010d ms), ## Retry ##", 4
+ A0 28, "      Core1     (%010d ms), LBA : 0x%08X ", 4 4
+ A0 29, "      Core1     (%010d ms), Use LastPass Vthtracking Center", 4
+ A0 2A, "      Core1     (%010d ms), LastPass RetryTable PassIndex: 0x%04X ", 4 2
+ A0 2B, "      Core1     (%010d ms), OpTyp==cChkFakeSlcProgramFail !! Force Normal Read Vth LV", 4
+ A0 2C, "      Core1     (%010d ms), Read Data Space Start", 4
+ A0 2D, "      Core1     (%010d ms), FailChunkBitMap: 0x%04X ", 4 2
+ A0 2E, "      Core1     (%010d ms), OpTyp==cChkFakeSlcProgramFail !! uRetryTabLoop: 0x%04X ", 4 2
+ A0 2F, "      Core1     (%010d ms), Soft Decode Start SoftMode=0x%04X", 4 2
+ A0 30, "      Core1     (%010d ms), Read Data Space End", 4
+ A0 31, "      Core1     (%010d ms), Read Spare 26 Byte Start", 4
+ A0 32, "      Core1     (%010d ms), Read Spare 26 Byte End", 4
+ A0 33, "      Core1     (%010d ms), RetryTime(ns): 0x%08x", 4 4
+ A0 34, "      Core1     (%010d ms), ECC Fail", 4
+ A0 35, "      Core1     (%010d ms), Last FailChunkBitMap: 0x%04X ", 4 2
+ A0 36, "      Core1     (%010d ms), doReadRetry() ECC Fail !! ->TLCmode: 0x%04X,CH: 0x%04X,CE: 0x%04X,Plan: 0x%04X,Block: 0x%04X,Page: 0x%04X", 4 2 2 2 2 2 2
+ A0 37, "      Core1     (%010d ms), setRaidDecInfo", 4
+ A0 38, "      Core1     (%010d ms), setRaidDecInfo!! ->TLC mode:0x%04X,CH: 0x%04X,CE: 0x%04X,Plan: 0x%04X,Block: 0x%04X,Page: 0x%04X", 4 2 2 2 2 2 2
+ A0 39, "      Core1     (%010d ms), ECC Pass SoftMode=0x%04X", 4 2
+ A0 3A, "      Core1     (%010d ms), HB Pass RetryTable Index: 0x%04X ", 4 2
+ A0 3B, "      Core1     (%010d ms), doReadRetry() HardDecode Pass !! ->TLC mode:0x%04X,CH: 0x%04X,CE: 0x%04X,Plan: 0x%04X,Block: 0x%04X,Page: 0x%04X,RetryTable Index: 0x%04X", 4 2 2 2 2 2 2 2
+ A0 3C, "      Core1     (%010d ms), SB Pass Vthtracking Center", 4
+ A0 3D, "      Core1     (%010d ms), doReadRetry() SoftDecode Pass !! ->TLC mode:0x%04X,CH: 0x%04X,CE: 0x%04X,Plan: 0x%04X,Block: 0x%04X,Page: 0x%04X,SoftMode=0x%04X", 4 2 2 2 2 2 2 2
+ A0 3E, "      Core1     (%010d ms), SprEccBit: 0x%04X ", 4 2
+ A0 3F, "      Core1     (%010d ms), LdpcMode: 0x%04X ", 4 2
+ A0 40, "      Core1     (%010d ms), DataEccBit: 0x%04X ", 4 2
+ A0 41, "      Core1     (%010d ms), ## Retry End ##", 4
+ A0 42, "      Core1     (%010d ms), progH2fTable() setH2fBufFlag, u16SbufPtr= 0x%04X", 4 2
+ A0 43, "      Core1     (%010d ms), progH2fTable() Program Fail!! H2fChg!!", 4
+ A0 44, "      Core1     (%010d ms), getNandVersion: %04d ", 4 2
+ A0 45, "      Core1     (%010d ms), Capacity 128GB", 4
+ A0 46, "      Core1     (%010d ms), Capacity 256GB/512GB", 4
+ A0 47, "      Core1     (%010d ms), NAND Clock=%04d,g32TotalDatSector=0x%08x", 4 2 4
+ A0 48, "      Core1     (%010d ms), ------Test_ChangeFlashClk: 0x%04X  ", 4 2
+ A0 49, "      Core1     (%010d ms), funcTskInitEraseCnt: Blk=0x%04x, GlobEraseCnt[0x%04x]=0x%04x", 4 2 2 2
+ A0 4A, "      Core1     (%010d ms), ********************Core1 _ PS3", 4
+ A0 4B, "      Core1     (%010d ms), ####################Core1 _ PS4", 4
+ A0 4C, "      Core1     (%010d ms), ####################Core1 _ PS4 Abort", 4
+ A0 4D, "      Core1     (%010d ms), funcTskInitSlcQ! SLCSrcBlk=0x%04x, TLCSrcBlk=0x%04x, FirstFBlk=0x%04x, StaticBound=0x%04x, SlcQCnt=0x%04X, FullCacheBlockCnt=0x%04X", 4 2 2 2 2 2 2
+ A0 4E, "      Core1     (%010d ms), funcTskRestoreSlcQ! SLCSrcBlk=0x%04x, TLCSrcBlk=0x%04x, SlcSortQCnt=0x%04x, g16DataBlkCnt=0x%04x, FullCacheBlockCnt=0x%04x", 4 2 2 2 2 2
+ A0 4F, "      Core1     (%010d ms), chkFingerFail: Ch: 0x%04X,Intlv: 0x%04X,CE: 0x%04X,Die: 0x%04X", 4 2 2 2 2
+ A0 50, "      Core1     (%010d ms), chkFingerFail: Plane:0x%04X,Block: 0x%04X,Page: 0x%04X,Sector: 0x%04X", 4 2 2 2 2
+ A0 51, "      Core1     (%010d ms), chkFingerFail: rFLCtrl[0x11A]=0x%04X", 4 2
+ A0 52, "      Core1     (%010d ms), mCallFuncPtrCore1(ccore1Boot) end", 4
+ A0 53, "      Core1     (%010d ms), g32Core1State=cCore1BootState_Finished end", 4
+ A0 54, "      Core1     (%010d ms), _____________cTskCore1Sleep_________", 4
+ A0 55, "      Core1     (%010d ms), DataBlkCnt=0! u16FBlock=0x%04X", 4 2
+ A0 56, "      Core1     (%010d ms), After remSlcSortQ! u16FBlock=0x%04X, g16SlcSortQCnt=0x%04X, g16DataBlkCnt=0x%04X, FullCacheBlockCnt=0x%04X", 4 2 2 2 2
+ A0 57, "      Core1     (%010d ms), remSlcSortQ uSrcIdx==0xFF", 4
+ A0 58, "      Core1     (%010d ms), remSlcSortQ gsSlcSortQList.u16Cnt=0", 4
+ A0 59, "      Core1     (%010d ms), DataBlkCnt>=TotalFBlock! u16FBlock=0x%04X", 4 2
+ A0 5A, "      Core1     (%010d ms), After insSlcSortQ! u16FBlock=0x%04X, g16SlcSortQCnt=0x%04X, g16DataBlkCnt=0x%04X, FullCacheBlockCnt=0x%04X", 4 2 2 2 2
+ A0 5B, "      Core1     (%010d ms), pushWLReadReclaimQ uReason: 0x%04X , u16FBlock: 0x%04X", 4 2 2
+ A0 5C, "      Core1     (%010d ms), setMarkBadBlock :", 4
+ A0 5D, "      Core1     (%010d ms), Program Fail in Core1BootState!!", 4
+ A0 5E, "      Core1     (%010d ms), PFBlock: 0x%04X, PFPage: 0x%04X, PFCh: 0x%04X, PFIntlv: 0x%04X", 4 2 2 2 2
+ A0 5F, "      Core1     (%010d ms), g16LdpcDmaIdCnt= 0x%04X", 4 2
+ A0 60, "      Core1     (%010d ms), gsRwCtrl.u32FreeSrcIndexHead: 0x%04X, u32FreeSrcIndexTrig: 0x%04X, u32FreeSrcIndexTail: 0x%04X", 4 2 2 2
+ A0 61, "      Core1     (%010d ms), gsRwCtrl.u32ProgFifoHead: 0x%04X, u32ProgFifoTrig: 0x%04X, u32ProgFifoTail: 0x%04X", 4 2 2 2
+ A0 62, "      Core1     (%010d ms), gsGcInfo.uGcState: 0x%04X, garDesAddrInfo[gsRwCtrl.u32ProgFifoTail].uAddrOpt: 0x%04X", 4 2 2
+ A0 63, "      Core1     (%010d ms), rEccDec[0xE0]: 0x%04X, r16EccDec[0xE6/2]: 0x%04X", 4 2 2
+ A0 64, "      Core1     (%010d ms), After rmChSoftReset =>rEccDec[0xE0]: 0x%04X, r16EccDec[0xE6/2]: 0x%04X", 4 2 2
+ A0 65, "      Core1     (%010d ms), After rstChFifoPtrR()_g16LdpcDmaIdCnt= 0x%04X", 4 2
+ A0 66, "      Core1     (%010d ms), After waitAllChCeBz()_g16LdpcDmaIdCnt= 0x%04X", 4 2
+ A0 67, "      Core1     (%010d ms), After waitAllChCeBz() =>rEccDec[0xE0]: 0x%04X, r16EccDec[0xE6/2]: 0x%04X", 4 2 2
+ A0 68, "      Core1     (%010d ms), Case1_g16LdpcDmaIdCnt= 0x%04X", 4 2
+ A0 69, "      Core1     (%010d ms), After funcTskDisLdpcPipe(0) =>rEccDec[0xE0]: 0x%04X, r16EccDec[0xE6/2]: 0x%04X", 4 2 2
+ A0 6A, "      Core1     (%010d ms), cPfCacheBlk Or cPfH2fTabBlk", 4
+ A0 6B, "      Core1     (%010d ms), PfRehCnt= : 0x%08X ", 4 4
+ A0 6C, "      Core1     (%010d ms), Case2_g16LdpcDmaIdCnt= 0x%04X", 4 2
+ A0 6D, "      Core1     (%010d ms), cPfGcDesBlk && cGcMoveData && cGcDesBlockID", 4
+ A0 6E, "      Core1     (%010d ms), cPfGcDesBlk", 4
+ A0 6F, "      Core1     (%010d ms), rstOpIndex(gTotalChNum) & resetFlashAtIntlv done!!", 4
+ A0 70, "      Core1     (%010d ms), Case3_g16LdpcDmaIdCnt= 0x%04X", 4 2
+ A0 71, "      Core1     (%010d ms), CmdQueResume and resetFlashAtIntlv", 4
+ A0 72, "      Core1     (%010d ms), Pf End", 4
+ A0 73, "      Core1     (%010d ms), Case4_g16LdpcDmaIdCnt= 0x%04X", 4 2
+ A0 74, "      Core1     (%010d ms), Pf Start", 4
+ A0 75, "      Core1     (%010d ms), Pf FBlock = 0x%04X, FPage = 0x%04X, CH = 0x%04X, CE = 0x%04X, Plane = 0x%04X", 4 2 2 2 2 2
+ A0 76, "      Core1     (%010d ms), H2f", 4
+ A0 77, "      Core1     (%010d ms), Wpro", 4
+ A0 78, "      Core1     (%010d ms), PfRaidCnt =0x%04X, FBlock =0x%04X", 4 2 2
+ A0 79, "      Core1     (%010d ms), Raid", 4
+ A0 7A, "      Core1     (%010d ms), Des", 4
+ A0 7B, "      Core1     (%010d ms), Data", 4
+ A0 7C, "      Core1     (%010d ms), rstChFifoPtrW(), gsRwCtrl.u32ProgFifoHead: 0x%04X, u32ProgFifoTrig: 0x%04X, u32ProgFifoTail: 0x%04X", 4 2 2 2
+ A0 7D, "      Core1     (%010d ms), rstChFifoPtrW(), Move uProgFifoTail: 0x%04X ,gsRwCtrl.u32ProgFifoTrig:  0x%04X , garDesAddrInfo[uProgFifoTail].uAddrOpt:  0x%04X ", 4 2 2 2
+ A0 7E, "      Core1     (%010d ms), rstChFifoPtrW(), Move gsRwCtrl.uChProgFifoTrig[uCh]: 0x%04X", 4 2
+ A0 7F, "      Core1     (%010d ms), CH: 0x%04X, Intlv: 0x%04X, gsRwCtrl.uChPreFifoHead: %04d, gsRwCtrl.uChPreFifoTail: %04d", 4 2 2 2 2
+ A0 80, "      Core1     (%010d ms), 1. Move gsRwCtrl.uChPreFifoTail: %04d", 4 2
+ A0 81, "      Core1     (%010d ms), 2. pTmpAddrInfo->uDmaCnt: 0x%04X, g16LdpcDmaIdCnt: %04d", 4 2 2
+ A0 82, "      Core1     (%010d ms), 3. Move gsRwCtrl.uChPreFifoTail: %04d", 4 2
+ A0 83, "      Core1     (%010d ms), setReproFifoPtr, uChProgFifoIdx: %04d", 4 2
+ A0 84, "      Core1     (%010d ms), SparePool: new block Plane%04X=0x%04X ", 4 2 2
+ A0 85, "      Core1     (%010d ms), movePfChPageData()->1.flashReadPage() Data only _ g16RwOpt=0x%04X", 4 2
+ A0 86, "      Core1     (%010d ms), movePfChPageData()->3.flashReadPage()Spr Only _ g16RwOpt=0x%04X", 4 2
+ A0 87, "      Core1     (%010d ms), movePfChPageData()->4.flashProgPage()_g16RwOpt=0x%04X", 4 2
+ A0 88, "      Core1     (%010d ms), MoveProgramFail!!! gsCacheInfo.u32CacheInfoFlag= : 0x%08X ", 4 4
+ A0 89, "      Core1     (%010d ms), uReProgPtr: %04D, uReProgCnt: %04D, uPfProgFifoPtr: %04D", 4 2 2 2
+ A0 8A, "      Core1     (%010d ms), chkPfChPageRead() Debug info, gsProgFailInfo.u16FBlock: 0x%04X, gsProgFailInfo.u16FPage: 0x%04X, gsProgFailInfo.uReProgCnt: 0x%04X", 4 2 2 2
+ A0 8B, "      Core1     (%010d ms), chkPfChPageRead() Data Fail, FPage: 0x%04X, Plane: 0x%04X", 4 2 2
+ A0 8C, "      Core1     (%010d ms), chkPfChPageRead() Spare Fail, FPage: 0x%04X, Plane: 0x%04X", 4 2 2
+ A0 8D, "      Core1     (%010d ms), chkPfChPageRead() ReProg Fail, FPage: 0x%04X, ProgFifoPtr: 0x%04X", 4 2 2
+ A0 8E, "      Core1     (%010d ms), chkPfChPageRead() Pass", 4
+ A0 8F, "      Core1     (%010d ms), chkProgFail() Data Fail, FPage: 0x%04X, Plane: 0x%04X", 4 2 2
+ A0 90, "      Core1     (%010d ms), chkProgFail() Spare Fail, FPage: 0x%04X, Plane: 0x%04X", 4 2 2
+ A0 91, "      Core1     (%010d ms), RaidB2bRehCnt=0x%04X", 4 2
+ A0 92, "      Core1     (%010d ms), RaidDecDataFail", 4
+ A0 93, "      Core1     (%010d ms), RaidDecDataFail !! ->SLC mode CH: 0x%02X,CE: 0x%02X,Plan: 0x%04X,Block: 0x%04X,Page: 0x%04X", 4 1 1 2 2 2
+ A0 94, "      Core1     (%010d ms), RaidDecDataFail !! ->TLC mode CH: 0x%02X,CE: 0x%02X,Plan: 0x%04X,Block: 0x%04X,Page: 0x%04X", 4 1 1 2 2 2
+ A0 95, "      Core1     (%010d ms), RaidDecDataPass", 4
+ A0 96, "      Core1     (%010d ms), RaidDecData Pass !! ->SLC mode CH: 0x%04X,Plan: 0x%04X,Block: 0x%04X,Page: 0x%04X", 4 2 2 2 2
+ A0 97, "      Core1     (%010d ms), RaidDecData Pass !! ->TLC mode CH: 0x%02X,CE: 0x%02X,Plan: 0x%04X,Block: 0x%04X,Page: 0x%04X", 4 1 1 2 2 2
+ A0 98, "      Core1     (%010d ms), RaidDec End", 4
+ A0 99, "      Core1     (%010d ms), move reskypage, g16RwOpt: 0x%04X  ", 4 2
+ A0 9A, "      Core1     (%010d ms), move reskypage, Program Fail!! gsCacheInfo.u32CacheInfoFlag: 0x%08X  ", 4 4
+ A0 9B, "      Core1     (%010d ms), 1, u16PagePtr=: 0x%04X, uF2hFlag=: 0x%04X, uLastPage=: 0x%04X, uF2hTabBank= 0x%04X ", 4 2 2 2 2
+ A0 9C, "      Core1     (%010d ms), 3, u16PagePtr=: 0x%04X, uF2hFlag=: 0x%04X, uLastPage=: 0x%04X, uF2hTabBank= 0x%04X ", 4 2 2 2 2
+
+
+;================================================================================
+{SetMsgColor = GRAY}
+ AA 00, "      debug     (%010d ms),  SLCSprCnt=0x%04X, TLCSprCnt=0x%04X , SLCFullCnt=0x%04X, TLCFullCnt=0x%04X, H2FCnt=0x%04X, WproCnt=0x%04X, TotalCnt=0x%04X", 4 2 2 2 2 2 2 2
+ AA 01, "      debug     (%010d ms),  PushH2fBlk return! Blk=0x%04x, uTabBlkIdx=0x%04x", 4 2 2
+ AA 02, "      debug     (%010d ms),  RW END No GC!", 4
+ AA 03, "      debug     (%010d ms),  progIspBlock Start ", 4
+ AA 04, "      debug     (%010d ms),  Page=0x%04X ", 4 2
+ AA 05, "      debug     (%010d ms),  progIspBlock End ", 4
+ AA 06, "      debug     (%010d ms), Emergency H2F GC break uH2fTabBlockCnt:0x%04X, uGcDesF2hTabUpdBank:0x%04X mChkGcQue(cGcTypH2fTab):0x%04X", 4 2 2 2
+ AA 07, "      debug     (%010d ms), 1. Vpc need to rebuild! mGetGcFlow=0x%04x, blk[0x%04x]=0x%04x, Vpc=0x%08x, u32VpcPerBlk=0x%08x", 4 2 2 2 4 4
+ AA 08, "      debug     (%010d ms), GC source block Vpc check! mGetGcFlow=0x%04x, TotalSrcBlkVpc=0x%08x, u32VpcPerBlk=0x%08x", 4 2 4 4
+ AA 09, "      debug     (%010d ms), getGcSrcBlk Start! Act=0x%04X, Flu= 0x%04X, SrcCnt=0x%04X, GcFlow=0x%04x, SLCAvgVpc=0x%08X, VpcPerSlc=0x%08X", 4 2 2 2 2 4 4
+ AA 0A, "      debug     (%010d ms), MaxSlcQ=0x%04x, IoStatus=0x%04x", 4 2 2
+ AA 0B, "      debug     (%010d ms), Special case! TLCStartBlk=0x%04x, SLCStartBlk=0x%04x", 4 2 2
+ AA 0C, "      debug     (%010d ms), releaseHmbHwPrd:mChkHandlePcieErrF,u16BufPtr=0x%04X, u32SctrCnt=0x%04X, u32HmbAddrLow=0x%04X_0x%04X", 4 2 2 2 2
+ AA 0D, "      debug     (%010d ms), releaseHmbHwPrd:mChkHandlePcieErrF,uHmbHwPrdHead=0x%04X, uHmbHwPrdTail=0x%04X, uOpCode=0x%04X, uFuncId=0x%04X", 4 2 2 2 2
+ AA 0E, "      debug     (%010d ms),  debugDeadLock(0x001E)! rmCrc32ErrFlag&cb32BitTab[gsHmbInfo.uRdCrcIdx]", 4
+ AA 0F, "      debug     (%010d ms),  releaseHmbHwPrd CrcH2fErrCnt=0x%04X ", 4 2
+ AA 10, "      debug     (%010d ms),  debugDeadLock(0x001E)! rmCrc32ErrFlag&cb32BitTab[gsHmbInfo.uRdCrcIdx", 4
+ AA 11, "      debug     (%010d ms),  releaseHmbHwPrd CrcGcInfoErrCnt=0x%04X ", 4 2
+ AA 12, "      debug     (%010d ms),  releaseHmbHwPrd CrcDataErrCnt=0x%04X ", 4 2
+ AA 13, "      debug     (%010d ms),  releaseHmbHwPrd CrcGcDataErrCnt=0x%04X ", 4 2
+ AA 14, "      debug     (%010d ms), cHmbReadData:cHmbGcCache, gsHmbInfo.uHmbHwPrdTail: 0x%04X, gsHmbInfo.uHmbHwPrdHead: 0x%04X, rmHmbPrdQueTrigIdx: 0x%04X, rmHmbPrdQueHeadIdx: 0x%04X", 4 2 2 2 2
+ AA 15, "      debug     (%010d ms), cHmbReadData:cHmbGcCache, uOpCode: 0x%04X, uFuncId: 0x%04X, u16BufPtr: 0x%04X, u32SctrCnt: 0x%04X", 4 2 2 2 2
+ AA 16, "      debug     (%010d ms),  releaseHmbHwPrd CrcGcPtErrCnt=0x%04X ", 4 2
+ AA 17, "      debug     (%010d ms), cHmbReadData:cHmbGcPtCache,u16BufPtr=0x%04X, u32SctrCnt=0x%04X, u32HmbAddrLow=0x%04X_%04X", 4 2 2 2 2
+ AA 18, "      debug     (%010d ms), cHmbReadData:cHmbGcPtCache,uHmbHwPrdHead=0x%04X, uHmbHwPrdTail=0x%04X, g32arGcPtyCrc=0x%04X_0x%04X", 4 2 2 2 2
+ AA 19, "      debug     (%010d ms),  debugDeadLock(0x0055)!", 4
+ AA 1A, "      debug     (%010d ms), cHmbWriteCrcData, u16BufIdx=0x%04X, rm32BufStatus=0x%08X", 4 2 4
+ AA 1B, "      debug     (%010d ms),  HmbFreeHwPrdCnt over cHmbHwPrdDepth! HmbFreeHwPrdCnt=0x%04x,", 4 2
+ AA 1C, "      debug     (%010d ms), rTsbCtrl[rcBuf0Flag+( 0x%04X)] : 0x%04X", 4 2 2
+ AA 1D, "      debug     (%010d ms), rTsbCtrl[rcBuf0RaidFlag+( 0x%04X)] : 0x%04X", 4 2 2
+ AA 1E, "      debug     (%010d ms),  chkUnderRwProc mChkHandlePcieRstF = 0x%04X", 4 2
+ AA 1F, "      debug     (%010d ms), chkUnderRwProc(), abort GC, rmChkHmbPrdEmpty: 0x%04X,mChkGcFlag(cUnderBgdGc): 0x%04X", 4 2 2
+ AA 20, "      debug     (%010d ms), chkUnderRwProc(), abort GC, rmHmbPrdQueTrigIdx: 0x%04X, rmHmbPrdQueHeadIdx: 0x%04X, rNvmeHmb[0x4240]: 0x%04X", 4 2 2 2
+ AA 21, "      debug     (%010d ms), uBufferLoop=0x%04X, rm32BufStatus=0x%08X, rm32BufRaidStatus=0x%08X", 4 2 4 4
+ AA 22, "      debug     (%010d ms),  chkUnderRwProc cUnderRWHdlErr", 4
+ AA 23, "      debug     (%010d ms),  W Commit Interrupt Entry PERST", 4
+ AA 24, "      debug     (%010d ms),  Update FW at next time", 4
+ AA 25, "      debug     (%010d ms),  GPIO11 Set Edge Mode", 4
+ AA 26, "      debug     (%010d ms),  r32SysCtrl0[rcGpioIntSetP1/4]=0x%04X%04X ", 4 2 2
+ AA 27, "      debug     (%010d ms),  W Commit Interrupt Entry NVMe Reset", 4
+ AA 28, "      debug     (%010d ms),  W Commit Interrupt Entry Function Level Reset", 4
+ AA 29, "      debug     (%010d ms),  W Commit Interrupt Entry PCIe Link down", 4
+ AA 2A, "      debug     (%010d ms), mClrDataBlockBit: Block=0x%04x", 4 2
+ AA 2B, "      debug     (%010d ms), mSetDataBlockBit: Block=0x%04x", 4 2
+ AA 2C, "      debug     (%010d ms), nvmeSetFeature, mWaitHmbTransferDone!!!!!,rmHmbPrdQueTrigIdx=0x%04X, gsHmbInfo.uHmbHwPrdTail=0x%04X", 4 2 2
+ AA 2D, "      debug     (%010d ms), resetNvmeIp() A, rmHmbPrdQueTrigIdx: 0x%04X, rmHmbPrdQueHeadIdx: 0x%04X", 4 2 2
+ AA 2E, "      debug     (%010d ms), resetNvmeIp() B, rmHmbPrdQueTrigIdx: 0x%04X, rmHmbPrdQueHeadIdx: 0x%04X", 4 2 2
+ AA 2F, "      debug     (%010d ms), hdlHipmProc, rmHmbPrdQueTrigIdx=0x%04X, rmHmbPrdQueHeadIdx=0x%04X, uHmbHwPrdTail=0x%04X, uHmbHwPrdHead=0x%04X, ", 4 2 2 2 2
+ AA 30, "      debug     (%010d ms),  tran2ActiveMo PS3 reset CPU", 4
+ AA 31, "      debug     (%010d ms),  tran2ActiveMo PS4 reset CPU", 4
+ AA 32, "      debug     (%010d ms),  wait delay start", 4
+ AA 33, "      debug     (%010d ms),  wait delay end", 4
+ AA 34, "      debug     (%010d ms), saveRaidAllParity, gsHmbInfo.uHmbStsChg=0x%04X,gsGcInfo.uHMBchg=0x%04X", 4 2 2
+ AA 35, "      debug     (%010d ms), mSetGcFlag(cGcDesFailAbort), mGetGcState=0x%04X, gsGcInfo.uHmbGcCachePtr=0x%04X, gsCacheInfo.u16PartialParityPtrGc=0x%04X, gsHmbInfo.uHmbStsChg=0x%04X", 4 2 2 2 2
+ AA 36, "      debug     (%010d ms), saveRaidAllParity, g32arGcPtyCrc[0x%04X *2]=0x%04X", 4 2 2
+ AA 37, "      debug     (%010d ms), restoRaidAllParity, g16arRaidPtyBlkVpCnt=[0x%04X,0x%04X]", 4 2 2
+ AA 38, "      debug     (%010d ms), gsGcInfo.u16GcDesBlock=0x%04X, gsHmbInfo.uHmbStsChg=0x%04X]", 4 2 2
+ AA 39, "      debug     (%010d ms), mGetGcState=0x%04X, gsGcInfo.uHmbGcCachePtr=0x%04X, mChkGcFlag(cGcDesFailAbort)=0x%04X", 4 2 2 2
+ AA 3A, "      debug     (%010d ms), g16arRaidParityPtr[0x%04X]=0x%04X", 4 2 2
+ AA 3B, "      debug     (%010d ms),  initErasedSysSprBlk uSysBlkIdx=0x%04X ", 4 2
+ AA 3C, "      debug     (%010d ms), debugwhile, DummyFailType : 0x%04X", 4 2
+ AA 3D, "      debug     (%010d ms), debugDeadLock, u16ErrCod : 0x%04X", 4 2
+ AA 3E, "      debug     (%010d ms), WproDataError, uID:0x%04X, u16Para0:0x%04X", 4 2 2
+
+
+;================================================================================
+{SetMsgColor = MAGENTA}
+ C0 00, "      SEC API Debug (%010d ms),   GetSecRWInfo() , g32SecLba = 0x%08X , g32HostXfrCnt = 0x%08X.", 4 4 4
+ C0 01, "      SEC API Debug (%010d ms), handleTcgNop1() - head , HBlock = 0x%04X , HPage = 0x%08X, GHP = 0x%08X.", 4 2 4 4
+ C0 02, "      SEC API Debug (%010d ms), handleTcgNop1() - tail , HBlock = 0x%04X , HPage = 0x%08X, GHP = 0x%08X.", 4 2 4 4
+ C0 03, "      SEC API Debug (%010d ms), SecIntf_TCG_Write() u32GHP = 0x%08X .", 4 4
+ C0 04, "      SEC API Debug (%010d ms), SecIntf_TCG_Write() u32DebugSecGlobalHPage = 0x%08X,  MBRValidBitMap, uBitMap = 0x%04X, uBitMapUpdate = 0x%04X .", 4 4 2 2
+ C0 05, "      SEC API Debug (%010d ms), SecIntf_TCG_Write() HBlock = 0x%04X , HPage = 0x%08X, GHP = 0x%08X, WriteSctrCnt = 0x%04X.", 4 2 4 4 2
+ C0 06, "      SEC API Debug (%010d ms), SecIntf_TCG_Write() - readNop1Proc , mGetStartSctr = 0x%04X , mGetEndSctr = 0x%04X .", 4 2 2
+ C0 07, "      SEC API Debug (%010d ms), SecIntf_TCG_Write() gsRwCtrl.u16OccFSkipSize = 0x%04X, gWriteFlag = 0x%04X,u32TotalSctrCnt  = 0x%04X", 4 2 2 2
+ C0 08, "      SEC API Debug (%010d ms), SecIntf_TCG_Write() WriteBufPtr=0x%04X, gsGcInfo.ubBgdProcF=0x%04X", 4 2 2
+ C0 09, "      SEC API Debug (%010d ms), SecIntf_TCG_Read() , HBlock = 0x%04X , HPage = 0x%08X, GHP = 0x%08X, ReadSctrCnt = 0x%04X.", 4 2 4 4 2
+ C0 0A, "      SEC API Debug (%010d ms),   SecIntf_SaveWProPage() uPageIdx = 0x%04X, gsWproInfo.uarWproIdxPtr= 0x%04X, gsWproInfo.uarWproIdxPtr= 0x%04X, gsWproInfo.u16WproFreePagePtr= 0x%04X", 4 2 2 2 2
+ C0 0B, "      SEC API Debug (%010d ms),   SecIntf_LoadWProPage() uPageIdx = 0x%04X, gsWproInfo.uarWproIdxPtr= 0x%04X, gsWproInfo.uarWproIdxPtr= 0x%04X", 4 2 2 2
+ C0 0C, "      SEC API Debug (%010d ms), SecAPI_NoticeSecCodeSwap() , uAction = 0x%04X", 4 2
+ C0 0D, "      SEC API Debug (%010d ms), bootInitSecurity() , Resume from PS4", 4
+ C0 0E, "      SEC API Debug (%010d ms), bootInitSecurity() , Resume from CPU reset", 4
+ C0 0F, "      SEC API Debug (%010d ms), bootInitSecurity() , Normal power-on", 4
+ C0 10, "      SEC API Debug (%010d ms),   processTrim() - Security Trim, u32TrimSourceEntryAddr = 0x%08X, u32TrimLbaInfoBufIdx = 0x%04X, u32TrimH2fTabBufIdx = 0x%04X", 4 4 2 2
+ C0 11, "      SEC API Debug (%010d ms),   processTrim() - Security Trim, TotalCnt = 0x%04X", 4 2
+ C0 12, "      SEC API Debug (%010d ms),   processTrim() - Security Trim, LBA = 0x%08X , XfrCnt = 0x%08X", 4 4 4
+ C0 13, "      SEC API Debug (%010d ms),   processTrim() - Security Trim, u16EntryCnt = 0x%04X", 4 2
+ C0 14, "      SEC API Debug (%010d ms),   processTrim() - Security Trim, end", 4
+ C0 15, "      SEC API Debug (%010d ms), SecIntf_TCG_Write() Flush F2h, Zero Buffer Ptr", 4
+
+
+;================================================================================
+{SetMsgColor = MAGENTA}
+ C1 00, "      SEC API BASE FW (%010d ms), NVMeFWCommit(), ATA Security Locked, status = 0x%04X. ", 4 2
+ C1 01, "      SEC API BASE FW (%010d ms), NVMeFWImageDL(), ATA Security Locked, status = 0x%04X.", 4 2
+ C1 02, "      SEC API BASE FW (%010d ms),  ATA Security Locked, Opcode = 0x%04X. ", 4 2
+ C1 03, "      SEC API BASE FW (%010d ms),   SecAPI_ChkStackOverFlow() svc stack.", 4
+ C1 04, "      SEC API BASE FW (%010d ms),   SecAPI_ChkStackOverFlow() irq stack.", 4
+ C1 05, "      SEC API BASE FW (%010d ms),   NVMeFormat(), ATA Security Locked, status = 0x%04X.", 4 2
+ C1 06, "      SEC API BASE FW (%010d ms),   NVMeFormat() abort, SP Life Cycle = Manufactured.", 4
+ C1 07, "      SEC API BASE FW (%010d ms),   SecAPI_ChkHitRange() uRangeHit = 0x%04X , gMBRShadow = 0x%04X , gLockingStatus = 0x%04X , uIsRCmd = 0x%04X.", 4 2 2 2 2
+ C1 08, "      SEC API BASE FW (%010d ms), chkCmdInfoError()-READ LBAStart = 0x%08X , XfrCnt = 0x%08X.", 4 4 4
+ C1 09, "      SEC API BASE FW (%010d ms), chkCmdInfoError()-WRITE LBAStart = 0x%08X , XfrCnt = 0x%08X.", 4 4 4
+ C1 0A, "      SEC API BASE FW (%010d ms), ResetCPU!!!", 4
+ C1 0B, "      SEC API BASE FW (%010d ms),   NVMeSanitize() abort, SP Life Cycle = Manufactured.", 4
+ C1 0C, "      SEC API BASE FW (%010d ms),   nvmeSanitize(), ATA Security Locked, status = 0x%04X.", 4 2
+ C1 0D, "      SEC API BASE FW (%010d ms),   SecIntf_Crypto_LoadKey(), uRangeID = 0x%04X.", 4 2
+ C1 0E, "      SEC API BASE FW (%010d ms),  SecIntf_Crypto_LoadKey(): O32_AES_Key0_0=0x%08X, O32_AES_Key0_1=0x%08X ", 4 4 4
+ C1 0F, "      SEC API BASE FW (%010d ms),   SecIntf_Crypto_SetRangePartitionRegister()-1 , u8Action = 0x%04X , uRangeID = 0x%04X , u32LBAStart = 0x%08X.", 4 2 2 4
+ C1 10, "      SEC API BASE FW (%010d ms),   SecIntf_Crypto_SetRangePartitionRegister()-2 , u32LBAEnd = 0x%08X.", 4 4
+ C1 11, "      SEC API BASE FW (%010d ms),   SecIntf_Crypto_KeyWrapping() - Decrypt fails.", 4
+ C1 12, "      SEC API BASE FW (%010d ms),   SecIntf_Crypto_GenerateRandomNum() failed, AES Key1 = Key2", 4
+ C1 13, "      SEC API BASE FW (%010d ms), SecIntf_TCG_Write() Read Only Mode.", 4
+ C1 14, "      SEC API BASE FW (%010d ms), SecIntf_TCG_Write() g16ReadUnitCnt=0.", 4
+ C1 15, "      SEC API BASE FW (%010d ms), SecIntf_TCG_Write() g16WriteBufPtr=0x%04X, g16FlashWBufPtr=0x%04X, gsGcInfo.ubBgdProcF=0x%04X", 4 2 2 2
+ C1 16, "      SEC API BASE FW (%010d ms), SecIntf_TCG_Write() end.", 4
+ C1 17, "      SEC API BASE FW (%010d ms), SecIntf_TCG_Read() start.", 4
+ C1 18, "      SEC API BASE FW (%010d ms), HandleTrustedSend(), ATA ErasePrepare not ready, status = 0x%04X.", 4 2
+ C1 19, "      SEC API BASE FW (%010d ms), HandleTrustedSend(), ATA Security Frozen, status = 0x%04X.", 4 2
+ C1 1A, "      SEC API BASE FW (%010d ms), HandleTrustedSend(), ATA Set ErasePrepare, status = 0x%04X.", 4 2
+ C1 1B, "      SEC API BASE FW (%010d ms), SecAPI_Trusted_Send() fail uStatus = 0x%04X.", 4 2
+ C1 1C, "      SEC API BASE FW (%010d ms), SecAPI_Trusted_Send()/SecAPI_Trusted_Receive() Good uStatus = 0x%04X.", 4 2
+ C1 1D, "      SEC API BASE FW (%010d ms), SecAPI_Trusted_Send()/SecAPI_Trusted_Receive() fail uStatus = 0x%04X.", 4 2
+ C1 1E, "      SEC API BASE FW (%010d ms), HandleTrustedReceive() xfr byte not align, 0x%08X.", 4 4
+ C1 1F, "      SEC API BASE FW (%010d ms), SecAPI_Trusted_Receive() fail uStatus = 0x%04X.", 4 2
+ C1 20, "      SEC API BASE FW (%010d ms),   SecIntf_AddTrimEntry() u32TrimStartLBA = 0x%08X , u32XfrCnt = 0x%08X", 4 4 4
+ C1 21, "      SEC API BASE FW (%010d ms),   SecIntf_RangePolicyUpdate() uAction = 0x%04X , gMBRShadow = 0x%04X , gLockingStatus = 0x%04X , gTcgNviSpLockingLifeCycleState = 0x%04X", 4 2 2 2 2
+ C1 22, "      SEC API BASE FW (%010d ms),   ChangeAESKey() failed, AES Key1 = Key2", 4
+ C1 23, "      SEC API BASE FW (%010d ms), ChangeAESKey()-PassToSecurityFW fails", 4
+ C1 24, "      SEC API BASE FW (%010d ms),   GenMEK() failed, AES Key1 = Key2", 4
+ C1 25, "      SEC API BASE FW (%010d ms), Decrypt MEK fails.", 4
+
+
+
+;;=======================  Security API ====================================
+{SetMsgColor = MAGENTA}
+;;============CryptoLibrary============
+94 01,	  "      BASE FW  LIB (%010d ms), Crypto_GetEntropy(), Length=0x%08X", 4 4
+94 02,	  "      BASE FW  LIB (%010d ms), Crypto_GetNoise(), Length=0x%08X", 4 4
+94 03,	  "      BASE FW  LIB (%010d ms), Crypto_GenerateNDRBG(), Length=0x%08X", 4 4
+94 04,	  "      BASE FW  LIB (%010d ms), Crypto_GenerateDRBG(), Length=0x%08X, PredictionResistance=0x%04X", 4 4 2
+94 05,	  "      BASE FW  LIB (%010d ms), Crypto_ReSeedDRBG()", 4
+94 06,	  "      BASE FW  LIB (%010d ms), Crypto_InstantiateDRBG()", 4
+94 07,	  "      BASE FW  LIB (%010d ms), Crypto_GenKey() ", 4
+94 08,	  "      BASE FW  LIB (%010d ms), GenKey Compare Error ", 4
+94 09,	  "      BASE FW  LIB (%010d ms), Crypto_DeriveKey() ", 4
+94 0A,	  "      BASE FW  LIB (%010d ms), Crypto_KDFCTR() ", 4
+94 0B,	  "      BASE FW  LIB (%010d ms), Crypto_Hash() ", 4
+94 0C,	  "      BASE FW  LIB (%010d ms), Crypto_Mac() ", 4
+94 0D,	  "      BASE FW  LIB (%010d ms), Crypto_Decrypt() ", 4
+94 0E,	  "      BASE FW  LIB (%010d ms), Crypto_Encrypt() ", 4
+94 0F,	  "      BASE FW  LIB (%010d ms), Crypto_RsaVerify() ", 4
+
+;;============Debug============
+;;ATA Passthrough
+C0 30,	  "      SecurityFW	  (%010d ms), Read_Buffer() , ATA_Buffer = 0x%04X 0x%04X 0x%04X 0x%04X.", 4 2 2 2 2
+
+;;RPMB
+C0 40,	  "      SecurityFW	  (%010d ms), RPMB Req_Buf = 0x%04X 0x%04X 0x%04X 0x%04X.", 4 2 2 2 2
+C0 41,	  "      SecurityFW	  (%010d ms), RPMB Req_Buf = 0x%04X.", 4 2
+C0 42,	  "      SecurityFW	  (%010d ms), RPMB Resp_Buf = 0x%04X 0x%04X 0x%04X 0x%04X.", 4 2 2 2 2
+C0 43,	  "      SecurityFW	  (%010d ms), RPMB Resp_Buf = 0x%04X.", 4 2
+
+;;SecurityFW---
+C0 60,	  "      SecurityFW	  (%010d ms), SessionManager_Control_Method() , g32ErrorLocateBit = 0x%08X , g32ErrorLocateBit2 = 0x%08X.", 4 4 4
+C0 61,	  "      SecurityFW	  (%010d ms), SecIntf_TCG_WriteProcess() , u32ByteOffset = 0x%08X , u32DesAddrInByte = 0x%08X.", 4 4 4
+C0 62,	  "      SecurityFW	  (%010d ms), SecIntf_TCG_ReadDone() , u32ByteOffset = 0x%08X , u32SrcAddrInByte = 0x%08X.", 4 4 4
+C0 63,	  "      SecurityFW	  (%010d ms), SecIntf_TCG_WriteProcess() , garSendTCGBuf = 0x%04X 0x%04X 0x%04X 0x%04X.", 4 2 2 2 2
+C0 64,	  "      SecurityFW	  (%010d ms), SecIntf_TCG_ReadDone() , garRcvTCGBuf = 0x%04X 0x%04X 0x%04X 0x%04X.", 4 2 2 2 2
+C0 65,	  "      SecurityFW	  (%010d ms), SendBuffer = %04X %04X %04X %04X.",4 2 2 2 2
+C0 66,	  "      SecurityFW	  (%010d ms), ReceiveBuffer = %04X %04X %04X %04X.",4 2 2 2 2
+C0 67,	  "      SecurityFW	  (%010d ms), GenTCGRangeKEK(): garTCGRangeKEK = %04X %04X %04X %04X.",4 2 2 2 2
+C0 68,	  "      SecurityFW	  (%010d ms), LoadRangeKeySub() Failing: garTCGRangeKEK = %04X %04X %04X %04X.",4 2 2 2 2
+C0 69,	  "      SecurityFW	  (%010d ms), TrustedSendProcess() Set Pin: garTCGRangeKEK = %04X %04X %04X %04X.",4 2 2 2 2
+
+;;============SecurityFW===========
+;; SecIntf_IfSendCmd/SecIntf_IfSendData 
+C2 00,    "      SecurityFW	  (%010d ms), C_Invalid_Transfer_Length_IEEE1667.", 4
+C2 01,	  "      SecurityFW	  (%010d ms), Returned value of SessionManagement(): uCmdStatus = 0x%04X.", 4 2
+C2 02,	  "      SecurityFW	  (%010d ms), ProtocolID = 0x%04X , Silo Index = 0x%02X , Command ID = 0x%02X , g32HostXfrByte = 0x%08X.",4 2 1 1 4
+C2 03,	  "      SecurityFW	  (%010d ms), ProtocolID = 0x%04X , COM ID = 0x%04X , g32HostXfrByte = 0x%08X.",4 2 2 4
+C2 04,	  "      SecurityFW	  (%010d ms), SecIntf_SessionTimeoutCall(), u32TimerDiff = 0x%08Xms, u32MaxSessionTimeout = 0x%08Xms.", 4 4 4
+C2 05,	  "      SecurityFW	  (%010d ms), SessionManagement() end.(TPer/Stack reset Abort) Status = 0x%04X.", 4 2
+C2 06,	  "      SecurityFW	  (%010d ms), TrustedSendProcess() done. u16AuthenticationFailFlag = 0x%04X.", 4 2
+
+;; SecIntf_IfRecvCmd/SecIntf_IfRecvComplete
+C2 10,	  "      SecurityFW	  (%010d ms), C_IEEE_INVALID_POUTPIN_SEQUENCE_REJECTION.", 4 
+C2 11,	  "      SecurityFW	  (%010d ms), ProtocolID = 0x%04X , Silo Index = 0x%02X , Command ID = 0x%02X , g32HostXfrByte = 0x%08X.", 4 2 1 1 4
+C2 12,	  "      SecurityFW	  (%010d ms), ProtocolID = 0x%04X , COM ID = 0x%04X , g32HostXfrByte = 0x%08X.", 4 2 2 4
+C2 13,	  "      SecurityFW	  (%010d ms), Invalid Com ID.", 4
+C2 14,	  "      SecurityFW	  (%010d ms), IEEE Status code not zero. Status = 0x%04X.", 4 2
+C2 15,	  "      SecurityFW	  (%010d ms), Invalid Security Protocol 0x%04X.", 4 2
+C2 16,	  "      SecurityFW	  (%010d ms), Fatal Error!!!", 4
+C2 17,	  "      SecurityFW	  (%010d ms), Handle Min Transfer for TCG. gMinTransferTrig = 0x%04X , g16MinTransfer = 0x%04X , g32HostXfrByte = 0x%08X.", 4 2 2 4
+C2 18,	  "      SecurityFW	  (%010d ms), Handle Min Transfer for IEEE1667. g32IEEEPayloadLength = 0x%08X , g32HostXfrByte = 0x%08X.", 4 4 4
+
+;;Others---
+C2 20,	  "      SecurityFW	  (%010d ms), Invoking ID = %08X_%08X." 4 4 4
+C2 21,	  "      SecurityFW	  (%010d ms), Method ID = %08X_%08X.", 4 4 4
+C2 22,    "      SecurityFW	  (%010d ms), End of SessionManagement. Method Status = 0x%04X.", 4 2
+C2 23,	  "      SecurityFW	  (%010d ms), CheckPinHash() fails. g32PmgrPinId = 0x%08X , gPayloadMethodId = 0x%04X.", 4 4 2
+C2 24,	  "      SecurityFW	  (%010d ms), AUTHENTICATION. g32PayloadParamUint32_1 = %08X , gPayloadParamUint8_1 = 0x%04X.", 4 4 2
+;;C2 25,	  "      SecurityFW	  (%010d ms), 
+C2 26,    "      SecurityFW	  (%010d ms), GENKEY. gRangeID = 0x%04X.", 4 2
+C2 27,	  "      SecurityFW	  (%010d ms), SET_PIN. gTakeOwnership = 0x%04X , g32PmgrLen = 0x%04X , g32PmgrPinId = %08X.", 4 2 2 4
+C2 28,	  "      SecurityFW	  (%010d ms), B_PROCESS_REVERT-1. SecTmp_gTcgNviSpLockingLifeCycleState = 0x%04X , gTCGInTransaction = %04X , gPayloadMethodId = 0x%04X.", 4 2 2 2
+C2 29,	  "      SecurityFW	  (%010d ms), B_PROCESS_REVERT-2. gPayloadParamUint8_1 = 0x%04X , g32PayloadParamUint32_1 = %08X.", 4 2 4 
+C2 2A,	  "      SecurityFW	  (%010d ms), Check ComID, 0x%04X.", 4 2
+C2 2B,	  "      SecurityFW	  (%010d ms), gPayloadSessionType = 0x%04X , gPayloadMethodId = 0x%04X.", 4 2 2
+C2 2C,	  "      SecurityFW	  (%010d ms), gPayloadTokenType = 0x%04X.", 4 2
+C2 2D,	  "      SecurityFW	  (%010d ms), gMethodStatus = 0x%04X , gSessionCurSp = 0x%02X , gPayLoadTableID(FW) = 0x%02X.", 4 2 1 1
+C2 2E,	  "      SecurityFW	  (%010d ms), TPer/Stack Reset. gTCGTperReset = 0x%04X , gTCGLockingStatus = 0x%02X , gTCGStackReset = 0x%02X.", 4 2 1 1
+C2 2F,	  "      SecurityFW	  (%010d ms), Locking Sp Activate.", 4
+C2 30,	  "      SecurityFW	  (%010d ms), Set Locking Table--GlobalRange. Column = 0x%04X , Value = 0x%04X.", 4 2 2
+C2 31,	  "      SecurityFW	  (%010d ms), Set Locking Table--LockingRange%04X. Range Start = 0x%08X.", 4 2 4
+C2 32,	  "      SecurityFW	  (%010d ms), Set Locking Table--LockingRange%04X. Range Lenght = 0x%08X.", 4 2 4
+C2 33,	  "      SecurityFW	  (%010d ms), Set Locking Table--LockingRange%04X. flag = 0x%02X , LockOnReset = 0x%02X.", 4 2 1 1
+C2 34,	  "      SecurityFW	  (%010d ms), TrustedSendProcess() , g16PayloadProcessType = 0x%04X.", 4 2
+C2 35,	  "      SecurityFW	  (%010d ms), TrustRecvProcess() , g16PayloadProcessType = 0x%04X , g16RangeChangeInTransactionFlag = 0x%04X , gTrimLockingRangeInTransaction = 0x%02X , gLockingRangeChangeInTransaction = 0x%02X", 4 2 2 1 1
+C2 36,	  "      SecurityFW	  (%010d ms), TcgNviDefault() , u8KeepGlobalRangeKey = 0x%04X.", 4 2
+C2 37,	  "      SecurityFW	  (%010d ms), SecIntf_NoticeBackupResume() - Backup Start, uAction = 0x%04X.", 4 2
+C2 38,	  "      SecurityFW	  (%010d ms), SecIntf_NoticeBackupResume() - Backup End, uAction = 0x%04X.", 4 2
+C2 39,	  "      SecurityFW	  (%010d ms), SecIntf_NoticeBackupResume() - Resume Start, uAction = 0x%04X.", 4 2
+C2 3A,	  "      SecurityFW	  (%010d ms), SecIntf_NoticeBackupResume() - Resume End, uAction = 0x%04X.", 4 2
+C2 3B,	  "      SecurityFW	  (%010d ms), SecIntf_InitStart() - Start, uMode = 0x%04X.", 4 2
+C2 3C,	  "      SecurityFW	  (%010d ms), SecIntf_InitStart() - End, uMode = 0x%04X.", 4 2
+C2 3D,	  "      SecurityFW	  (%010d ms), SID is taken ownership.", 4 
+C2 3E,    "      SecurityFW	  (%010d ms), Load range key fail, uRangeId = 0x%04X.", 4 2
+C2 3F,    "      SecurityFW	  (%010d ms), Receive Reset Event, uType = 0x%04X.", 4 2
+C2 40,    "      SecurityFW	  (%010d ms), Decrypt MEK fails.", 4
+C2 41,    "      SecurityFW	  (%010d ms), Set PSID and MSID failed - PSID and MSID are already set.", 4
+C2 42,    "      SecurityFW	  (%010d ms), Set PSID and MSID failed - SP Life Cycle = Manufactured.", 4
+C2 43,    "      SecurityFW	  (%010d ms), Set PSID and MSID failed - SID is taken ownership.", 4
+C2 44,    "      SecurityFW	  (%010d ms), Decrypt Root Key fails.", 4
+C2 45,	  "      SecurityFW	  (%010d ms), RestoreTCGRangeKEK() fails",4
+
+;;ATA Security
+C2 60,	  "      SecurityFW	  (%010d ms), ATA PassThrough, gProtocolID = 0x%04X, g16ComID = 0x%04X, status = 0x%04X.", 4 2 2 2
+C2 61,	  "      SecurityFW	  (%010d ms), ATA Security Locked, Set/Disable Password fail.", 4
+C2 62,	  "      SecurityFW	  (%010d ms), ATA Security Frozen, Unlock fail.", 4
+C2 63,	  "      SecurityFW	  (%010d ms), ATA Security Frozen, Erase fail.", 4
+C2 64,	  "      SecurityFW	  (%010d ms), ATA Security Locked, Freeze Lock fail.", 4
+C2 65,	  "      SecurityFW	  (%010d ms), ATA Security-Erase Start.", 4
+C2 66,	  "      SecurityFW	  (%010d ms), ATA Security-Erase End, Security Unlocked , Status = 0x%04X.", 4 2
+C2 67,	  "      SecurityFW	  (%010d ms), ATA Security-Erase failed, Control = 0x%04X.", 4 2
+C2 68,	  "      SecurityFW	  (%010d ms), ATA Security-Unlock failed, Control = 0x%04X.", 4 2
+C2 69,	  "      SecurityFW	  (%010d ms), ATA Security-Disable pwd failed, Control = 0x%04X.", 4 2
+C2 6A,	  "      SecurityFW	  (%010d ms), ATA Security Error, Control = 0x%04X , Status = 0x%04X.", 4 2 2
+C2 6B,	  "      SecurityFW	  (%010d ms), SecIntf_InitATASecurity() - Start, uMode = 0x%04X.", 4 2
+C2 6C,	  "      SecurityFW	  (%010d ms), SecIntf_InitATASecurity() - End, uMode = 0x%04X.", 4 2
+C2 6D,	  "      SecurityFW	  (%010d ms), UpdateATASecurityStatus(), Status = 0x%04X.", 4 2
+C2 6E,	  "      SecurityFW	  (%010d ms), ATA Security-Set user password.", 4
+C2 6F,	  "      SecurityFW	  (%010d ms), ATA Security-Security Unlocked.", 4
+
+;;RPMB
+C2 80,	  "      SecurityFW	  (%010d ms), RPMB, gProtocolID = 0xEA, g16ComID = 0x01, g32HostXfrByte = 0x%08X, gRpmbTarget_NSSF = 0x%04X.", 4 4 2
+C2 81,	  "      SecurityFW	  (%010d ms), NSSF mismatch, Expected NSSF = 0x%04X.", 4 2
+C2 82,	  "      SecurityFW	  (%010d ms), Invalid ComID 0x%04X for Protocol 0xEA.", 4 2
+C2 83,	  "      SecurityFW	  (%010d ms), RPMB Request Type = 0x%04X , RPMB Target = 0x%04X.", 4 2 2
+C2 84,	  "      SecurityFW	  (%010d ms), Invalid RPMB Target, gRpmbTargetNum(MAX) = %d, gRpmbTarget_NSSF = 0x%04X.", 4 2 2
+C2 85,	  "      SecurityFW	  (%010d ms), Authentication Key already exists.", 4
+C2 86,	  "      SecurityFW	  (%010d ms), HandleRpmb_Request() end, Request Result = 0x%04X.", 4 2
+C2 87,	  "      SecurityFW	  (%010d ms), Invalid Request Type or Sequence, gRpmbLastReqType = 0x%04X.", 4 2
+C2 88,	  "      SecurityFW	  (%010d ms), HandleRpmb_Response() end, RPMB Response Type = 0x%04X , Target = 0x%04X, Result = 0x%04X.", 4 2 2 2
+C2 89,    "      SecurityFW	  (%010d ms), RpmbHMAC() fails, Decrypt Authentication Key fails.", 4
+C2 8A,    "      SecurityFW	  (%010d ms), RpmbHMAC() fails, Calculated MAC doesn't match the MAC in the request.", 4
+{ResetMsgColor}
