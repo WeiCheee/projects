@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.ssdx": "bat",
+        "stdio.h": "c"
+    }
+}

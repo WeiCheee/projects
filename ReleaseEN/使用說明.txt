@@ -1,0 +1,7 @@
+﻿1.修改 parameter.json 中的帳號密碼
+
+2.確認 Code 的資料夾名稱為要發的 FW name ， 並將整包 code 丟到 "Data_Put_Here" 資料夾中
+
+3.執行西瓜圖示的 FwScript_Loop.exe
+
+(過程中可將彈出的瀏覽頁面縮小，過程結束後會有確認頁面，確認完後 Submit 即可)

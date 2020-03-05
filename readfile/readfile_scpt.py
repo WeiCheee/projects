@@ -2,7 +2,10 @@ import os
 import glob
 import xlrd 
 import json
-
+from os import listdir
+from os.path import isfile, isdir, join
+from types import *
+import filetype
 
 def read_excel():
     
@@ -57,10 +60,19 @@ def getinfo():
 
 if __name__ == '__main__':
     # datapath = "C:\\Users\\test\\Desktop\\readfile\\datafile\\.*"
-    datapath = ".\datafile\*"
-    types = ['*.txt', '*.dat', '*.xls'] ###grab file type###
+    datapath = "C:\\Users\\test\\Desktop\\readfile\\datafile"
+    types = ['.txt', '.dat', '.xls'] ###grab file type###
     files_path_name = []
+    path = os.listdir(datapath) 
+    # print("11111", path)
+    # os.system("pause")  
 
+    for i in path:
+        for j in types:
+            if os.path.splitext(i)[1] == str(types[j]):
+                print(i)
+    os.system("pause")
+    
     for files in types: ###process###
         filename = glob.glob(datapath + files)
         # print(filename)

@@ -1,0 +1,4 @@
+E992001
+Release FW E992001 for AutoRun
+Check SUM = 0xA85F
+
