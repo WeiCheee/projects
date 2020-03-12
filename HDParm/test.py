@@ -11,9 +11,14 @@ from sys import version_info
 import glob
 import linecache
 
-def catch_en():
+
+
+def searchfile():
     local_dir = os.getcwd() ##get目前的目錄資料夾
     print("local_dir:%s"%local_dir) 
+    curr_load = os.chdir("%s\\loadfile\\"%(local_dir)) ##修改當前目錄
+    curr_load = os.getcwd()  ##看修改後路徑
+    print("curr_load:%s"%curr_load)
     files_grab = [] ##抓到的檔案
     items = os.listdir(".") ##當前目錄的所有
     print('items:%s'%items)
@@ -21,14 +26,23 @@ def catch_en():
         if files.endswith(".txt"): ##結尾為txt的檔案
             files_grab.extend(glob.glob(files))
     print(files_grab)
+    
+    return files_grab
 
+def catch_en():
+    tar_file = searchfile()
+    print("11111111111111111111111111")
+    print(tar_file)
+    input()
     try:
-        with open(files_grab[0],'rb') as f:
+        with open(tar_file[0],'rb') as f:
             print("txt file open")
             catch_line = []
-            text = linecache.getline(files_grab[0],2)
-            print(text)
-            if (text.find("Admin") != -1):  ###not enable(覆蓋檔案)
+            text1 = linecache.getline(tar_file[0],2)
+            text2 = linecache.getline(tar_file[0],3)
+            print(text1)
+            print(text2)
+            if (text1.find("Admin") and text2.find("Host") != -1):  ###not enable(覆蓋檔案)
                 print("get word!")
             else:                         ###enable(停)
                 print("not found")
@@ -47,6 +61,17 @@ def MsgOut(Sstr):
     print (get_current_time()+" "+Sstr)
     return
 
+# security_type{
+#     "enabled": enabled,
+#     "upported": upported,
+# 	"locked": locked,
+# 	"frozen": frozen,
+# 	"expired": expired,
+#     "supported": supported,
+# }
+# return security_type
+
+catch_en()
 ## change all files to 777 start
 Sstr = "find ./ -type f -exec chmod 777 {} \;"
 os.system(Sstr)
@@ -54,7 +79,7 @@ os.system(Sstr)
 # i = 0
 # while (i<10):
 #     print("loop:%s"%i)
-catch_en()
+
 # i = i+1
 get_current_time()    
 
