@@ -1,0 +1,1270 @@
+{PatternInfo = SMI SSD v0.2, 2013/10/29}
+; ------------------------------------------------------------------------
+;  Format:
+;     Sync pattern, "Message %Param_1_Format ...... %Param_N_Format",
+;                   Param_1_size ...... Param_N_size, Action
+;
+;     %T is reserved as Timer and is not count as Param
+;     Param_x_size can be assigned for first few parameters only(default 1)
+;
+;     Action: math expression
+;             T reserved as timer variable
+;             %1 means Param1, %2 means Param2...
+; ------------------------------------------------------------------------
+
+
+;================================================================================
+; Sync pattern ( nk kn xx, ) or ( nk kn xx yy, )
+; n : A ~ F
+; K : 1 ~ 9
+;
+; pattern 3 ( nk kn xx, )
+; SN : xx ( 00 ~ 7F )
+;
+; pattern 4	( nk kn xx yy, )
+; SN : xx ( 00 ~ 7F )
+; SN : yy ( 00 ~ 7F )
+;================================================================================
+
+[Message]
+; =============================================================
+; Aging Message
+; =============================================================
+; A1 1A xx, "		"
+; A1 1A xx, "		"
+;
+; A9 9A xx, "		"
+; A9 9A xx yy, "		"
+; ---------------------------------------
+
+
+; =============================================================
+; Kernel Message
+; =============================================================
+; B1 1B xx, "		"
+; B1 1B xx yy, "		"
+;
+; B9 9B xx, "		"
+; B9 9B xx yy, "		"
+; ---------------------------------------
+{SetMsgColor = BLUE}
+B1 1B 00, 		"KERNEL START"
+B1 1B 10, 		"KERNEL TEST1"
+B1 1B 11, 		"KERNEL TEST2"
+B1 1B 20, 		"MAX LBA=%08X", 4
+B1 1B 30 01, 	"Mark1 Error Tag , Tag=%d", 1
+B1 1B 30 02, 	"Release Tag=%d with Mark Error Type", 1
+B1 1B 31 01,  "Error Handle Cache Start, System Time : %08X", 4
+B1 1B 31 02,  "Error Handle Cache End,   System Time : %08X", 4
+B1 1B 40, 		"KERNEL TEST3"
+;82 14,             "match host WrtUNC Sector, Cmd return fail ,modify LAA=0x%08X  sector=0x%02X",4 2
+;82 15,             "match host WrtUNC Unit, but not match sector Cmd return OK. LAA=0x%08X  sector=0x%02X",4 2
+;82 16,             "Not match host WrtUNC Unit, this Unit mark UNC for ECC fail, Cmd return fail."
+82 1A,             "Remove all sector"
+82 1B,             "Not Remove all, SectorBitMap=0x%02X, garH2FMap=0x%08X",2 4
+82 1C,             "Remove HostUNC  LAA=0x%08X , StartSector=0x%02X ,Cnt=0x%04X",4 2 2
+82 1D,             "HostUNC all clean!"
+82 1E,             "Not match host WrtUNC Unit, data is dummy, return OK"
+82 1F 01,          "Wunc table tag destory, init table"
+82 1F 02,          "OEM change, Init Wnnc Table"
+82 1F 03,          "Wunc Flag is Enable,Build Wunc Table!"
+87 01,             "SETWUNC u32HPage=0x%08X , u16Offest=0x%04X ,u32LBA=0x%04X",4 2 2
+87 02,             "g32WuncUnitMap=0x%08X , u16Offest=0x%04X ,garWuncSecBitMap=0x%04X",4 2 2
+87 03,             "CHKWUNC u32HPage=0x%08X , u16Offest=0x%04X ,u8XfrCnt=0x%04X,u8StartSectorH=0x%02X,u8ChkUNCstatus=0x%02X",4 2 2 1 1
+87 04,             "CHKWUNC u32HPage=0x%08X , u16Offest=0x%04X ,u8XfrCnt=0x%02X,u8StartSectorH=0x%02X",4 2 1 1
+{SetMsgColor = RED}
+B2 2B 00, 		"KERNEL TEST5"
+B2 2B 01, 		"ERROR LBA=%08X", 4
+B2 2B 10 02, 	"Mark2 Error Tag , Tag=%d", 1
+B2 2B 10 03, 	"Mark3 Error Tag , Tag=%d", 1
+B2 2B 11 00, 	"Tag=%d with Mark4 Error Type", 1
+B2 2B 11 01, 	"Tag=%d with Mark5 Error Type", 1
+B2 2B 60, 		"KERNEL TEST6"
+B2 2B 70, 		"KERNEL TEST7"
+{ResetMsgColor}
+
+; =============================================================
+; SATA Message
+; =============================================================
+81 00 01,          "PushWriteCmd_SataError         gHDMACnt=%02X,gTotalBusyFlashFifoCnt=%02X,gPartReadSlotCnt=%02X,(*((BYTE*)&gbsNoSlot))=%02X", 1 1 1 1
+82 00 06,          "ATA_Trim                       06 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 20,          "ATA_READ_SECTORS               20 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 24,          "ATA_READ_SECTORS_EXT           24 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X SecCntH:%02X", 1 1 1 1 1 1 1
+82 00 25,          "ATA_READ DMA EXT               25 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X SecCntH:%02X", 1 1 1 1 1 1 1
+82 00 27,          "ATA_READ_MAX_ADDRESS_EXT       27 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X SecCntH:%02X", 1 1 1 1 1 1 1
+82 00 2F,          "READ LOG EXT                   2F Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 30,          "ATA_WRITE_SECTORS              30 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 34,          "ATA_WRITE_SECTORS_EXT          34 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X SecCntH:%02X", 1 1 1 1 1 1 1
+82 00 35,          "ATA_WRITE DMA EXT              35 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X SecCntH:%02X", 1 1 1 1 1 1 1
+82 00 37,          "ATA_SET_MAX_ADDRESS_EXT        37 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X SecCntH:%02X", 1 1 1 1 1 1 1
+82 00 3D,          "ATA_DMA_WRITE_FUA              3D Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 3F,          "WRITE LOG EXT                  3F Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 40,          "ATA_READ VERIFY SECTORS        40 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 45,          "ATA_WRITE_UNCORRECTABLE        45 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 47,          "READ LOG DMA EXT               47 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X SecCntH:%02X", 1 1 1 1 1 1 1
+82 00 57,          "WRITE LOG DMA EXT              57 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X SecCntH:%02X", 1 1 1 1 1 1 1
+82 00 5B,          "TRUSTED NON DATA               5B Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, %02X %02X", 1 1 1 1 1 1 1
+82 00 5C,          "TRUSTED RECEIVE PIO            5C Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, %02X %02X", 1 1 1 1 1 1 1
+82 00 5D,          "TRUSTED RECEIVE DMA            5D Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, %02X %02X", 1 1 1 1 1 1 1
+82 00 5E,          "TRUSTED SEND PIO               5E Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, %02X %02X", 1 1 1 1 1 1 1
+82 00 5F,          "TRUSTED SEND DMA               5F Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, %02X %02X", 1 1 1 1 1 1 1
+82 00 B0,          "ATA_SMART                      B0 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 C6,          "ATA_SET_MULTIPLE_MODE          C6 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 C8,          "ATA_Read_DMA                   C8 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 CA,          "ATA_WRITE_DMA                  CA Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 CE,          "ATA_WRITE_MULTI_FUA            CE Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 E0,          "ATA_STANDBY IMMEDIATE          E0 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 E4,          "ATA_READ_BUFFER                E4 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 E5,          "ATA_CHECK_POWER_MODE           E5 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 E7,          "ATA_FLUSH_CACHE                E7 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 EA,          "FLUSH CACHE EXT                EA Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 EC,          "ATA_IDENTIFY                   EC Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 EF,          "ATA_SET_FEATURES               EF Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 F1,          "ATA_SECURITY_SET_PASSWORD      F1 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 F2,          "ATA_SECURITY_UNLOCK            F2 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 F3,          "ATA_SECURITY_ERASE PRE         F3 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 F4,          "ATA_SECURITY_ERASE UNIT        F4 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 F5,          "ATA_SECURITY_FREEZE_LOCK       F5 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 F6,          "ATA_SECURITY_DISABLE_PASSWORD  F6 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 F8,          "ATA_READ_MAX_ADDRESS           F8 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00 F9,          "ATA_SET_MAX_ADDRESS            F9 Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+;82 00 FF,          "ATA_VUCmd                      FF Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1
+82 00,             "ATA_Command                    %02X Feature:%02X, SecCnt:%02X, L:%02X, M:%02X, H:%02X, LE:%02X %02X", 1 1 1 1 1 1 1 1
+82 20,         	   "VUCmd                          %02X CDB1:%02X, CDB2:%02X, CDB3:%02X, CDB4:%02X, CDB5:%02X", 1 1 1 1 1 1
+
+82 E1,		"Self_Dram_Test StartCnt = %8X TimeCnt = %8X",4 4
+82 E2,		"Self_Dram_Test StartTest gSelfTestDramSize=%04X",2
+82 E3,		"Self_Dram_Test Dram Test Time=%08X",4
+82 E4,		"Self_Dram_Test Dram gDramtestErrorCode=%04X, C_FlashInfoTableStartAddr=%08X",2 4
+82 E5,		"Self_Dram_Test u32Pattern = %08X, uTest = %08X",4 4
+82 E6,		"Self_Dram_Test Test Fail gDramtestErrorCode=%04X, FailTimeCnt=%08X",2 4
+82 E7,		"Self_Dram_Test Test Fail u32Pattern=%08X, *up32_ptr=%08X",4 4
+82 E9,		"Self_Dram_Test Test Pass gEnBGWork=%04X, _fg_dramtest=%04X",2 2
+
+88 00,             "UpdatePFFifo StrongPage: CH=0x%01X, CE=0x%01X, u16FPage=0x%02X, u16DRAMAddr=0x%02X, MappingWeakPage=0x%02X",1 1 2 2 2
+88 01,             "UpdatePFFifo WeakPage: CH=0x%01X, CE=0x%01X, u16FPage=0x%02X, u16DRAMAddr=0x%02X",1 1 2 2
+88 02,             "ChkClrOccFlag Clear StrongPage=0x%02X, WeakPage=0x%02X, u16StrongCacheAddr=0x%02X, u16WeakCacheAddr=0x%02X",2 2 2 2
+
+88 E1,		"Self_Dram_Test StartCnt = %8X TimeCnt = %8X",4 4
+88 E2,		"Self_Dram_Test StartTest gSelfTestDramSize=%04X",2
+88 E3,		"Self_Dram_Test Dram Test Time=%08X",4
+88 E4,		"Self_Dram_Test Dram gDramtestErrorCode=%04X, C_FlashInfoTableStartAddr=%08X",2 4
+88 E5,		"Self_Dram_Test u32Pattern = %08X, uTest = %08X",4 4
+88 E6,		"Self_Dram_Test Test Fail gDramtestErrorCode=%04X, FailTimeCnt=%08X",2 4
+88 E7,		"Self_Dram_Test Test Fail u32Pattern=%08X, *up32_ptr=%08X",4 4
+88 E9,		"Self_Dram_Test Test Pass gEnBGWork=%04X, _fg_dramtest=%04X",2 2
+
+
+{SetMsgColor = BLUE}
+82 04 00,     "ATA_SRST       %02X", 1 
+82 04 01,     "HW_SRST        %02X", 1 
+82 04 02,     "SATA_COMRESET  %02X", 1 
+82 04 03,     "SATA_INFS         R8_AtaCmd:%02X       Still Have RW Command:%02X", 1 2 
+82 04 04,     "SATA_FatalError   R8_AtaCmd:%02X       Still Have RW Command:%02X", 1 2 
+82 04 05,     "SATA_LSCS     	 R8_AtaCmd:%02X     g32PSSTSR:%02X", 1 4 
+82 04 06,     "SATA_Link_Up      Speed:Gen%02X", 1 
+82 04 07,     "SATA_Link_lose   ", 
+82 04 09,     "SYS_ISR_Others() Redundant_Byte:%02X ", 1
+
+
+{SetMsgColor = RED}
+;82 01 00,     "Complete %02X", 1 (?)TBD
+82 FE 01 02 01 01, " TcgInit8PwrOn()"
+82 FE 01 02 01 02, "   TcgInit(mRst=%d, bClearCache=%d)", 1 1
+;82 02 00,     "ReturnMain ==> %02X", 1 (?)TBD
+82 01,         "rt_err() ==> u8ErrorCode = %02X", 2 
+82 01 01,      "rt_err() ==> u8ErrorCode = %02X", 2 
+82 03 00 00,      "Normal Power ON"
+82 03 00 01,      "Devslp Power ON"
+82 02,         "End_Of_DCO_Cmd ==> gDebugCode = %02X", 1
+
+82 05,     	   "SATA_TX_Error", 
+82 06,     	   "SATA_RX_Error", 
+82 07,         "g16CmdErrorFlag = 0x%04X",2
+
+{SetMsgColor = RED}
+;82 08,       "Lenovo SMART Fail RuntimeBad:%04d OrgBad:%04d PureSpare:%04d", 2 2 2 (?)TBD
+;82 09,       "SMART Fail TotalSpare:%04d less tnan MinSprBlock:%04d", 2 2 (?)TBD
+82 10,        "Firmware Download initiated, u8SubCmd = 0x%02X", 2
+82 11,        "Firmware Download complete"
+82 12,        "Write Cache has been enabled" 
+82 12 00,     "Write Cache has been enabled" 
+82 13,        "Write Cache has been disabled"
+82 13 00,     "Write Cache has been disabled"
+82 14,        "Drive Sanitize initiated AtaFeature=0x%02X", 1
+82 15,        "Drive Sanitize Complete"
+82 16,        "Sata Fake Error"
+82 2A 00 01,  "Decrypt Firmware Start"
+82 2A 00 02,  "Key init fail"
+82 2A 00 03,  "Decrypt Firmware fail"
+82 2A 00 04,  "Decrypt Firmware OK"
+82 2A 01 01,  "Check T_CIDString fail"
+82 2A 01 02,  "Check T_ISPDramTag fail"
+82 2A 01 03,  "Check T_ISPTag fail"
+82 2A 01 04,  "Checksum fail"
+82 2A 01 05,  "TCG FW can't Flash Non-TCG FW !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+82 2A 01 06,  "Non-TCG FW needed Preformat before flash TCG FW !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+82 F0,        "Reset Init_Smart _wDownloadMicroCodeEnd:0x%04X, 0x%04X, _gDevSlpInit:0x%04X, gSECURITY_STATUS_HI:0x%02X, gSECURITY_STATUS:0x%02X", 2 2 2 1 1
+
+{SetMsgColor = PURPLE}
+82 17,             "Save_Attribute_Data()  362:%02X, 363:%02X, 364:%02X%02X",1 1 1 1
+82 23,             "  Read  Tag : %04X,  LBA %02X,%02X,%02X,%02X   Cnt:%02X%02X", 2 1 1 1 1 1 1
+82 24,             "  Write Tag : %04X,  LBA %02X,%02X,%02X,%02X   Cnt:%02X%02X", 2 1 1 1 1 1 1
+82 E0,             "  DebugPage Last Page = %04X,  Now Page = %04X,", 2 2
+82 25,			   "  ID Page=%02X", 2
+
+{SetMsgColor = NAVY}
+;======================================
+;   TCG Use Start
+;======================================
+82 91,             "cfata_TrustedNonData() End"
+82 92,             "cfata_TrustedReceivePio() End"
+82 93,             "cfata_TrustedReceiveDma() End"
+82 94,             "cfata_TrustedSendPio() End"
+82 95,             "cfata_TrustedSendDma() End"
+82 A0,             "   TcgCmdProcessing() ComID:%04X, length:%04X",2 2
+82 A1,             "   TperProcessing()=>RECEIVE ProtocolID:%02X, Cmd:%02X, ComID:%04X, Length:%04X",1 1 2 2
+82 A4,             "HandleComIDResponse() HandleComIDRequest:%02X, HandleComIDResponse:%02X",1 1
+82 A5 00 01,       "TcgTperReset() Rest is Ture"
+82 A5 00 00,       "TcgTperReset() Rest is False"
+82 A6,             "   TperProcessing()=>SEND ProtocolID:%02X, Cmd:%02X, ComID:%04X, Length:%04X, tcgCmdState:%04X",1 1 2 2 2
+82 A7,             "   HandleComIDRequest() siloIdxCmd:%04X",2
+82 A8,             "ResetSessionManager()"
+82 AA 00,          "MbrCtrlTbl_Reset() mTcgStatus:%02X"1
+82 AB,             "CopyMSID2SID() digest[0]:%02X, digest[1]:%02X, digest[2]:%02X, digest[3]:%02X"1 1 1 1
+82 AC,             "TcgCmdPktParser()"
+82 AD 00,          "TcgStreamDecode() ControlSession:%02X",1
+82 AD 01 00,       "   InvokingLockingTable(), AccessControl Chk OK! invokingUID.all=%04X%04X_%04X%04X, methodUID.all=%04X%04X_%04X%04X", 2 2 2 2 2 2 2 2
+82 AD 01 FF,       "   InvokingLockingTable(), AccessControl Chk NG! invokingUID.all=%04X%04X_%04X%04X, methodUID.all=%04X%04X_%04X%04X", 2 2 2 2 2 2 2 2
+82 AD 02 00,       "   InvokingLockingTable(), ACE BooleanExpr Chk OK! aclUid[0]=%04X%04X_%04X%04X, aclUid[1]=%04X%04X_%04X%04X", 2 2 2 2 2 2 2 2
+82 AD 02 FF,       "   InvokingLockingTable(), ACE BooleanExpr Chk NG! aclUid[0]=%04X%04X_%04X%04X, aclUid[1]=%04X%04X_%04X%04X", 2 2 2 2 2 2 2 2
+82 AD 03 00,       "   InvokingAdminTable(), AccessControl Chk OK! invokingUID.all=%04X%04X_%04X%04X, methodUID.all=%04X%04X_%04X%04X", 2 2 2 2 2 2 2 2
+82 AD 03 FF,       "   InvokingAdminTable(), AccessControl Chk NG! invokingUID.all=%04X%04X_%04X%04X, methodUID.all=%04X%04X_%04X%04X", 2 2 2 2 2 2 2 2
+82 AD 04 00,       "   InvokingAdminTable(), ACE BooleanExpr Chk OK! aclUid[0]=%04X%04X_%04X%04X, aclUid[1]=%04X%04X_%04X%04X", 2 2 2 2 2 2 2 2
+82 AD 04 FF,       "   InvokingAdminTable(), ACE BooleanExpr Chk NG! aclUid[0]=%04X%04X_%04X%04X, aclUid[1]=%04X%04X_%04X%04X", 2 2 2 2 2 2 2 2
+82 AE,             "Close Session"
+82 AF,             "TransactionStart Status=0x%04X, State=0x%04X",2 2
+82 B0,             "TransactionStart OK"
+82 B1,             "  InvokingID = %04X%04X_%04X%04X", 2 2 2 2
+82 B2,             "  methodUID  = %04X%04X_%04X%04X", 2 2 2 2
+
+82 D0,             "    SiloCmdProcessing()=>Send ComID:%04X, length:%04X",2 2
+82 D1,             "    SiloCmdProcessing()=>RECEIVE ComID:%04X, length:%04X",2 2
+82 FE 01 02 01 01, " TcgInit8PwrOn()"
+82 FE 01 02 01 02, "   TcgInit(mRst=%d, bClearCache=%d)", 1 1
+
+{SetMsgColor = PURPLE}
+82 B3 00 01,   "   tcgCmdState = ST_AWAIT_IF_SEND"
+82 B3 00 02,   "   tcgCmdState = ST_PROCESSING"
+82 B3 00 03,   "   tcgCmdState = ST_AWAIT_IF_RECV"
+
+{SetMsgColor = RED}
+82 B3 01 01,       "     TperProcessing() NG! Invalid ComID (0x%04X) ", 2
+82 B3 01 02 00,    "     TperProcessing() NG! Invalid ProtocolID (0x%02X) ", 1
+82 B3 01 03,       "     TcgRespPktUpdate() NG! PacketSize (%d) > MaxPacketSize (%d)", 2 2
+82 B3 01 04,       "     TcgRespPktUpdate() NG! PacketSize (%d) > MaxComPacketSize (%d)", 2 2
+82 B3 01 05,       "     TcgRespPktUpdate() NG! InTokenSize (%d) > hostIndTokenSize (%d)", 2 2
+82 D5 00,          "     !!Silo NG: %02X",1
+82 AD 01 FF,       "   InvokingLockingTable(), AccessControl Chk NG! invokingUID.all=%04X%04X_%04X%04X, methodUID.all=%04X%04X_%04X%04X", 2 2 2 2 2 2 2 2
+82 AD 02 FF,       "   InvokingLockingTable(), ACE BooleanExpr Chk NG! aclUid[0]=%04X%04X_%04X%04X, aclUid[1]=%04X%04X_%04X%04X", 2 2 2 2 2 2 2 2
+82 AD 03 FF,       "   InvokingAdminTable(), AccessControl Chk NG! invokingUID.all=%04X%04X_%04X%04X, methodUID.all=%04X%04X_%04X%04X", 2 2 2 2 2 2 2 2
+82 AD 04 FF,       "   InvokingAdminTable(), ACE BooleanExpr Chk NG! aclUid[0]=%04X%04X_%04X%04X, aclUid[1]=%04X%04X_%04X%04X", 2 2 2 2 2 2 2 2
+
+{SetMsgColor = MAROON}
+82 FE 00 00,    "Level0_Discovery()"
+82 FE 01 00, "H2TP Properties"
+{SetMsgColor = GREEN}
+82 FE 01 01 00, "   mHostProperties[0].name Match! (MaxComPacketSize), hostPtyCnt= %d", 1
+82 FE 01 01 01, "   mHostProperties[1].name Match! (MaxPacketSize), hostPtyCnt= %d", 1
+82 FE 01 01 02, "   mHostProperties[2].name Match! (MaxIndTokenSize), hostPtyCnt= %d", 1
+82 FE 01 01 03, "   mHostProperties[3].name Match! (MaxPackets), hostPtyCnt= %d", 1
+82 FE 01 01 04, "   mHostProperties[4].name Match! (MaxSubpackets), hostPtyCnt= %d", 1
+82 FE 01 01 05, "   mHostProperties[5].name Match! (MaxMethods), hostPtyCnt= %d", 1
+82 FE 01 02 1D, "   mHostProperties[%d].val = 0x%08X", 1 4
+{ResetMsgColor}
+
+82 FE 01 02 01 02 00 DD, "      OPAL Drive"
+82 FE 01 02 01 02 00 EE, "      eDRV"
+{SetMsgColor = MAROON}
+82 FE 02,    "... SP:%02X AUTH:%08X" 1  4
+82 FE 03,    "Close Session >>>"
+82 FE 04,    "Adm:C_PIN_SID->Get, StrtCol=%02X EndCol=%02X" 1 1
+82 FE 05 00,    "Method->Get, StrtCol=%02X EndCol=%02X", 1 1
+82 FE 06,    "Adm:Set C_PIN table"
+82 FE 07,    "AdminTabObjSetting err, ErrCode=%02X" 1
+82 FE 08,    "TokenDecoding err, ErrCode=%02X", 1
+82 FE 09,    "Admin_Set err, ErrCode=0x%02X" 1
+82 FE 0A,    "Admin_GetACL err, ErrCode=0x%02X", 1
+82 FE 0B,    "TempStoreParam err, ErrCode=0x%02X" 1
+82 FE 0C,    "Adm:Set Authority table"
+82 FE 0D 00,    "Method->Activate, Err=%02X, DSCnt=%02X, SingleUserRx=%04X" 1 1 2
+82 FE 0E 00, "Method->Next(), invokingUID_Hi=%04X%04X, mSessionManager.SPID.all=%04X%04X_%04X%04X",2 2 2 2 2 2
+82 FE 0E 01, "Method->Get(), invokingUID_Hi=%04X%04X, mSessionManager.SPID.all=%04X%04X_%04X%04X",2 2 2 2 2 2
+
+82 FE 0F 00,    "    Sync Session, SPID=0x%04X" 2
+82 FE 10 00,    "       Supported_Security_Protocol()",
+82 FE 11,    "Method->Revert, SP=%02X", 1
+82 FE 12,    "Method->RevertSP, KGRK=%02X" 1
+82 FE 13,    "TransactionStart Status=%04X, State=%02X" 2 1
+82 FE 14,    "Write2Mtable() wr Mtab=%08X,col=%08X,len=%08X" 4 4 4
+82 FE 15,    "Write2Mtable() ErrCode=%02X" 1
+82 FE 16 00, "Method_Set()"
+82 FE 17 00, "<<< Start Session..."
+82 FE 17 01, "    SPID = %04X%04X_%04X%04X (1:AdminSP, 2:LockingSP)", 2 2 2 2
+82 FE 17 02, "    HostSigningAuthority = %04X%04X_%04X%04X (1:Anybody, 2:Admins, 3:Makers)", 2 2 2 2
+82 FE 18,    "TransactionStart OK"
+82 FE 19,    "TransactionEnd Status=%04X, State=%02X" 2 1
+82 FE 1A,    "TransactionEnd OK: Commit!!"
+82 FE 1B,    "TransactionEnd OK: Abort!!"
+82 FE 1C 00,    "Method->Get, StrtRow=%08X EndRow=%08X" 4 4
+82 FE 1E,    "TcgMbrClean()"
+82 FE 1F,    "TcgTempMbrClean()"
+82 FE 20,    "TcgAllClean()"
+82 FE 21,    "TcgGrp1Write()"
+82 FE 22,    "TcgGrp2Write()"
+82 FE 23,    "TcgGrp3Write()"
+82 FE 24,    "TcgGrp4Write()"
+82 FE 25,    "TcgGrp5Write()"
+82 FE 26,    "TcgMbrCommit()"
+82 FE 27,    "TcgStatus: %02X" 1
+82 FE 28 00,    "!!NG: MBR-S Write!!!"
+82 FE 29 00,    "*** MBR-S Read!!!"
+82 FE 2A,    "!!NG: Rx Crossing!!!"
+82 FE 2B 00,    "!!NG: MBR-S Crossing!!!"
+82 FE 2C,    "TcgDataStoreRead()"
+82 FE 2D,    "TcgDataStoreWrite()"
+{SetMsgColor = RED}
+82 FE 30,    "!!NG: Not Activate Yet"
+82 FE 31,    "!!NG: AuthorityCheck 0x%04X" 2
+82 FE 32,    "!!NG: CmdPktParser NG -> Abort Session %02X" 1
+82 FE 33,    "!!NG: CmdPktParser NG -> Stay in IF-SEND %02X" 1
+82 FE 34,    "!!NG: StreamDecode NG -> Abort Session"
+82 FE 35,    "!!NG: StreamDecode NG -> Stay in IF-SEND"
+82 FE 36,    "!!NG: Response Data Overflow!"
+82 FE 37,    "!!NG: CPIN_R%02X tryLimit=%02X tries=%02X" 1 1 1
+82 FE 38,    "!!NG: SessionManager, errCode= 0x%02X" 1
+82 FE 39 00, "  !! Disc is locked, Update is inhibited !! ReadLocked = %02X, WriteLocked = %02X", 1 1
+{SetMsgColor = MAROON}
+82 FE 40,    "VuTcgVendorRevert()"
+{SetMsgColor = RED}
+82 FE 41,    "!!NG: Password Err."
+82 FE 42,    "!!NG: Vendor debug Revert Err."
+{SetMsgColor = MAROON}
+82 FE 43,    "!!OK: Vendor debug Revert."
+82 FE 44 00,    "Method_Debug_Revert()"
+82 FE 45 00,    "!!Watch out, Lock setting in _TCG_LAB_RESCUE_ONLY"
+82 FE 46 00,    "!!Watch out, Lock any write and read in _TCG_LAB_RESCUE_ONLY",
+82 FE 47 00,    "!!NG: Ver=%08X %08X, PreFormat is Required!!", 4 4
+82 FE 48 00,    "   TCG_PreformatRestore()"
+
+82 FE 50,    "Method->Random, cnt=%02X", 1
+82 FE 51 00,    "   Method->Authenticate, auth=%08X" 4
+82 FE 51 10,    "   Method->Authenticate, auth=%08X result=%04X" 4 2
+82 FE 52,    "Stack_Reset Request: %02X" 1
+82 FE 53,    "Stack_Reset Response: %02X %02X" 1 1
+82 FE 54 01, "TPer_Reset: True",
+82 FE 54 00, "TPer_Reset: False",
+82 FE 55 ,    "DS%02X: %08X %08X" 1 4 4
+82 FE 56,    "Method->Reactivate, Err=%02X, SingleUserRx=%02X, DSCnt=%02X", 1 1 1
+82 FE 57,    "Method->Erase, range=%02X", 1
+82 FE 58 00,    "SingleUser cnt=%02X policy=%02X range=%02X" 1 1 2
+
+82 FE 60 00,    "ProbeSilo_Probe..."
+82 FE 60 10,    "  1667_Major_Ver=%02X, 1667_Minor_Ver=%02X, Host_OS=%02X, Host_Spec_Len=%02X, Host_Major_Ver=%02X, Host_Minor_Ver=%02X", 1 1 1 1 1 1
+82 FE 61 00,    "TcgSilo_GetSiloCap..."
+82 FE 62 00,    "TcgSilo_Transfer..."
+82 FE 62 01,    "TcgSilo_Transfer...SUCCESS"
+82 FE 63 00,    "TcgSilo_Reset..."
+82 FE 63 11,    "TcgSilo_TPerReset...mPCLength=%04X", 2
+82 FE 63 13,    "TcgSilo_TPerReset...STS_1667_SUCCESS"
+82 FE 64 00,    "TcgSilo_GetResult..."
+82 FE 65,    "TcgTbl Ver: %08X %08X", 4 4
+82 FE 66 00, "  PowerCycle Process, gTCGDevslp=%02X, _bSMBRDone=%02X, _wRdLocked=%04X, _wWrLocked=%04X",1 1 2 2
+82 FE 66 01, "  DownloadMicrocode Process, gTCGDownloadMircocode=%02X, _bSMBRDone=%02X, _wRdLocked=%04X, _wWrLocked=%04X",1 1 2 2
+
+82 FE 90,    "TcgNvExecRWtask() ErrCode=%02X" 1
+82 FE 91,    "WaitTcgRd1PageRWtask() ErrCode=%02X" 1
+82 FE 92,    "RW_WaitWr1Page() ErrCode=%02X" 1
+82 FE 93,    "RW_WaitG5WrL2p() ErrCode=%02X" 1
+82 FE 94,    "Bin defect tbl ID = %s"
+82 FE 95,    "NOR defect tbl ID = %s"
+82 FE 96,    "Bin Erase cnt tbl ID = %s"
+82 FE 97,    "NOR Erase cnt tbl ID = %s"
+82 FE 99,    ">>> Defect table is cleared."
+82 FE 9A,    ">>> Erase count table is cleared."
+{SetMsgColor = RED}
+82 FE 61 10,    "TcgSilo_GetSiloCap...Len NG!, PCLen=%04X", 2
+82 FE 62 10,    "TcgSilo_Transfer...result!=SiloComID, Result=%04X", 2
+82 FE 62 11,    "TcgSilo_Transfer...result!=0, Result=%04X", 2
+82 FE 62 21,    "TcgSilo_Transfer...Length NG, Length=%04X", 2
+82 FE 62 30,    "TcgSilo_Transfer...P_IN Trx Len NG"
+82 FE 63 12,    "TcgSilo_TPerReset...STS_1667_FAILURE"
+82 FE 98 00,    "!!! table NG !!! PreFormat is Required."
+82 FE 9B 00,    "!!! Serious Error, preformat was terminated abnormally !!! preformat end"
+{SetMsgColor = NAVY}
+82 FE C0 03 00 00,  "   Group 1 in NAND",
+82 FE C0 03 00 01,  "   Group 2 in NAND",
+82 FE C0 03 00 02,  "   Group 3 in NAND",
+82 FE C0 03 01 00,  "   Group 1 isn't in NAND, copy default Table",
+82 FE C0 03 01 01,  "   Group 2 isn't in NAND, copy default Table",
+82 FE C0 03 01 02,  "   Group 3 isn't in NAND, copy default Table",
+82 FE C0 03 01 03,  "   Clr Temp DataStore, Clr Temp H2F",
+82 FE C0 03 01 04,  "   Clr Temp MBR, Clr Temp H2F",
+82 FE C0 03 01 05,  "   Clr Real DataStore, copy default Data",
+82 FE C0 03 01 06,  "   Clr Real MBR, copy default Data",
+{SetMsgColor = MAROON}
+82 FE D0,    "Admin AccessControl Check: %02X" 1
+82 FE D1,    "Admin ACE BooleanExp Check: %02X" 1
+82 FE D8 00,    "Method getACL => acl_Inv:acl_Mtd %08X-%08X : %08X-%08X", 4 4 4 4
+82 FE D9 00,    "MbrCtrlTbl_Reset() type:%02X, TcgStatus:%02X",1 1
+82 FE DD 00,    "!! Dev type = OPAL !!",
+82 FE E0,    "Locking AccessControl Check: %02X" 1
+82 FE E1,    "Locking ACE BooleanExp Check: %02X" 1
+82 FE E2 00,    "LockingTbl_Reset(PowerCycle)"
+82 FE E2 01,    "LockingTbl_Reset(Hardware)"
+82 FE E2 02,    "LockingTbl_Reset(HotPlug)"
+82 FE E2 03,    "LockingTbl_Reset(Programmatic)"
+82 FE E3,    "LockingTbl_RangeChk: %02X",1
+82 FE E4 00,    "LockingRangeTable_Update=> ReadLockedStatus:%04X WriteLockedStatus:%04X",2 2
+82 FE E5,    "K%02X=%08X ..." 1 4
+82 FE E6 00, "  mLockingRangeTable[%d]: rangeNo=0x%02X, readLocked=0x%02X, writeLocked=0x%02X ",1 1 1 1
+
+82 FE E7,    "********** R/W:%02X, LBA: %08X Sct:%08X" 1 4 4
+82 FE E8,    "*** R%02X Locked!!!!!" 1
+82 FE E9,    "*** R%02X   PASS!!!!!" 1
+82 FE EA,    "inv: %08X-%08X, mtd: %08X-%08X" 4 4 4 4
+82 FE EB 00, "  range:0x%08X%08X ~ 0x%08X%08X"4 4 4 4
+82 FE EC 00,    "~ %08X %08X",4 4 4 4
+82 FE EE 00,    "!! Dev type = E-DRIVER !!",
+82 FE F2,    "SHA2: %08X ..." 4
+82 FE F4,    "Adm C_PIN: %08X ..." 4
+82 FE F5,    "Adm SHA-2: %02X %08X ..." 1 4
+82 FE F6,    "Adm updated SHA-2: %02X %08X ..." 1 4
+82 FE F7,    "Lck C_PIN: %08X ..." 4
+82 FE F8,    "Lck SHA-2: %02X %08X ..." 1 4
+82 FE F9,    "Lck updated SHA-2: %02X %08X ..." 1 4
+82 FE FE 01,    "Write2Mtable(), invokingUID.all= %04X%04X_%04X%04X", 2 2 2 2
+82 FE FE 02 00, "Write2Mtable NG! ErrCode= 0x%02X", 1
+
+82 FD FF,       "STEP= %02X",1
+82 FD FF 03,    "MBR Data gTcgStatus= %04X, u32TargeHPag=%08X",2 4
+82 FD FF 13,    "MBR Dummy Data gTcgStatus= %04X, u32TargeHPag=%08X",2 4
+82 FD EE 01,    "u8DesAddr=%08X,uSrcAddr=%08X",4 4
+82 FD EE 04,    "TCG_SetCmdPrd Set Data = 0"
+82 FD EE 00,    "ChkDataFail u8DesData[Idx]=%04Xm u8SrcData[Idx]=%04X, Idx=%04X",2 2 2
+
+82 FD FE 00,       "g16CurrentBlock= %04X, g16DesPage= %04X, g16OrgDesPage= %04X",2 2 2
+82 FD FE 01,       "u32GHP= %08X, u16UnitBuf= %04X",4 2
+82 FD FE 02,       "g32GlobalHPage= %08X, g16SrcBlock= %04X",4 2
+82 FD FE 03,       "g32SrcUnitPage= %08X, gSrcUnit= %04X",4 2
+82 FD FE 04,       "garH2FMap[g32GlobalHPage]= %08X, gPatIdx= %04X",4 2
+82 FD FE 06,       "gTcgStatus= %02X, gPatIdx= %02X, g32GlobalHPage= %08X",1 1 4
+
+
+{SetMsgColor = GRAY}
+82 FD 01 FF,      	  "TCG_InitPara()"
+82 FD 01 FE,      	  "TCG_FTLControlON() g32TotalHPage(TCG)=0x%08X, TCGTotalHPage=0x%04X",4 2
+82 FD 01 00 00 00,    "GROUP1 READ OK",4
+82 FD 01 00 00 01,    "GROUP1 READ Fail u32GHP=0x%08X",4
+82 FD 01 00 00 02,    "GROUP1 READ Fail&Prog Fail u32GHP=0x%08X",4
+82 FD 01 01 00 00,    "GROUP2 READ OK",4
+82 FD 01 01 00 01,    "GROUP2 READ Fail u32GHP=0x%08X",4
+82 FD 01 01 00 02,    "GROUP2 READ Fail&Prog Fail u32GHP=0x%08X",4
+82 FD 01 02 00 00,    "GROUP3 READ OK",4
+82 FD 01 02 00 01,    "GROUP3 READ Fail u32GHP=0x%08X",4
+82 FD 01 02 00 02,    "GROUP3 READ Fail&Prog Fail u32GHP=0x%08X",4
+82 FD 01 00 FF FF,    "GROUP1 READ u32GHP=0x%04X,u16TCGUnitCnt=0x%04X",2 2
+82 FD 01 01 FF FF,    "GROUP2 READ u32GHP=0x%04X,u16TCGUnitCnt=0x%04X",2 2
+82 FD 01 02 FF FF,    "GROUP3 READ u32GHP=0x%04X,u16TCGUnitCnt=0x%04X",2 2
+82 FD 01 05 FF FF,    "DS READ u32GHP=0x%04X,u16TCGUnitCnt=0x%04X",2 2
+82 FD 01 06 FF FF,    "MBR READ u32GHP=0x%04X,u16TCGUnitCnt=0x%04X",2 2
+82 FD 01 05 FF FE,	  "DS READ OK Final_u32GHP=0x%08X",4
+82 FD 01 06 FF FE,	  "MBR READ OK Final_u32GHP=0x%08X",4
+82 FD 11 05 00 00	  "Real DS READ Fail u32GHP=0x%08X",4
+82 FD 11 05 00 01	  "Temp DS READ Fail u32GHP=0x%08X",4
+82 FD 11 06 00 00	  "Real MBR READ Fail u32GHP=0x%08X",4
+82 FD 11 06 00 01	  "Temp MBR READ Fail u32GHP=0x%08X",4
+82 FD 02 00 00 00,    "GROUP1 Porg Start"
+82 FD 02 00 01 00,    "GROUP1 Porg OK"
+82 FD 02 01 00 00,    "GROUP2 Porg Start"
+82 FD 02 01 01 00,    "GROUP2 Porg OK"
+82 FD 02 02 00 00,    "GROUP3 Porg Start"
+82 FD 02 02 01 00,    "GROUP3 Porg OK"
+82 FD 02 15,          "DS Temp Porg Start u32GHP=0x%04X,u16TCGUnitCnt=0x%04X",2 2
+82 FD 02 05 01 00, 	  "DS Temp Porg OK"
+82 FD 02 16,          "MBR Temp Porg Start u32GHP=0x%04X,u16TCGUnitCnt=0x%04X",2 2
+82 FD 02 06 01 00, 	  "MBR Temp Porg OK"
+82 FD 03 03 00 00,	  "DataStore Temp Clear Start"
+82 FD 03 03 01 00,	  "DataStore Temp Clear OK"
+82 FD 03 04 00 00,	  "MBR Clear Temp Start"
+82 FD 03 04 01 00,	  "MBR Clear Temp OK"
+82 FD 03 05 00 00,	  "DataStore Clear Start"
+82 FD 03 05 01 00,	  "DataStore Clear OK"
+82 FD 03 06 00 00,	  "MBR Clear Start"
+82 FD 03 06 01 00,	  "MBR Clear OK"
+82 FD 04 05 00 00,	  "DataStore Commit Start"
+82 FD 04 05 01 00,	  "DataStore Commit OK TotalUnitCnt=0x%04X",2
+82 FD 04 06 00 00,	  "MBR Commit Start"
+82 FD 04 06 01 00,	  "MBR Commit OK TotalUnitCnt=0x%04X",2
+82 FD 05 00,		  "TCG_TrimEntry Real g32GlobalHPage=0x%08X,u16TCGUnitCnt=0x%04X",4 2
+82 FD 05 01,		  "TCG_TrimEntry Temp g32GlobalHPage=0x%08X,u16TCGUnitCnt=0x%04X",4 2
+82 FD 06,			  "TCG_LoadPage Read Fail g32TCGLBA=0x%06X, g32GlobalHPage=0x%08X",3 4
+82 FD 06 FF,		  "TCG_LoadPage Read Fail g16SrcBlock=0x%04X, g32SrcUnitPage=0x%08X",2 4
+82 FD 07 01,		  "TCG_SetCmdPrd() Real Clr C_Zerodata g32TCGLBA=0x%04X, g16TCGUnitCnt=0x%04X, g16GHPHead=0x%04X",2 2 2
+82 FD 07 02,		  "TCG_SetCmdPrd() Real Commit g32TCGLBA=0x%04X, g16TCGUnitCnt=0x%04X, g16GHPHead=0x%04X",2 2 2
+82 FD 07 11,		  "TCG_SetCmdPrd() Temp Clr C_Zerodata g32TCGLBA=0x%04X, g16TCGUnitCnt=0x%04X, g16GHPHead=0x%04X",2 2 2
+82 FD 07 12,		  "TCG_SetCmdPrd() Temp Commit g32TCGLBA=0x%04X, g16TCGUnitCnt=0x%04X, g16GHPHead=0x%04X",2 2 2
+82 FD 07 20,		  "TCG_SetCmdPrd() g32GlobalHPage=0x%08X",4
+82 FD 07 21,		  "TCG_W_Commit() u32GHPStart=0x%08X, u16LAACntLIMIT=0x%04X",4 2
+82 FD 07 22,		  "",
+82 FD 07 23 00 00,	  "        TCG_LoadPage() DummySrc Pattern=0 g32GlobalHPage=0x%08X",4
+82 FD 07 23 00 01,	  "        TCG_LoadPage() DramSrc  g32GlobalHPage=0x%08X",4
+82 FD 07 24 00 00,	  "        TCG_LoadPage() RealSrc g16SrcBlock=0x%04X, g16OrgSrcPage=0x%04X",2 2
+82 FD 07 24 00 01,	  "        TCG_LoadPage() TempSrc g16SrcBlock=0x%04X, g16OrgSrcPage=0x%04X",2 2
+82 FD 07 25,		  "        TCG_LoadPage() g32GlobalHPage=0x%08X, u16DramDes=0x%04X",4 2
+
+82 FD 07 26,		  "TCG_TrimEntry() g32arLBASectors[0]=0x%08X",4
+82 FD 07 27,		  "TCG_TrimEntry() g32GlobalHPage(LBA)=0x%08X",4
+82 FD 07 28,		  "TCG_TrimEntry() g16TCGUnitCnt(Sector)=0x%08X",4
+82 FD 07 29,		  "TCG_TrimEntry() u32TrimLBASectors_END=0x%08X",4
+82 FD 07 2A,		  "TCG_LoadPage() DramBufIDx=0x%04X",2
+
+
+82 FD 08 00,      		"TCG_BuildDevH2FTable()	g32LBA=0x%08X",4
+82 FD 08 01,      		"TCG_BuildDevH2FTable()	g32HostXfrCnt=0x%08X",4
+82 FD 08 02,      		"Init Temp_MBR H2F g32TCGLBA=0x%08X, g16TCGUnitCnt=0x%04X",4 2
+82 FD 08 03,      		"Init Temp__DS H2F g32TCGLBA=0x%08X, g16TCGUnitCnt=0x%04X",4 2
+82 FD 08 04,      		"TrimAndBGC g32LBA=0x00, g32arLBASectors[0]=0x%08X",4
+82 FD 08 05,      		"TCG_H2F Already Built OK!"
+82 FD AA F1 00 01,		"TcgRangeCheck()DMA Read mWriteLockedStatus=0x%04X, mReadLockedStatus=0x%04X",2 2
+82 FD AA F1 01 01,		"TcgRangeCheck()DMA Write mWriteLockedStatus=0x%04X, mReadLockedStatus=0x%04X",2 2
+82 FD AA F1 01 02,		"TcgRangeCheck()NCQ Write mWriteLockedStatus=0x%04X, mReadLockedStatus=0x%04X",2 2
+82 FD AA F1 00 03,		"TcgRangeCheck()NCQ Read mWriteLockedStatus=0x%04X, mReadLockedStatus=0x%04X",2 2
+82 FD AA F1 02 04,		"TcgRangeCheck()Trim mWriteLockedStatus=0x%04X, mReadLockedStatus=0x%04X",2 2
+82 FD AA F1 02 05,		"TcgRangeCheck()cfata_write_log_ext mWriteLockedStatus=0x%04X, mReadLockedStatus=0x%04X",2 2
+82 FD AA F1 02 06,		"TcgRangeCheck()Sanitize_Crypto_Scramble_Ext mWriteLockedStatus=0x%04X, mReadLockedStatus=0x%04X",2 2
+
+82 FD AA F2 02 00,		"Tcg DMA RWLock LBAStart=0x%08X",4
+82 FD AA F2 04 00,		"Tcg NCQ RWLock LBAStart=0x%08X",4
+82 FD AA F3 00 00,		"TCG_DOMAIN_NORMAL",
+82 FD AA F3 00 01,		"TCG_DOMAIN_ERROR TCG_ACTIVATED g32HostXfrCnt=0x%08X",4
+82 FD AA F3 00 02,		"TCG_DOMAIN_ERROR MBR_SHADOW_MODE g32HostXfrCnt=0x%08X",4
+82 FD AA F3 00 03,		"TCG_DOMAIN_ERROR TCG_ACTIVATED & MBR_SHADOW_MODE g32HostXfrCnt=0x%08X",4
+82 FD AA F4,		    "TCG_DOMAIN_NORMAL Read gTcgStatus=0x%04X",2
+82 FD AA F5,		    "MBR/DUMMY Read gTcgStatus=0x%04X",2
+82 29 02 02,			"This is EDrvie Drive, don't need to enable EDrive"
+82 29 12 02,			"This is not EDrvie Drive, Enable Edrive"
+82 29 02 00,			"This is not EDrvie Drive, don't need to disable EDrive"
+82 29 12 00,			"This is EDrvie Drive, disable EDrive"
+82 29 03 00,			"This is not EDrvie Drive"
+82 29 03 02,			"This is EDrvie Drive"
+82 29 04 02,			"Enable Edrive Update Info Block, gInfoSwapType = 0x%01X, u16StartPage =0x%04X, u16RdSecCnt,=0x%04X",1 2 2
+
+{ResetMsgColor}
+;======================================
+;   TCG Use End
+;======================================
+
+;======= AES Msg Start ================
+{ResetMsgColor}
+82 50 00 00,       "    AES_SetDefaultKey()"
+82 50 00,          "    AES_SetPartitionKey(%d)", 1
+82 51 00,          "  InitAesKey4Tcg(%d)", 1
+82 51 01,          "    AES_EncDec_FWMode, use range %d key to be FW key", 1
+82 52 00,          "  AES_UpdateAESKey(%d)", 1
+{SetMsgColor = RED}
+82 52 00 0D,       "  AES_EncDec_FWMode NG! Timeout!"
+82 52 00 0E,       "  CollectEntropySamples() NG, TRNG_Generate fail"
+82 52 00 0F,       "  AES_UpdateAESKey() NG, over range"
+;======= AES Msg End   ================
+{SetMsgColor = PURPLE}
+CC CC 01,          " Bamboo(0x%02X)", 1
+CC CC 11,          " Bamboo_Value(0x%02X, 0x%02X, 0x%02X)", 1 1 1
+CC CC 02,          " Chief(0x%02X)", 1
+CC CC 03,          " Eason(0x%02X)", 1
+CC CC 04,          " Sam(0x%02X)", 1
+
+{ResetMsgColor}
+88 03,             "PushFailWriteFifo Start"
+88 04,             "PushFailWriteFifo End"
+{SetMsgColor = PURPLE}
+
+82 07,             "          362:%02X, 363:%02X, 364:%02X%02X",1 1 1 1
+82 0A,             "  DownLoad CheckSum %04X %04X",2 2
+82 0B 00 00,       "  DownLoad Erase ISP2"
+82 0B 00 01,       "  DownLoad Prog  ISP2"
+82 0B 00 02,       "  DownLoad Erase ISP1"
+82 0B 00 03,       "  DownLoad Prog  ISP1"
+82 0B 00 04,       "  DownLoad CheckVer  Drv:%04X,  ISP:%04X, DrvNAND:%02X, ISPNAND:%02X",2 2 1 1
+82 0C 00,          "  main() gSataErr:%02X   g16CmdErrorFlag:%04X", 1 2
+82 23,             "  Read  Tag : %04X,  LBA %02X,%02X,%02X,%02X   Cnt:%02X%02X", 2 1 1 1 1 1 1
+82 24,             "  Write Tag : %04X,  LBA %02X,%02X,%02X,%02X   Cnt:%02X%02X", 2 1 1 1 1 1 1
+
+{SetMsgColor = RED}
+82 01 00,          "Complete %02X",1
+82 02 00,          "ReturnMain ==> %02X",1
+82 03,             "Power ON"
+82 08,             "Lenovo SMART Fail RuntimeBad:%04d OrgBad:%04d PureSpare:%04d",2 2 2
+82 09,             "SMART Fail TotalSpare:%04d less tnan MinSprBlock:%04d",2 2
+82 20,             "  Read fail : %02X, %02X  LBA %02X,%02X,%02X,%02X   %02X%02X", 1 1 1 1 1 1 1 1
+82 21,             "  Trim fail : LBA %02X,%02X,%02X,%02X   Cnt %02X%02X", 1 1 1 1 1 1
+88 0D,             "DoProgFailHandle Failinfo, CH=0x%02X, CE=0x%02X, u8ProgFailPtr=0x%02X, u16FailFBlock=0x%02X, u16FailFPage=0x%02X",1 1 2 2 2
+88 0E 00 00,       "DoProgFailHandle ActMode_0 Fail  u16StrongCacheAddr=0x%02X, u16WeakCacheAddr=0x%02X",2 2
+88 0E 00 01,       "DoProgFailHandle ActMode_1 Fail"
+88 0F,             "UpdatePFGHPTail g16PFGHPTail=0x%02X, g16GHPTail=0x%02X, u16NewTailDiff=0x%02X, u16OldTailDiff=0x%02X",2 2 2 2
+88 10,             "DoProgFailHandle GetIntlvOddA Check Queue CurrentPtr=0x%02X, NG Cmd u16EnCECmd=0x%02X",2 2
+88 11,             "CMD Queue NG Check All CMD status :  Ptr=0x%02X, wCmdQueue=0x%04X",2 2
+88 12,             "    UpdatePFGHPTail Start g16PFGHPTail=0x%02X, g16GHPTail=0x%02X, u16FailPtr=0x%02X, g16Cache0_UnitSize=0x%02X",2 2 2 2
+88 13,             "      ProgFail Block=0x%02X not match newest Ecc Block=0x%02X need pushin ECC Fail Talbe",2 2
+88 14,             "DoProgFailHandle Failinfo, CH=0x%02X, CE=0x%02X, u8ProgFailPtr=0x%02X, u16FailFBlock=0x%02X, u16FailFPage=0x%02X",1 1 2 2 2
+82 14,             "match host WrtUNC Sector, Cmd return fail ,modify LAA=0x%08X  sector=0x%02X",4 2
+82 15,             "match host WrtUNC Unit, but not match sector Cmd return OK. LAA=0x%08X  sector=0x%02X",4 2
+82 16,             "Not match host WrtUNC Unit, this Unit mark UNC for ECC fail, Cmd return fail."
+82 17,             "ChkUNC in normal read First Unit"
+82 18,             "ChkUNC in normal read allocate Unit"
+82 19,             "ChkUNC in pre read allocate Unit,chkpoint=0x%04X" ,2
+82 1A,             "Remove all sector"
+82 1B,             "Not Remove all, SectorBitMap=0x%02X",2
+82 1C,             "Remove HostUNC  LAA=0x%08X , StartSector=0x%02X ,Cnt=0x%02X",4 2 2
+82 1D,             "HostUNC all clean!"
+82 1E,             "Not match host WrtUNC Unit, data is dummy, return OK"
+82 1F 01,          "Wunc table tag destory, init table"
+82 1F 02,          "OEM change, Init Wnnc Table"
+82 1F 03,          "Wunc Flag is Enable,Build Wunc Table!"
+82 CA,             "Fill WL for CDM test"
+
+82 32,             "!!NG: CmdPktParser NG -> Abort Session"
+82 33,             "!!NG: CmdPktParser NG -> Stay in IF-SEND"
+82 34,             "!!NG: StreamDecode NG -> Abort Session"
+82 35,             "!!NG: StreamDecode NG -> Stay in IF-SEND"
+82 48 00,          "TokenDecoding err, ErrCode=%02X",1
+82 C0 00,          "   HandleComIDRequest() errCode:%02X",1
+82 C1,              "!!NG: Not Activate Yet"
+82 C2 00 01,       "   HostSigningAuthorityCheck() NG! STS_NOT_AUTHORIZED"
+82 C2 00 0C,       "   HostSigningAuthorityCheck() NG! STS_INVALID_PARAMETER"
+82 C2 00 12,       "   HostSigningAuthorityCheck() NG! STS_AUTHORITY_LOCKED_OUT"
+82 C3,             "!!NG: StreamDecode NG -> Abort Session"
+
+{ResetMsgColor}
+
+; =============================================================
+; FTL Message
+; =============================================================
+; D1 1D xx, "		"
+; D1 1D xx yy, "		"
+;
+; D9 9D xx, "		"
+; D9 9D xx yy, "		"
+;{SetMsgColor = PURPLE}
+;{SetMsgColor = NAVY}
+;{SetMsgColor = MAROON}
+;{SetMsgColor = BLUE}
+;{SetMsgColor = RED}
+; ---------------------------------------
+{SetMsgColor = BLUE}
+41 00     "      IceEventLog() " (0)
+41 01,    "      ReadLinkTable() Start: gDevSlpResume=0x%02X",2 (0)
+;;41 02,  "      ReadLinkTable() End. gInSuspendBackUp=0x%02X, glwbsPwrFailStatus=0x%02X",2 4  
+;;41 96,  "      ReadLinkTable() End. glwbsPwrFailStatus2=0x%02X, glwbsTLCCacheStatus=0x%02X",4 4   
+41 03,    "      ReadIndexBlockInfo() Start"  (0)
+41 04,    "      ReadIndexBlockInfo() End"    (0)
+41 05,    "      BuildBlockLinkInfo() Start"  (0)
+41 06,    "      BuildBlockLinkInfo() End gFastBoot =0x%02X",2  (0)
+41 07,    "      LoadMapInfo() Start" (0)
+41 08,    "      LoadMapInfo() End"  (0)
+41 09,    "      ScanFBlock() Start" (0)
+41 0A,    "      ScanFBlock() End"   (0)
+41 0B,    "      JudgeActiveBlock() Start" (0)
+41 0C,    "      JudgeActiveBlock() End. ActiveFBlock[0]=0x%04X", 2  (0)
+41 0D,    "      ChkUnfullDataBlock() Start. SwapID=0x%04X, OldBlk=0x%04X, NewBlk=0x%04X, TailECC=0x%02X ", 2 2 2 1
+41 0E,    "      ChkUnfullDataBlock() End"   (0) 
+41 98,    "      HandleCacheBlock() ===> Start" (O)
+41 99,    "      HandleCacheBlock() ===> End. glwbsTLCCacheStatus=0x%04X", 4 (O)
+41 9A,    "      PrepareFastBoot() ===> Start. u8Force = 0x%02X", 2 (O)
+41 9B,    "      PrepareFastBoot() ===> End. gFastBootReady=0x%02X", 2 (O)
+41 9C,    "      FlushCache(), u8FlushMode=0x%02X, u8FlushType=0x%02X, g16CacheGHPCnt=0x%04X", 2 2 2 (O)
+{ResetMsgColor}
+{SetMsgColor = PURPLE}
+41 0F,    "      ChkDataBlock() Start. TotalDataBlock=0x%02X, FailReturn=0x%02X", 2 2  (0)
+41 10,    "      ChkDataBlock() End"  (0)
+41 11,    "      RebuildAllMap() Start. u8BuildOneZone=0x%02X, u8AppendCacheData=0x%02X", 2 2 (O)
+41 12,    "      RebuildAllMap() End"                      (0)
+41 13,    "      BuildH2FTable() Start. ZoneIdx=0x%02X", 2  (0)
+41 14,    "      BuildH2FTable() End"                      (0)
+41 15,    "      SaveMapGroup() Start. SaveMapID=0x%02X", 2 (0)
+41 16,    "      SaveMapGroup() End"                       (0)
+41 17,    "      SaveMapToFlash() Start. ZoneIdx=0x%02X, MapBlock=0x%02X", 2 2(0)
+41 18,    "      SaveMapToFlash() End"                     (0)
+41 19,    "      SaveG2FMap() Start"                       (0)
+41 1A,    "      SaveG2FMap() End"                         (0)
+41 1B,    "      SaveIndexInfo() Start" (0)
+41 1C,    "      SaveIndexInfo() End"   (0)
+41 1D,    "      SaveBlockLinkTable() Start. SaveLinkID=0x%02X,", 2(0)
+41 1E,    "      SaveBlockLinkTable() End"   (0)
+41 1F,    "      JudgeActiveBlock() ===> ExtraActiveBlock Exist ExtraActiveBlock[0x%02X]=0x%04X", 2 2(O)
+41 20,    "      JudgeActiveBlock() ===> ActiveBlock Exist  ActiveFBlock[0x%02X]=0x%04X", 2 2 (O)
+41 21,    "      PickCorrectWpro() Start" (0)
+41 22,    "      PickCorrectWpro() End. WPROBlock=0x%04X", 2 (0)
+41 23,    "      ChkWproBlock() ===> WPROBlocks exist" (0)
+41 24,    "      ChkEraseEmptyMapBlock() Start" (0)
+41 25,    "      ChkEraseEmptyMapBlock() End"   (0)
+41 26,    "      GenNextMapFBlock() Start. ZoneIdx=0x%02X", 2    (0)
+41 27,    "      GenNextMapFBlock() End. NewMapFBlock=0x%04X", 2 (0)
+41 28,    "      SaveValidFPageCnt() Start"                     (0)
+41 29,    "      SaveValidFPageCnt() End"                       (0)
+41 2A,    "      ChkFastBootInfo().gFastBoot=0x%02X,Check Result OK. Fast Boot", 2 (O)
+{ResetMsgColor}
+{SetMsgColor = RED}
+41 2B,    "      ChkFastBootInfo().u16LastPage=0x%02X,g16LastMapSavedActivePagePtr=0x%02X mismatch,Check Result NG",2 2 (0)
+{ResetMsgColor}
+{SetMsgColor = GREEN}
+41 2C,    "      BuildDevH2FTable().g32LBA=0x%08X,g32HostXfrCnt=0x%08X", 4 4  (0)
+41 2D,    "      BuildDevH2FTable().u32GroupIdx1=0x%08X,u32GroupIdx2=0x%08X", 4 4  (0)
+41 2E,    "      BuildDevH2FTable().u8ZoneIdx1=0x%02X,u8ZoneIdx2=0x%02X", 2 2  (0)
+;41 2F,    "      ChkRebuildMap() Get Last zone of read CMD" (?)TBD
+;41 30,    "      BuildDevH2FTable() Move H2F Table u32TargetGHP=0x%08X, u32GroupFPage=0x%08X(1Page=16K,Two plane32K should < 16)", 4 4 (?)TBD
+{ResetMsgColor}
+41 31,    "      ChkBlockRestECCFail() ===> BackupDRAM_0"  (0)
+41 32,    "      ChkBlockRestECCFail() ===> BackupDRAM_1"  (0)
+41 33,    "      ReadIndexBlockInfo() ===> Need to change IndexBlock" (0)
+41 34,    "      BuildBlockLinkInfo() ===> Need to change LinkBlock"  (0)
+41 35,    "      HandleErrBlock() ===> FindSerial" (0)
+41 36,    "      LoadMapInfo() ===> Need to change LinkBlock" (0)
+41 37,    "      MapInfoBlock: LastMapSavedTailFBlock=0x%02X, LastMapSavedActiveFBlock=0x%02X, g16LastMapSavedActivePagePtr=0x%02X",2 2 2 (0)
+41 38,    "      DataBlockCnt=0x%02X",2 (0)
+41 39,    "      Check Active 0: ActiveFBlock[0]=0x%02X, ExtraActiveFBlock[0]=0x%02X",2 2 (O)  ChkUnfullDataBlock()
+41 97,    "      Check Active 2: ActiveFBlock[2]=0x%02X, ExtraActiveFBlock[2]=0x%02X",2 2 (O)  ChkUnfullDataBlock()
+;41 3A,    "      ActiveFBlock[0]=0x%02X,ActiveFBlock[1]=0x%02X",2 2 (X) JudgeActiveBlock()
+;41 3B,    "      TotalDataBlock=0x%02X",2  (?)TBD
+;41 3C,    "      ExtraActiveBlock[0]=0x%02X,ExtraActiveBlock[1]=0x%02X",2 2
+;41 3D,    "      ActiveBlock=0x%02X",2 (?)TBD
+41 3E,    "      ReadIndexBlockInfo() ===> Select IndexBlock"  (0)
+41 3F,    "      ReadIndexBlockInfo() ===> IndexBlock Exist"   (0)
+41 40,    "      WPROBlock=0x%02X",2   (0)
+41 41,    "      WPROBlock Exist"  (0)
+41 42,    "      LinkBlock Exist"  (0)
+41 43,    "      ChkEraseUnitState() ===> LoadEC_0"  (0)
+;41 44,    "      ChkEraseUnitState() ===> LoadEC_1" (?)TBD
+41 45,    "      SaveIndexInfo() ===> Change IndexBlock"    (0)
+41 46,    "      HeadFBlock=0x%02X, TailFBlock=0x%02X",2 2  (0)
+41 47,    "      FlashErase()     u16FBlock=0x%02X",2 (0)
+41 48,    "      ReBuildActF2HMap() Start u16ActiveBlk=0x%02X,u8BackupDRAM=0x%02X",2 2 (0)
+{SetMsgColor = RED}
+41 49,    "      ChkF2HAndH2F()   u16FBlock=0x%02X, g32arValidFPageCnt[u16FBlock]=0x%08X",2 4 (0)
+{ResetMsgColor}
+41 4A 00 01, "      GenNextActiveFBlock()  SLC block  g16ActiveFBlock=0x%02X, u8GenNew=0x%02X, u8ThSensor=%d¢XC",2 2 2(0)
+41 4A 00 00, "      GenNextActiveFBlock()  TLC block  g16ActiveFBlock=0x%02X, u8GenNew=0x%02X, u8ThSensor=%d¢XC",2 2 2(0)
+41 4B,    "      ResetSpareValidPageCnt()     Start" (0)
+41 4C,    "      ResetSpareValidPageCnt()     END"   (0)
+41 4D,    "      RemoveVP0Block()     Start" (0)
+41 4E,    "      RemoveVP0Block()     END"   (0)
+41 4F,    "      ChkSaveLinkAndMap()  Start" (0)
+41 50,    "      ChkSaveLinkAndMap()  END"   (0)
+{ResetMsgColor}
+{SetMsgColor = RED}
+;41 51,    "      ECCFailHandler()  Start" 
+;41 52,    "      ECCFailHandler()  END"
+41 53,    "      ECCFailHandler2()  Start" (0)
+41 54,    "      ECCFailHandler2()  END"
+{ResetMsgColor}
+41 55,    "      EraseAllEmptyBlock()   gEccFailBlockCnt=0x%02X,g16EmptyBlockCnt=0x%02X",2 2 (0)
+41 56,    "      GenNextTailFBlock()" (0)
+;41 57,    "      SaveEOBInfo() g16TailFBlock=0x%02X",2
+{SetMsgColor = RED}
+41 58,    "      BuildDevH2FTable().Build Group of H2F Fail"  (0)
+{ResetMsgColor}
+41 59,    "      IndexBlockInfo: IndexBlock=0x%02X, LinkBlock=0x%02X, WPROBlock=0x%02X, MapInfoFBlock=0x%02X",2 2 2 2  (0)
+;41 5A,    "      LinkBlockInfo: HeadFBlock=0x%02X, TailFBlock=0x%02X, TotalDataBlock=0x%02X",2 2 2 (?)TBD
+{SetMsgColor = RED}
+41 5B,    "      HandleErrBlock() Erase GC Block, u16FBlock=0x%02X,Push Spare Block.",2 (0)
+41 5C,    "      HandleErrBlock() InsertUnfullDataBlock u16FBlock=0x%02X",2 (0)
+41 5D,    "      SetECCFailInfo() u16ECCFailBlock=0x%02X, u8ECCFailSrc=0x%02X, u8MaxErrCnt=0x%02X",2 2 2 (0)
+41 5E,    "      u16ECCFailBlock need to record to ECC fail info table." (0)
+41 5F,    "      ECCBlock exist ECC fail info table." (0)
+;41 5F,    "      ECCBlock exist ECC fail info table Block=0x%04X, Page=0x%04X, CH=0x%02X, CE=0x%02X, Pl=0x%04X",2 2 1 1 2
+41 60,    "      gp_EccFailInfo->g32ECCFailFlashStatus[gIntlvOddA])=0x%08X,g16ECCFailBlock=0x%02X,g16ECCFail1stPage=0x%02X" 4 2 2 (0)
+41 61,    "      gECCFailPageCnt=0x%02X,gECCFailSrc=0x%02X,g16ECCFailDesBlock=0x%02X,gECCErrCnt=0x%02X" 2 2 2 2  (0)
+;41 62,    "      g16ECCFailDesBlock=0x%02X,g16ECCFailDesPage=0x%02X,gECCFailDesCE=0x%02X,gECCErrCnt=0x%02X" 2 2 2 2 (?)TBD
+41 62,    "      u32GHP=0x%08X,upFlashFifoR->u8SlotFlag=0x%02X" 4 2  (0)
+{ResetMsgColor}
+{SetMsgColor = GREEN}
+;41 63,    "      ChkDataBlock()  u16NowFBlock=0x%02X(==0x00 is POR) update to H2F,g16TailFBlock=0x%02X,g32TailFBlockSerial=0x%08X.",2 2 4 (?)TBD
+;41 64,    "      LoadEOBInfo()  u16FBlock=0x%02X, u8TableSel=0x%02X, u8InfoPageCnt=0x%02X, u16InfoStartPage=0x%02X.",2 2 2 2 (?)TBD
+{SetMsgColor = RED}
+;41 65,    "      BuildF2HMapInfo()  u16FBlock=0x%02X, u8CleanF2H=0x%02X, u8ForActBlock=0x%02X, u16DataPagePerBlock=0x%02X.",2 2 2 2 (?)TBD
+{ResetMsgColor}
+;41 66,    "      ChkF2HAndH2F()    u16ActiveBlk=0x%02X,g16arValidFPageCnt[u16FBlock]=0x%02X",2 2 (?)TBD
+;41 67,    "      UpdateH2FMap_PowerOn()     u16FBlock=0x%02X,u32DesUnitPage=0x%08X,u8ForAct=0x%02X",2 4 2 (?)TBD
+41 68,    "      RestoreEraseCnt() Load EC Table u16FBlock=0x%02X,g32GlobalEraseCntOffset=0x%08X,gbPFEOBEraseCntFail=0x%02X",2 4 2 (?)TBD
+41 69,    "      RestoreEraseCnt() Load EC Table u16FBlock=0x%02X,g32GlobalEraseCntOffset_SLC=0x%08X,gbPFEOBEraseCntFail=0x%02X",2 4 2 (?)TBD
+;41 69,    "      ReschedulingSparePool(),Push spare block to High EC or Low EC Pool depend on Erase Count,u16SpareCnt=0x%02X,g16arSpareCnt[0]=0x%02X,g16arSpareCnt[1]=0x%02X,",2 2 2 (?)TBD
+{SetMsgColor = GREEN}
+;41 6A,    "      LoadMapInfo(),g16arMapFBlock[0]=0x%02X,g16arMapFBlock[1]=0x%02X,g16arMapFBlock[2]=0x%02X,,g16arMapFBlock[3]=0x%02X",2 2 2 2 (?)TBD
+;41 6B,    "      LoadMapInfo(),g16arMapFBlock[4]=0x%02X,g16arMapFBlock[5]=0x%02X,g16arMapFBlock[6]=0x%02X,,g16arMapFBlock[7]=0x%02X",2 2 2 2 (?)TBD
+;41 6C,    "      LoadMapInfo(),g32LastMapSavedTailFBlockSerial=0x%08X",4 (?)TBD
+41 6D,	   "      Secure Erase initiated", (0)
+41 6E,	   "      Secure Erase Complete",  (0)
+41 6F,	   "      ChkLogBlock() start",    (0)
+41 70,		"      ChkLogBlock() end",      (0)
+41 71,		"      ReadLinkTable() End.  Safe shutdown: BootTime=0x%08X ms", 4  (0)
+41 72,		"      ReadLinkTable() End.  Unsafe shutdown BootTime=0x%08X", 4    (0)
+41 73,		"      Read ECC Fail!! Block=0x%04X, Page=0x%04X, CH=0x%02X, CE=0x%02X, Pl=0x%04X",2 2 1 1 2
+41 74,		"      Program Fail!! Block=0x%04X, Page=0x%04X, CH=0x%02X, CE=0x%02X, Pl=0x%04X",2 2 1 1 2
+41 75,		"      Erase Fail!!Block=0x%04X, g16TotalEraseFailCount=0x%04X",2 2
+41 76,		"      Firmware hangs up!! ID=0x%02X",2
+41 77,    "			 Over temperature!! (Internal Sensor)(Threshold: 120'C) u8Temp=0x%02X ",2 (0)	
+41 78,    "			 Under temperature!!(Internal Sensor)(Threshold: 0'C) u8Temp=0x%02X ",2	(0)
+41 79,    "			 Over temperature!! (External Sensor)(Threshold: 70'C) u16Temp1=0x%02X " ,2(0)
+41 7A,    "			 Under temperature!! (External Sensor)(Threshold: 0'C) u8Temp=0x%02X ",2	(0)
+41 7B,    "      MarkBadBlock() Start. ErrFBlock=0x%02X",2 (0)
+41 7C,    "      MarkBadBlock() End. NewFBlock=0x%02X",2   (0)
+41 7D,    "      RwCmdQueueService()  Start", (0)
+41 7E,    "      RwCmdQueueService()  End",   (0)
+41 7F,    "      MarkBadBlock by VU command. ErrFBlock=0x%02X Ch=%02X Ce=%02X Lun=%02X Plane=%02X ",2 1 1 2 2
+;41 80,   "      MarkBadBlock by VU command. ErrFBlock@CH=0x%02X, ErrFBlock@CE=0x%02X",1 1
+41 81,    "      An low level format command has been issued by VU command R8_AtaSecCnt=0x%02X" 2
+41 82,    "      An low level format command has been completed by VU command"
+;41 83,    "      RLC last trim recovery success" 
+;41 84,    "      RLC last trim recovery fail" 
+;41 85,    "      RLC VPASS recovery success"
+;41 86,    "      RLC VPASS recovery fail"
+;41 87,    "      RLC ROC recovery success"
+;41 88,    "      RLC ROC  recovery fail"
+41 89,    "      WaitAllFlashReady() "
+41 8A,    "      Boot Time > 5s "
+41 8B,    "      Init_Smart() or InitPartialMovePara() VuForceWProMode()"
+41 9D 00, "      ChkCopyReadEccFail() Start, gbEccFail=0x%02X ,u8SrcIntlvA=0x%02X ,u16FBlock=0x%02X ,u16FPage=0x%02X",1 2 2 2                     (0)
+41 9D 01, "      ChkCopyReadEccFail() Start, SoftDecodeFail ,gbEccFail=0x%02X",1      (0)
+41 9D 02, "      ChkCopyReadEccFail() Start, OtherChDoReadRetry ,gbEccFail=0x%02X",1  (0)
+41 9D 04, "      ChkCopyReadEccFail() Start, OtherChBCHSpareFail ,gbEccFail=0x%02X",1 (0)
+41 9E,    "      gbSprEccFail=0x%02X, gbEccFail=0x%02X, u8OtherChReadRetryDone=0x%02X, gPlaneAddr=0x%02X",2 2 2 2    (0)
+41 9F,    "      ChkCopyReadEccFail() Spare Ecc Fail DO Read Retry ",    (0)
+41 A0 00, "      DoReadECCFailRetry() Start, ECCFail Channel=0x%02X, garChEccFail[gSrcCh]=0x%02X, garFlashRetryFifo[gSrcCh].u8SoftWaitDone=0x%02X, garFlashRetryFifo[gSrcCh].u16RetryCntorSoftMode=0x%04X",1 2 2 2                       (0)
+41 A0 01, "      DoReadECCFailRetry() Start, SoftDecodeFail , ECCFail Channel=0x%02X, garChEccFail[gSrcCh]=0x%02X, garFlashRetryFifo[gSrcCh].u8SoftWaitDone=0x%02X, garFlashRetryFifo[gSrcCh].u16RetryCntorSoftMode=0x%04X",1 2 2 2      (0)
+41 A0 02, "      DoReadECCFailRetry() Start, OtherChDoReadRetry , ECCFail Channel=0x%02X, garChEccFail[gSrcCh]=0x%02X, garFlashRetryFifo[gSrcCh].u8SoftWaitDone=0x%02X, garFlashRetryFifo[gSrcCh].u16RetryCntorSoftMode=0x%04X",1 2 2 2  (0)
+41 A0 04, "      DoReadECCFailRetry() Start, OtherChBCHSpareFail , ECCFail Channel=0x%02X, garChEccFail[gSrcCh]=0x%02X, garFlashRetryFifo[gSrcCh].u8SoftWaitDone=0x%02X, garFlashRetryFifo[gSrcCh].u16RetryCntorSoftMode=0x%04X",1 2 2 2 (0)
+41 A1 01, "      N4 SoftDecode , The 0x%02X time of Read in N4 SoftDecode",1       (0)
+41 A1 02, "      N6 SoftDecode , The 0x%02X time of Read in N6 SoftDecode",1       (0)
+41 A1 03, "      N8 SoftDecode , The 0x%02X time of Read in N8 SoftDecode",1       (0)
+41 A1,    "      DoReadECCFailRetry(), OtherChBCHSpareFail , ECCFail garDoRAIDInfo=0x%02X, Channel=0x%02X, u8SrcIntlvA=0x%02X, garFlashRetryFifo[uActiveCh].u16FBlock=0x%04X, garFlashRetryFifo[uActiveCh].u16FPage=0x%04X",2 1 1 2 2 (0)
+41 A2,    "      DoReadECCFailRetry() End , Data recovery pass , uIntlvOddA=0x%02X, Channel=0x%02X, u16SrcBlock=0x%04X, u16SrcPage=0x%04X",2 2 2 2 (0)
+41 A3,    "      DoReadECCFailRetry() End , Data recovery fail , uIntlvOddA=0x%02X, Channel=0x%02X, u16SrcBlock=0x%04X, u16SrcPage=0x%04X",2 2 2 2 (0)
+41 A4 ,   "      LDPCSeparateTrack() , Channel=0x%02X, garChEccFail[u8Ch]=0x%02X",2 2   (0)
+41 A5 ,   "      DoRAIDDecode() Start , Channel=0x%02X, PlaneAddr=0x%02X, garDoRAIDInfo[gSrcCh]=0x%02X, EccFailBitMap=0x%02X",2 2 2 2   (0)
+41 A6 ,   "      Check Parity Out",                                 (0)
+41 A7 ,   "      RAID Decode Block is Active Block",                (0)
+41 A8 ,   "      RAID Decode Block is run time swap Active Block",  (0)
+41 A9 ,   "      RAID Decode process: Wanted Page SoftDecode pass", (0)
+41 AA ,   "      RAID Decode process: Wanted Page HardDecode pass", (0)
+41 AB ,   "      DoRAIDDecode() End:  Fail", (0)
+41 AC ,   "      DoRAIDDecode() End:  Pass", (0)
+41 AD ,   "      SataErrorHandle() Start, gTotalBusyFlashFifoCnt =0x%04X ",2 (0)
+41 AE ,   "      SataError in write flow ",  (0)
+41 AF ,   "      SataErrorHandle(): g16CacheGHPCnt = 0x%04X ",2 (0)
+41 B0 00, "      GHP from DRAM , gbDummyMother = 0x%02X, GHP = 0x%08X ",1 4 (0)
+41 B0 01, "      GHP from Flash, gbDummyMother = 0x%02X, GHP = 0x%08X ",1 4 (0)
+41 B1 ,   "      SataErrorHandle() End ",  (0)
+41 B2 00, "      TrigHostWrite(): C_TrigInPushCmdW        ",  (0)
+41 B2 01, "      TrigHostWrite(): C_TrigInPushW4Input     ",  (0)
+41 B2 02, "      TrigHostWrite(): C_TrigInPushW4Output    ",  (0)
+41 B2 03, "      TrigHostWrite(): C_TrigInPushWriteFifoA  ",  (0)
+41 B2 04, "      TrigHostWrite(): C_TrigInPushWriteFifoB  ",  (0)
+41 B2 05, "      TrigHostWrite(): C_TrigInAllocateSLC     ",  (0)
+41 B2 06, "      TrigHostWrite(): C_TrigInEraseCmd        ",  (0)
+41 B2 07, "      TrigHostWrite(): C_TrigInErase4WaitEmpty ",  (0)
+41 B2 08, "      TrigHostWrite(): C_TrigInSaveLink        ",  (0)
+41 B3,    "      LoadWProPage(),Start u8PageIdx=0x%02X,M_ChkWproInFlash=0x%02X, g16arWproPage[u8PageIdx]=0x%02X,",2 2 2
+48 B4,    "      LoadWProPage(),End ok =0x%02X ",2
+48 B5,    "      HandleCacheBlock(): ACT[2] Data is old, gbTLCPFCacheActIsData =0x%02X ",2
+48 B6,    "      HandleCacheBlock(): Need to update ACT[2] Data, gbTLCPFCacheActIsData =0x%02X, u16UnitCntInCache =0x%02X",2 2
+48 B7,    "      HandleCacheBlock(): ACT[2] Data is match ACT[0], gbTLCPerfectCacheMatch =0x%02X, u16UnitCntInCache =0x%02X",2 2
+41 B8,    "      HandleCacheBlock(): ACT[2] has some Data to update, gbTLCCacheInfoSomeUseful =0x%02X, u16UnitCntInCache =0x%02X",2 2
+48 B9,    "      HandleCacheBlock(): ACT[2] Data is old, gbTLCPFCacheInfoOld =0x%02X, u16UnitCntInCache =0x%02X",2 2
+48 BA,    "      HandleCacheBlock(): FLushBlock != ACT[0] Block, gbTLCPFCacheActNotEqual =0x%02X ",2 
+48 BB,    "      HandleCacheBlock(): Last Page is not Finish Page, gbTLCPFCacheNoFinishPage =0x%02X, LastPage =0x%02X",2 2
+48 BC,    "      HandleCacheBlock(): Cache info Fail, gbTLCPFCacheECCFail =0x%02X, gbTLCPFCacheGHPInfoFail =0x%02X",2 2
+41 B4,    "      Cmd Excute > 500ms ===> u32CmdExcuteTime=0x%08X , u8NCQ=0x%04X, u8WriteCmd=0x%04X",4 2 2 (O)
+41 B5,    "      TrigHostWrite ===> g32arCmdStartTime=0x%08X , u8NCQ=0x%04X, u8WriteCmd=0x%04X",4 2 2 (O)
+41 B6,    "      TrigHostRead ===> g32arCmdStartTime=0x%08X , u8NCQ=0x%04X, u8WriteCmd=0x%04X",4 2 2 (O)
+41 B7,    "      Cmd Excute Time ===> u32CmdExcuteTime=0x%08X ",4 (O)
+41 B9,    "      u32StartTime=0x%08X , u32EndTime=0x%08X",4 4 (O)
+41 BA,    "      g16arActiveFBlock[0]=0x%04X, g16PrdHead=0x%04X , u8NcqTag=0x%04X ",2 2 2 (O)
+41 BB,    "      TrigHostWrite CmdStart===> g16PrdHead=0x%04X , u8NcqTag=0x%04X, u32OrgXfrCnt=0x%08X",2 2 4 (O)
+41 BC,    "      TrigHostRead CmdStart===> u16PrdPtr=0x%04X , u8NcqTag=0x%04X,",2 2 (O)
+
+41 BD,    "      WhileIDCHK(),WhileID=0x%02X, _dWhileErrBitMap=0x%02X",2 2
+41 BE,    "      SaveWProPage(),Start u8PageIdx=0x%02X, M_ChkWproInFlash=0x%02X, g16FreePtrOfWPROBlock=0x%04X, WPROBlock=0x%04X",2 2 2 2
+41 BF,    "      Scan ValidPageCNT,Real_VPCNT=0x%08X,H2F_VPCNT=0x%08X",4 4 
+41 CF	,		"			 PushTrimCmd() : TrimTime_Step0 = =0x%08X ms", 4  (0)
+41 C0 , 	"			 PushTrimCmd() : TrimTime_Step1 = =0x%08X ms", 4  (0)
+41 C1 , 	"			 PushTrimCmd() : TrimTime_Step2 = =0x%08X ms", 4  (0)
+
+41 C2 , 	"			 PushTrimCmd() : TrimTime_Step3_1 = =0x%08X ms", 4  (0)
+41 C3 , 	"			 PushTrimCmd() : TrimTime_Step3_2 = =0x%08X ms", 4  (0)
+41 C4 , 	"			 PushTrimCmd() : TrimTime_Step3_3 = =0x%08X ms", 4  (0)
+41 C5 , 	"			 PushTrimCmd() : TrimTime_Step3_4 = =0x%08X ms", 4  (0)
+41 C6 , 	"			 PushTrimCmd() : TrimTime_Step3_5 = =0x%08X ms", 4  (0)
+
+41 CA , 	"			 PushTrimCmd() : TrimTime_Step4 = =0x%08X ms, g16TotalPrdCnt =0x%02X", 4 2  (0)
+41 CB , 	"			 PushTrimCmd() : TrimTime_Step5 = =0x%08X ms", 4  (0)
+
+41 D0 , 	"			 PushTrimCmd() : TrimTime_Start",  (0)
+41 D1 , 	"			 PushTrimCmd() : TrimTime_Start_WriteSame",  (0)
+41 D2 ,		"			 Cost_Time : 0x%08X ms", 4  (0)
+41 D3 ,   "ChkDataBlock Fail : gbPFMapDataFail "  (O)
+41 D4 ,   "ChkDataBlock Fail : gbPFSavedActEccFail "  (O)
+41 D5 ,   "ChkDataBlock Fail : gbPFValidMismatch "  (O)
+41 D6,    "      PushTail to Active ===> OldBlk=0x%04X , NewBlk=0x%04X",2 2 (O)
+
+
+41 E0,    "      ReBuildActF2HMap() END  u8ECCFail=0x%02X, gbPFNoFinishPage=0x%02X, gbPFSavedActEccFail=0x%02X, gbPFDataResetEccFail=0x%02X",2 2 2 2
+41 E1,    "      BuildF2HMapInfo()  u16FBlock=0x%02X, u8CleanF2H=0x%02X, u8ForActBlock=0x%02X, u16LastDataPagePtr=0x%02X.",2 2 2 2
+41 E2,    "      BuildF2HMapInfo(),Map Error,u16ActiveBlk=0x%02X, g16LastMapSavedActivePagePtr=0x%02X, g16FirstECCFailPage=0x%02X,g16ChkActivePagePtr=0x%02X",2 2 2 2
+41 E3,    "      InsertDataBlock() ===> u16FBlock=0x%04X , u32FBlockSerial=0x%08X",2 4 (O)
+41 E4,    "      PushSpareBlock() ===> u16FBlock=0x%04X , u32FBlockSerial=0x%08X",2 4 (O)
+41 E5,    "      ScanFBlock()	HeadTail ===> g32HeadFBlockSerial=0x%08X , g32TailFBlockSerial=0x%08X",4 4 (O)
+41 E6,    "      BuildF2HMapInfo(),discard for 1st null or ECC fail page ,g16ChkActivePagePtr=0x%02X,garLinkId[0]=0x%02X",2 2
+41 E7,    "      CacheBlock check  ===> gEccFailBlockCnt=0x%02X , gbTLCPFSwapActBlk=0x%02X",2 2 (O)
+41 E8,    "      InsertUnfullDataBlock() ===> u16FBlock=0x%04X",2  (O)
+41 E9,    "      g16TotalSpareCnt =0x%04X, g16EmptyBlockCnt =0x%04X",2 2
+41 EA,    "      g16TotalSpareCnt =0x%04X, g16EmptyBlockCnt =0x%04X, gDoClean =0x%02X",2 2 2
+41 EB,    "      DoReadECCFailRetry() ===> DeCode_Mode = 0x%02X",2
+41 F1,    "      DoProgFailHandle() ===> u8ProgFailPtr=0x%02X , u16FailFBlock = 0x%02X , u16FailFPage = 0x%02X",2 2 2
+41 F2,    "      Readlink() End() ===> g16arDataPagePtr[0] == 0x%02X , g16arTLCUpdateWLCnt[0][0] == 0x%02X ",2 2
+41 F3,    "      HandleCacheBlock() === > g16arTLCUpdateWLCnt[u8CH][u8CE] == 0x%02X , u8CH == 0x%02X , u8CE == 0x%02X ",2 2 2
+41 F4,    "      ProgFinishPage() === > g16arTLCUpdateWLCnt[u8CH][u8CE] == 0x%02X , u8CH == 0x%02X , u8CE == 0x%02X ",2 2 2
+41 F5, 		"			 program fail happened continuously",  (0)
+41 F6,    "      Change Buffer Flag Position ===> g16PFGHPTail=0x%02X , u16NewPFGHPTail = 0x%02X , u16UpdatePagePtr = 0x%02X",2 2 2
+41 F7,    "      g16PFGHPTail does not update ===> g16PFGHPTail=0x%08X g16PFFailPage=0x%08X " , 2 2 (O)
+41 F8,    "      g16PFGHPTail already update ===> g16PFGHPTail=0x%08X g16PFFailPage=0x%08X " , 2 2 (O)
+41 F9,    "      Act0 EOB fail ===> g16PFFailPage=0x%08X " , 2 (O)
+41 FA, 		"			 Act1 Program Fail",  (0)
+41 FB, 		"			 DoProgFailHandle() End",  (0)
+41 FC,    "      ProgSysBlock() Read Page over 10 times ECC fail "  (0)
+41 FD 00 00,    "      CalEraseCnt(): u16ValidTLCBlockCnt =0x%04X, u32TotalTLCErCnt =0x%08X",2 4
+41 FD 00 01,    "      CalEraseCnt(): u16ValidSLCBlockCnt =0x%04X, u32TotalSLCErCnt =0x%08X",2 4
+{ResetMsgColor}
+
+{SetMsgColor = RED}
+41 D7,    "      ScanFBlock() ===> Is HalfErasedkBlock!. NowFBlock=0x%02X",2  (0)
+41 D8,    "      Process Raid Decode Page Fail , uIntlvOddA=0x%02X, Channel=0x%02X, u16SrcBlock=0x%04X, u16SrcPage=0x%04X",2 2 2 2 (0)
+{ResetMsgColor}
+
+41 D9 ,	  "		 u8ThSensor=%d¢XC", 2
+
+43 01,    "      ActBlKReadVerify() Start."
+43 02,    "      ActBlKReadVerify() End. u8ReturnEccFail=%d",2
+43 05,    "      BackUpActiveBlock_From_BKCache() Start. g16OldActiveBlock=0x%04X",2
+43 06,    "      BackUpActiveBlock_From_BKCache() ===> u32OldAct0PECnt=0x%04X , g32Back_Up_CacheGHPCnt=0x%04X",4 4
+43 07,    "      BackUpActiveBlock_From_BKCache() End."
+43 08,    "      PwOnReadVerifyOpenBlock() Start. PwOnReadVerifyOpenBlock=0x%02X, u8EnCmdInt=0x%02X, u8PartialChk=0x%02X",2 2 2
+43 09,    "      PwOnReadVerifyOpenBlock() End. ECCFail!!"
+43 0A,    "      PwOnReadVerifyOpenBlock() End."
+43 0B,    "      PwOnReadVerifyOpenBlock() ===> u8FinishRate=0x%02X",2
+43 0C,    "      PwOnReadVerifyOpenBlock() End. g32ChkActBlkGHPCnt=0x%04X , g32Back_Up_CacheGHPCnt=0x%04X",4 4 (0)
+43 0D,    "      PwOnReadVerifyOpenBlock() ===> u16StartFPage=0x%04X , u16EndFPage=0x%04X",2 2
+43 0E,    "      PwOnReadVerifyOpenBlock() ===> g16ChkDataPagePtr=0x%04X , u16EndFPage=0x%04X",2 2 
+
+
+
+{SetMsgColor = RED}
+;44 00,    "      MarkBadBlock() Start. ErrFBlock=0x%02X",2
+;44 01,    "      MarkBadBlock() End. NewFBlock=0x%02X",2
+44 02,    "      Block ReCombine!"(O)
+44 03,    "      Block MarkBad!"  (O)
+44 04,    "      ChkBackUpPage() Error. u16BKPage=0x%02X, gMaxErrCnt=0x%02X",2 2
+44 05,    "      MapErrHandle===>Erase all map block" (0)
+44 06,    "      ChkSaveLinkAndMap() ===> Miss all map info" (0)
+44 07,    "      ChkDataBlock() ===> DataEOBFail"            (0)
+44 08,    "      ChkDataBlock() ===> BuildF2HMapInfo Fail"   (0)
+44 09,    "      ReadIndexBlockInfo() ===> IndexEndPageFail" (0)
+44 0A,    "      ReadIndexBlockInfo() ===> IndexRestFail"    (0)
+44 0B,    "      BuildBlockLinkPrevTable() ===> PrevBlock MarkBad" (0)
+44 0C,    "      BuildBlockLinkInfo() ===> Error LinkBlock"  (0)
+44 0D,    "      BuildBlockLinkInfo() ===> LinkDataFail"     (0)
+;44 0E,    "      HandleErrBlock() ===> FindSerial"
+44 0F,    "      ScanFBlock() ===> Block read EOB Fail. NowFBlock=0x%02X",2  (0)
+44 10,    "      ScanFBlock() ===> Is LinkBlock!. NowFBlock=0x%02X",2  (0)
+;44 11,    "      ScanFBlock() ===> Block Error!" (?)TBD
+;44 12,    "      ScanFBlock() ===> Handle error IndexBlock. gIndexBlockIndex=0x%02X",1 (?)TBD
+44 13,    "      JudgeWproPage() ===> ECCFail"     (O)
+44 14,    "      JudgeWproPage() ===> WProSprFail" (O)
+44 15,    "      JudgeWproPage() ===> WProRest/DataFail" (O)
+;44 16,    "      ChkEraseUnitState() ===> WProDataFail" (?)TBD
+44 17,    "      ChkF2HAndH2F() ===> F2HMismatchH2F. ActMode=0x%02X, FBlock=0x%02X",2 2 (O)
+44 18,    "      GHP=0x%08X, F2HMap=0x%08X",4 4 (O)
+44 19,    "      H2FPage=0x%08X",4 (O)
+44 1A,    "      ChkF2HAndH2F() Fail" (O)
+44 1B,    "      LoadMapInfo() ===> LoadMapFail" (O)
+44 1C,    "      SaveIndexInfo() ===> ECCFail"   (O)
+44 1D,    "      BuildDevH2FTable() G2F Error u8EccFail=0x%02X, (R8_FCTRSpr[0] &0x0F)=0x%02X, R8_FCTRSpr[8]=0x%02X, gRestG2F=0x%02X.",2 2 2 2 (O)
+44 1E,    "      gIndexBlockIndex =0x%02X",2 (O)
+;44 1F,    "      BuildDevH2FTable() MapBlock Error g16arMapFBlock[u8ZoneIdx1]=0x%02X, g16arFreePtrOfMapFBlock[u8ZoneIdx1]=0x%02X, u8ZoneIdx1=0x%02X.",2 2 2 (?)TBD
+;44 20,    "      BuildDevH2FTable() H2F Error need to check!!", (?)TBD
+44 21,    "      SetErrBlock() u16FBlock = 0x%02X,ID=0x%02X,g16ErrorBlock1=0x%02X!!", 2 2 2 (0)
+44 22,    "      SetPFInfo() u8PFID = 0x%02X,u16PFInfo=0x%02X,gPFInfoIdx=0x%02X!!", 2 2 2   (0)
+44 23,    "      AddPowerOnFailBlock() u16Block = 0x%02X,u8ECCFailSrc=0x%02X,u8EccErrCnt=0x%02X,gEccFailBlockCnt=0x%02X!!", 2 2 2 2 (0)
+;44 24     "      RLNK_WHILE u32Info = 0x%08X,gReadLinkDebug=0x%02X, gPowerOnHandleInt=0x%02X!!", 4 2 2 (?)TBD
+;44 25     "      LoadEOBInfo() ECC Fail !!,u8EccFail=0x%02X, garLinkId[0]=0x%02X, g16FPage=0x%02X, u8ForceWait=0x%02X",2 2 2 2 (?)TBD
+;44 26     "      BuildF2HMapInfo() ECC Fail !!,u8DataEccFail=0x%02X,gbPFSavedActEccFail=0x%02X, u8DiscardPage=0x%02X(=1,lost data),g16ChkActivePagePtr=0x%02X",2 2 2 2 (?)TBD
+44 27,    "      PFSavedActEccFail  currentptr=0x%02X, g16LastMapSavedFirstFinishPtr=0x%02X, g16LastMapSavedLastFinishPtr=0x%02X, g16LastMapSavedActivePagePtr=0x%02X", 2 2 2 2 (X)    
+44 64,    "      ScanFBlock() ===> Block read page0 Fail. NowFBlock=0x%04X",2 (O)
+44 65,    "      AppendCacheData() ===> u32StartGHP=0x%08X , u32EndGHP=0x%08X",4 4 (O)
+44 66,    "      ScanFBlock() ===> Push_Serial_number=0x%08X ,4 (O)
+44 67,    "      ScanFBlock() ===> g32HeadFBlockSerial=0x%08X , g32TailFBlockSerial=0x%08X",4 4 (O)
+44 72,		"			 BuildF2HMapInfo() ===> ECC Fail : 0x%08X , Link ID : 0x%08X",2,2 (O)
+44 73,		"			 BuildF2HMapInfo() ===> u16OrgFPage : 0x%08X , g16LastMapSavedActivePagePtr : 0x%08X",2,2 (O)
+44 74,		"	     DespatchMapGroup() ===> Map Fail ZoneIdx==0x%02X",2 (O)
+44 75,    "      BuildH2FTable() ===> Map Fail ZoneIdx==0x%02X",2 (O)
+44 76,    "      BuildH2FTable_v2() ===> Map Fail ZoneIdx==0x%02X",2 (O)
+44 77,    "      ResetSpareValidPageCnt() ===> g32arValidFPageCnt[u16FBlock] != 0 , u16FBlock==0x%04X , g32arValidFPageCnt[u16FBlock]==0x%08X" , 2 4 (O)
+44 78,    "      DoReadECCFailRetry() ===> Run time Ones Count Fail " (O)
+{ResetMsgColor}
+; =============================================================
+; PC Message
+; =============================================================
+; E1 1E xx, "		"
+; E1 1E xx yy, "		"
+;
+; E9 9E xx, "		"
+; E9 9E xx yy, "		"
+; ---------------------------------------
+{SetMsgColor = BLUE}
+11 00,   "   StandByEntry()"
+11 01,   "   StandByResume()"
+11 02,   "   Pw1_Shutdown()"
+11 03,   "   Pw1_Resume()"
+11 04,   "   Pw1Pw2_Shutdown()"
+11 05,   "   Pw1Pw2_Resume()" 
+11 06,   "   SuspendMode() Start ,gInPowerMode=0x%02X,R32_SataMac[O32_PISR]=0x%08X ",2 4
+11 07,   "   DEVSLP interrupt,prepare into DEVSLP mode " 
+
+12 00,   "   SYS_VDT40_Powerdown()" 
+12 01,   "   SYS_VDT27_Powerdown()" 
+12 02,   "   SYS_VDT18_Powerdown()" 
+12 03,   "   SYS_ISR_UART()"
+
+{ResetMsgColor}
+
+; =============================================================
+; GC Message
+; =============================================================
+; F1 1F xx, "		"
+; F1 1F xx yy, "		"
+;
+; F9 9F xx, "		"
+; F9 9F xx yy, "		"
+; ---------------------------------------
+{SetMsgColor = BLUE}
+22 01 00,  "    SwapDataBlock() start, PickForceMode, gEnBGClean=0x%02X, g16TotalSpareCnt+g16EmptyBlockCnt=0x%02X",  1 2   (0)
+22 01 04,  "    SwapDataBlock() start, PickActiveMode, gEnBGClean=0x%02X, g16TotalSpareCnt+g16EmptyBlockCnt=0x%02X",  1 2   (0)
+22 01 08,  "    SwapDataBlock() start, PickZeroErCnt, gEnBGClean=0x%02X, g16TotalSpareCnt+g16EmptyBlockCnt=0x%02X",  1 2   (0)
+22 01 0C,  "    SwapDataBlock() start, PickMinValid, gEnBGClean=0x%02X, g16TotalSpareCnt+g16EmptyBlockCnt=0x%02X",  1 2   (0)
+22 01 10,  "    SwapDataBlock() start, PickHeadBlock, gEnBGClean=0x%02X, g16TotalSpareCnt+g16EmptyBlockCnt=0x%02X",  1 2   (0)
+22 01 14,  "    SwapDataBlock() start, PickErrBlock, gEnBGClean=0x%02X, g16TotalSpareCnt+g16EmptyBlockCnt=0x%02X",  1 2   (0)
+22 01 18,  "    SwapDataBlock() start, PickSLC2SLC, gEnBGClean=0x%02X, g16TotalSpareCnt+g16EmptyBlockCnt=0x%02X",  1 2   (0)
+22 01 1C,  "    SwapDataBlock() start, PickSLC2TLC, gEnBGClean=0x%02X, g16TotalSpareCnt+g16EmptyBlockCnt=0x%02X",  1 2   (0)
+22 02 00 00,   "    SwapDataBlock() end StopSwapping_0 SrcBlock ValidCnt is zero, g16UnsavedCnt=0x%02x",2
+22 02 01 00,   "    SwapDataBlock() end StopSwapping_1 Swap one loop, g16UnsavedCnt=0x%02x",2
+22 02 02 00,   "    SwapDataBlock() end StopSwapping_2 Need Close Des Block, g16UnsavedCnt=0x%02x",2
+22 02 03 00,   "    SwapDataBlock() end StopSwapping_3 BG_MODE New CMD acess, g16UnsavedCnt=0x%02x",2
+22 02 04 00,   "    SwapDataBlock() end StopSwapping_4 On ERROR Recovery and other mode, g16UnsavedCnt=0x%02x",2
+22 02 05 00,   "    SwapDataBlock() end StopSwapping_5 On Prog-Fail, g16UnsavedCnt=0x%02x",2
+;22 20,  "    The previous Log page offset = 0x%04X",2 (?)TBD
+;22 21,  "    Key Parameter Sector Start" (?)TBD
+;22 22,  "    Key Parameter Sector End" (?)TBD
+;22 24,  "    SetPartialMovePara g16PureSpareCnt = 0x%02x, g32MoveWriteRatio =0x%08x", 2 4 (?)TBD
+{ResetMsgColor}
+{SetMsgColor = Block}
+;22 07, 	"    AssignCleanWrFifo() start "
+;22 08, 	"    AssignCleanWrFifo() end" 
+22 09, 	"    FinishPartialMove()" (0)
+22 0C, 	"    FinishCleanCache(), g16CleanGHPCnt= 0x%02X", 2 (0)
+22 0D, 	"    FinishPickErrBlock()"  (0)
+22 0E,  "    ReleaseAllCleanList()" (0)
+;22 0F, 	"    SetupProtectPage()"  
+22 10, 	"    ProgFinishPage() start" (0)
+22 11, 	"    ProgFinishPage() end " (O)
+22 14, 	"    DecAllWLCnt() start"    (0)
+22 15, 	"    DecAllWLCnt() end u8MaxEraseCnt = 0x%02X",2  (0)
+22 16, 	"    WearLeveling() start "   (0)
+22 17 00 00, 	"    WearLeveling() end WearWProBlock,  WearWProBockCnt = 0x%02X, g32WearLevelingCnt=0x%08X", 2 4   (0)
+22 17 00 01, 	"    WearLeveling() end WearMapBlock,   WearMapBlockCnt = 0x%02X, g32WearLevelingCnt=0x%08X", 2 4   (0)
+22 17 00 02, 	"    WearLeveling() end WearLinkBlock,  WearLinkBlock = 0x%02X, g32WearLevelingCnt=0x%08X", 2 4     (0)
+22 17 00 03, 	"    WearLeveling() end WearAct0Block,  WearAct0BlockCnt = 0x%02X, g32WearLevelingCnt=0x%08X", 2 4  (0)
+22 17 00 04, 	"    WearLeveling() end WearDataBlock,  WearDataBlock = 0x%02X, g32WearLevelingCnt=0x%08X", 2 4     (0)
+22 17 00 05, 	"    WearLeveling() end WearCleanBlock, WearCleanBlock = 0x%02X, g32WearLevelingCnt=0x%08X", 2 4    (0)
+22 17 00 06, 	"    WearLeveling() end WearEmptyMapBlock, WearEmptyMapBlock = 0x%02X, g32WearLevelingCnt=0x%08X", 2 4  (0)
+
+22 18,  "    InitCandidateSetting, u8PickMode = 0x%02X ",2  (0)
+;;22 28,  "    FindMinErasedCnt EC = 0x%02x", 2 (?)TBD
+
+{SetMsgColor = RED}
+22 12,  "    SwapActiveBlock() start OldActiveBlock=0x%02X, g16arActiveFBlock[gActMode]=0x%02X, g16arActiveFBlock[2]=0x%02X",2 2 2 (O)
+22 13, 	"    FinishSwapActive() end g16arActiveFBlock=0x%02X, g16arDataPagePtr=0x%02X, g16UpdatePagePtr=0x%02X",2 2 2
+22 96,  "    RunTimeSwapActiveBlock() start. OldActiveBlock=0x%02X, DesActiveBlock=0x%02X",2 2 (O)
+22 97, 	"    RunTimeSwapActiveBlock() end. ActiveBlock=0x%02X, g16UpdatePagePtr=0x%02X",2 2 (O)
+22 32, 	"    PowerOnSwapActiveProgFail"                                     (0)
+{ResetMsgColor}
+{SetMsgColor = GREEN}
+22 03, 	"           FindNextCandidate() start u8PickMode = 0x%02X, u8First = 0x%02X", 1 1  (0)
+22 04, 	"           FindNextCandidate() end u16FoundFBlock = 0x%02X, g32arValidFPageCnt[u16FoundFBlock]= 0x%02X", 2 4  (0)
+22 05, 	"          MoveOutSwapBlock() start, u16DesBlock = 0x%02X, g16arCleanFBlock=0x%02X, g32ValidUnitCnt = 0x%08X", 2 2 4
+22 06, 	"          MoveOutSwapBlock() End, gStopSwapping = 0x%02X, Still have g32ValidUnitCnt = 0x%08X",2 4
+22 0B, 	"    ContinueSwap()"                                     (0)
+22 50, 	"    SwapDataBlock, g32arValidFPageCnt[u16SrcBlock]=0"   (0)
+22 51, 	"    SwapDataBlock, g32arValidFPageCnt[u16SrcBlock]!=0"  (0)
+22 52, 	"    SwapDataBlock, Generate new active block"           (0)
+;22 53, 	"    SwapDataBlock, Hot block" (?)TBD
+;22 54, 	"    SwapDataBlock, Cold block" (?)TBD
+22 55, 	"    SwapDataBlock, No Clean Src Block"                  (0)
+;22 56, 	"    SwapDataBlock, Start Copy" (?)TBD
+;;22 19,  "    PopSpareBlock,  Block Already Erased , g16ZeroSpareCnt = 0x%02x, g16TotalSpareCnt=0x%02x, g16arFBlock =0x%02x", 2 2 2 (?)TBD
+;;22 25,  "    PushSpareBlock,  Block Already Erased , g16ZeroSpareCnt = 0x%02x, g16TotalSpareCnt=0x%02x, g16arFBlock =0x%02x", 2 2 2 (?)TBD
+;;22 26,  "    PrepareFastBoot,  Block Already Erased , g16ZeroSpareCnt = 0x%02x, g16TotalSpareCnt=0x%02x", 2 2 (?)TBD
+;;22 27,  "    Check ErasedBlockCnt OK!!, wErasedSparCnt=0x%02x, g16ZeroSpareCnt=0x%02x, wSpareBlockCnt=0x%02x, g16TotalSpareCnt=0x%02x", 2 2 2 2 (?)TBD
+
+;=============================================================
+
+{ResetMsgColor}
+{SetMsgColor = RED}
+;;22 57,  "    Add ValidFpagcnt on GC over limit = 0x%04x ,g16CurrentBlock = 0x%04x, g16arValidFPageCnt = 0x%04x", 2 2 2 (?)TBD
+;;22 58,  "    Dec ValidFpagcnt on GC over limit = 0x%04x ,g16SrcBlock = 0x%04x, g16arValidFPageCnt = 0x%04x", 2 2 2 (?)TBD
+;;22 59,  "    Add ValidFpagcnt on AllocateWrite over limit = 0x%04x ,g16CurrentBlock = 0x%04x, g16arValidFPageCnt = 0x%04x", 2 2 2 (?)TBD
+;;22 5A,  "    Dec ValidFpagcnt on AllocateWrite over limit = 0x%04x ,g16SrcBlock = 0x%04x, g16arValidFPageCnt = 0x%04x", 2 2 2 (?)TBD
+;;22 5B,  "    PopSpareBlock Error No SpareCnt , g16UnsavedCnt = 0x%02x, g16EmptyBlockCnt= 0x%02x",2 2 (?)TBD
+;;22 5C,  "    This is not a Error Log Page,please enter check OFFSET~" (?)TBD
+;;22 3F,  "    Cannot find previous Log page" (?)TBD
+;;22 23,  "    Load WPro Log Page Error." (?)TBD
+
+22 AA,    "    CDM Triger!             "
+22 AB 00 01 00 00,    "    APM MT1! u8ThSensor = %d , u8Mt1_th = %d , u8MT0_Restore = %d", 2 1 1 
+22 AB 00 00 00 01,    "    APM MT0! u8ThSensor = %d , u8Mt1_th = %d , u8MT0_Restore = %d", 2 1 1
+
+FD DF 00 00,  			"WHILE Error ID = %d",4
+FD DF 00 01,  			"WHILE Error ID = %d Para0 = 0x%04X",4 2
+FD DF 00 02,  			"WHILE Error ID = %d Para0 = 0x%04X Para1 = 0x%04X", 4 2 2
+FD DF 00 03,  			"WHILE Error ID = %d Para0 = 0x%04X Para2 = 0x%04X Para2 = 0x%04X",4 2 2 2
+FD DF 00 04,  			"WHILE Error ID = %d Para0 = 0x%04X Para1 = 0x%04X Para2 = 0x%04X Para3 = 0x%04X",4 2 2 2 2         
+FE EF	00 01,"SysBlock[]: [0]%d, [1]%d, [2]%d, [3]%d, [4]%d, [5]%d, [6]%d, [7]%d,",2 2 2 2 2 2 2 2
+FE EF 00 02,"g16FirstFBlock = 0x%04X",2
+FE EF 00 03,"g16FBlockPerCE = %d",2
+FE EF 00 04,"g16OrphanEntry = %d",2
+FE EF 00 05,"g16FinalBadCnt = %d",2
+FE EF 00 06,"g16TLCStartBlock = 0x%04X",2
+FE EF 00 07,"g16PageNum = %d",2
+FE EF 00 09,"gDDRMode = %d",2
+FE EF 00 0A,"gInterChipNumShiftCnt = %d",2
+FE EF 00 0B,"g16TotalFBlock = %d",2
+FE EF 00 0C,"g16TotalHBlock = %d",2
+FE EF 00 0D,"g16OrgBadCnt = %d",2
+FE EF 00 0E,"g16PretestBadCnt = %d",2
+FE EF 00 0F,"g16ExtendBlock = %d",2
+FE EF 00 10,"g16MaxSpareCnt = %d",2
+FE EF 00 11,"g32TotalDatSector = 0x%X",4
+FE EF 00 12,"garBankPerCE[]: [0]%d, [1]%d, [2]%d, [3]%d, [4]%d, [5]%d, [6]%d, [7]%d, [8]%d, [9]%d, [10]%d, [11]%d, [12]%d, [13]%d, [14]%d, [15]%d",1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+FE EF 00 13,"g16FinalBadCnt_SLC = %d",2
+FE EF 00 14,"g16MarkBadCnt = %d",2
+FE EF 00 15,"ForceGCTH = %d",2
+
+FE EF 00 20,"gWearQueueDepth = %d",2
+FE EF 00 21,"gMinSprBlockforSmart = %d",2
+FE EF 00 22,"gWearDiffTH = %d",2
+FE EF 01 22,"gWearDiffThInRead = %d",2
+FE EF 00 23,"g32ColdSerialTH = %d",4
+FE EF 00 24,"gSpareDiffTH = %d",2
+FE EF 00 25,"g16BGCleanTH = %d",2
+FE EF 00 26,"gEarlyMoveTH = %d, gSporEccTH = %d, gFlashECC = %d",2 1 1
+FE EF 00 27,"gInfoPageInEOB = %d",2
+FE EF 00 28,"g16DataPagePerBlock = %d",2
+FE EF 00 29,"g16DataPagePerLSBBlock = %d",2
+FE EF 00 2A,"_dMaxValidFPageCnt = 0x%X",4
+FE EF 00 2B,"g16PureSpareCnt = %d",2
+FE EF 00 2C,"g16arActiveFBlock[0] = 0x%04X, g16arActiveFBlock[1] = 0x%04X, g16arActiveFBlock[2] = 0x%04X",2 2 2
+FE EF 00 2D,"g16arDataPagePtr[0] = %d, g16arDataPagePtr[1] = %d",2 2
+FE EF 00 2E,"g16arSpareCnt[0] = %d, g16arSpareCnt[1] = %d, g16TotalSpareCnt = %d",2 2 2
+FE EF 00 2F,"gTotalZoneNum = %d",2
+FE EF 00 30,"gSectorPerPageH =%d, gSectorPerPlaneH = %d",1 1
+FE EF 00 31,"gKBPerPageF = %d, gKBPerPlaneF = %d", 1 1
+FE EF 00 32,"gPlaneNum = %d",2
+FE EF 00 33,"gbWholeDriveSP = %d, gbMLC = %d, gbTLC = %d, g16PageNum = %d, g16PagePerBlock1 = %d, g16PagePerBlock2 = %d",2 1 1 2 2 2
+FE EF 00 34,"gIntlvWay = %d, gTotalChLunNum = %d", g16PagePerChannel = %d, g16PagePerSysBlock2 = %d, g16PagePerWProBlock2 = %d, g16PagePerMapBlock2 = %d",1 1 2 2 2 2
+FE EF 00 35,"gTotalLunNum = %d, gTotalCeChLunNum = %d, gTotalChLunNum = %d, g16PagePerChannel = %d",1 1 2 2
+FE EF 00 36,"gbStrongPageGood = %d",2
+FE EF 00 37,"gSectorPerPageH2n = %d, gSectorPerPlaneH2n = %d",1 1
+FE EF 00 38,"gSectorPerUnitH = %d, gKBPerUnitH = %d", 1 1
+FE EF 00 39,"gSectorPerUnitH2n = %d, gUnitPerPageH2n =%d, gUnitPerPageH = %d, gUnitPerPlaneH = %d",1 1 1 1
+FE EF 00 3A,"g32UnitPerBlock1 = 0x%X, g32UnitPerBlock2 = 0x%X",4 4
+FE EF 00 3B,"gUnitReadyMask = %d, g32SectorsPerBlock = 0x%X",2 4
+FE EF 00 3C,"g32SwapDataBlockCnt = %d",4
+FE EF 00 3D,"g32SLCSwapDataBlockCnt = %d",4
+FE EF 00 3E,"g16PagePerBlock2 = %d",2
+FE EF 00 3F,"g16arSpareCnt_SLC[0] = %d, g16arSpareCnt_SLC[1] = %d, g16TotalSpareCnt_SLC = %d",2 2 2
+FE EF 00 40,"Flash Clock = 0x%02X",2
+FE EF 00 41,"g16SCTTemperatureTimer = %d",2
+FE EF 00 42,"g16SecurityEraseCnt = %d",2
+
+{SetMsgColor = BLUE}
+FE EF 00 60,"FBlock BankNum = 0x%02X",2
+FE EF 00 61,"Page per Block = 0x%02X",2
+FE EF 00 62,"KB per Page = 0x%02X",2
+FE EF 00 63,"CH Num = 0x%02X",2
+FE EF 00 64,"CE Num = 0x%02X",2
+FE EF 00 65,"Plane Num = 0x%02X",2
+FE EF 00 66,"Interleave Num = 0x%02X",2
+FE EF 00 67,"Multi-Plane Mode = 0x%02X",2
+FE EF 00 68,"InterChipNumShiftCnt = 0x%02X",2
+FE EF 00 69,"MLC mode = 0x%02X",2
+FE EF 00 6A,"Recommanded PE CYCLE(100 base) = 0x%02X",2
+FE EF 00 6B,"gbPowerOnDDRMode = 0x%02X",2
+FE EF 00 6C,"gbSyncModeFlash = 0x%02X",2
+FE EF 00 6D,"gbManualToToggle = 0x%02X",2
+FE EF 00 6E,"gbCacheRead = 0x%02X",2
+FE EF 00 6F,"gbCacheProgCmd = 0x%02X",2
+FE EF 00 70,"gbEnMPlaneRead = 0x%02X",2
+FE EF 00 71,"gbPlane2TCmd = 0x%02X",2
+FE EF 00 72,"gbSupportTSBA2hCmd = 0x%02X",2
+FE EF 00 73,"gbSLCReliable = 0x%02X",2
+FE EF 00 74,"g16MinValidFBlock = 0x%02X",2
+FE EF 00 75,"g16ExtendBlock = 0x%02X",2
+FE EF 00 76,"gbPlane2SeqBlock = 0x%02X",2
+FE EF 00 77,"gbTSBPseudoPlane = 0x%02X",2
+FE EF 00 78,"gbTSBVirtualPage = 0x%02X",2
+FE EF 00 79,"gbHynixEnSLCProg = 0x%02X",2
+FE EF 00 7A,"gbSuportUnAlignPlane = 0x%02X",2
+FE EF 00 7B,"gbDontProgMSB = 0x%02X",2
+FE EF 00 7C,"gMLC2SLCCmd = 0x%02X",2
+FE EF 00 7D,"gSLC2MLCCmd = 0x%02X",2
+FE EF 00 7E,"gbIM4kFlash = 0x%02X",2
+FE EF 00 7F,"gbPlaneAccessCmd = 0x%02X",2
+FE EF 00 80,"gbWholeDriveSP = 0x%02X",2
+FE EF 00 81,"gPretestErrorCode = 0x%02X",2
+
+{SetMsgColor = RED}
+FE EF 00 82,"gFlashInfoTableStartAddr = 0x%04X",4
+FE EF 00 83,"garUnsavedFBlockBitmap Addr= 0x%04X",4
+FE EF 00 84,"garSpareBlockBitmap Addr= 0x%04X",4
+FE EF 00 85,"garCleanBlockBitmap Add	r= 0x%04X",4
+FE EF 00 86,"garBadInfo Addr= 0x%04X",4
+FE EF 00 87,"garPushFifoBitMap Addr= 0x%04X",4
+
+FC CF,	" Max EC = %d; Min EC = %d; Avg EC = %d; Blk count = %04d.",4 4 4 2
+
+;======= Personal debug message   ================
+{SetMsgColor = PURPLE}
+CC CC 01,          " Jesse(0x%02X)", 1
+CC CC 11,          " Jesse_Value(0x%02X, 0x%02X, 0x%02X)", 1 1 1
+CC CC 02,          " Chief(0x%02X)", 1
+CC CC 03,          " Eason(0x%02X)", 1
+CC CC 04,          " Sam(0x%02X)", 1
+
+
+{ResetMsgColor}
+
+{SetMsgColor = RED}
+FE EF E0 01,"((garDoRAIDInfo[uActiveCh]&0x03)<<12)|gbSprEccFail<<8|gbOnesCntFail<<4|gbEccFail = 0x%02X",2
+FE EF E0 02,"uActiveCh<<8|garFlashRetryFifo[uActiveCh].u8SrcIntlvA = 0x%02X",2
+FE EF E0 03,"garFlashRetryFifo[uActiveCh].u16FBlock = 0x%02X",2
+FE EF E0 04,"garFlashRetryFifo[uActiveCh].u16FPage = 0x%02X",2
+
+{ResetMsgColor}
