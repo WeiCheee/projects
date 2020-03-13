@@ -11,8 +11,6 @@ from sys import version_info
 import glob
 import linecache
 
-
-
 def searchfile():
     local_dir = os.getcwd() ##get目前的目錄資料夾
     print("local_dir:%s"%local_dir) 
@@ -31,23 +29,25 @@ def searchfile():
 
 def catch_en():
     tar_file = searchfile()
-    print("11111111111111111111111111")
+    print("-----------------------------------")
     print(tar_file)
-    input()
     try:
         with open(tar_file[0],'rb') as f:
             print("txt file open")
             catch_line = []
-            text1 = linecache.getline(tar_file[0],2)
-            text2 = linecache.getline(tar_file[0],3)
+            text1 = linecache.getline(tar_file[0],86)
+            text2 = linecache.getline(tar_file[0],88)
             print(text1)
             print(text2)
             if (text1.find("Admin") and text2.find("Host") != -1):  ###not enable(覆蓋檔案)
-                print("get word!")
+                print("fail")
             else:                         ###enable(停)
-                print("not found")
+                print("pass")
     except:
         print("faile open file")
+
+def getfileInfo():
+    
 
 def get_current_time():
     ct = time.time() ##總秒數
