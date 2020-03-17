@@ -1,4 +1,5 @@
 import sys
+from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QWidget, QComboBox, QApplication
 
 from PyQt5.QtCore import  QEventLoop, QTimer
@@ -9,20 +10,23 @@ class ComboxDemo(QWidget):
     def __init__(self):
         super().__init__()
         # 设置标题
-        self.setWindowTitle('ComBox例子')
+        self.setWindowTitle('Windows Crash')
         # 设置初始界面大小
         self.resize(300, 200)
-
         # 实例化QComBox对象
         self.cb = QComboBox(self)
-        self.cb.move(20, 10)
-
+        self.cb.move(30, 20)
+        
+        # self.progressBar = QtWidgets.QProgressBar(self.centralwidget)
+        # self.progressBar.setGeometry(QtCore.QRect(220, 180, 141, 16))
+        # self.progressBar.setProperty("value", 24)
+        # self.progressBar.setObjectName("progressBar")
         # 单个添加条目
-        self.cb.addItem('C')
-        self.cb.addItem('C++')
-        self.cb.addItem('Python')
+        # self.cb.addItem('C')
+        # self.cb.addItem('C++')
+        # self.cb.addItem('Python')
         # 多个添加条目
-        self.cb.addItems(['Java', 'C#', 'PHP'])
+        self.cb.addItems(['Win 10 pro', 'Win 10 pro N', 'Win 10 edu', 'Win 8.1 pro', 'Win 8 pro', 'Win 7 pro'])
 
         # 信号
         self.cb.currentIndexChanged[str].connect(self.print_value) # 条目发生改变，发射信号，传递条目内容

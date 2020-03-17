@@ -17,9 +17,9 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>41</y>
-      <width>111</width>
+      <x>30</x>
+      <y>70</y>
+      <width>81</width>
       <height>41</height>
      </rect>
     </property>
@@ -42,9 +42,9 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>100</y>
-      <width>111</width>
+      <x>30</x>
+      <y>130</y>
+      <width>81</width>
       <height>31</height>
      </rect>
     </property>
@@ -61,10 +61,10 @@
    <widget class="QComboBox" name="comboBox">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>40</y>
+      <x>30</x>
+      <y>20</y>
       <width>121</width>
-      <height>41</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -72,6 +72,15 @@
       <family>Microsoft YaHei</family>
       <pointsize>12</pointsize>
      </font>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="tabletTracking">
+     <bool>false</bool>
+    </property>
+    <property name="currentText">
+     <string>Win10 Pro</string>
     </property>
     <item>
      <property name="text">
@@ -107,9 +116,9 @@
    <widget class="QProgressBar" name="progressBar">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>30</x>
       <y>180</y>
-      <width>141</width>
+      <width>161</width>
       <height>16</height>
      </rect>
     </property>
@@ -120,10 +129,10 @@
    <widget class="QOpenGLWidget" name="openGLWidget">
     <property name="geometry">
      <rect>
-      <x>37</x>
-      <y>99</y>
+      <x>190</x>
+      <y>20</y>
       <width>151</width>
-      <height>101</height>
+      <height>181</height>
      </rect>
     </property>
    </widget>
