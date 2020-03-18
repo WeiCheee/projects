@@ -35,17 +35,14 @@ class Ui_MainWindow(object):
         self.comboBox.setGeometry(QtCore.QRect(30, 20, 121, 31))
         font = QtGui.QFont()
         font.setFamily("Microsoft YaHei")
-        font.setPointSize(12)
+        font.setPointSize(10)
         self.comboBox.setFont(font)
         self.comboBox.setMouseTracking(False)
         self.comboBox.setTabletTracking(False)
         self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
+        for i in range(7):
+            self.comboBox.addItem("")
+   
         self.progressBar = QtWidgets.QProgressBar(self.centralwidget)
         self.progressBar.setGeometry(QtCore.QRect(30, 180, 161, 16))
         self.progressBar.setProperty("value", 24)
@@ -67,21 +64,30 @@ class Ui_MainWindow(object):
 
         self.comboBox.currentIndexChanged[str].connect(self.print_value) # 条目发生改变，发射信号，传递条目内容
         self.comboBox.currentIndexChanged[int].connect(self.print_value)  # 条目发生改变，发射信号，传递条目索引
-        self.comboBox.highlighted[str].connect(self.print_value)  # 在下拉列表中，鼠标移动到某个条目时发出信号，传递条目内容
-        self.comboBox.highlighted[int].connect(self.print_value)  # 在下拉列表中，鼠标移动到某个条目时发出信号，传递条目索引
+        self.pushButton.clicked.connect(self.call_event) # buttom1 event
+        self.pushButton_2.clicked.connect(self.call_reset)
+
+        # self.comboBox.highlighted[str].connect(self.print_value)  # 在下拉列表中，鼠标移动到某个条目时发出信号，传递条目内容
+        # self.comboBox.highlighted[int].connect(self.print_value)  # 在下拉列表中，鼠标移动到某个条目时发出信号，传递条目索引
     
-    def print_value(self, i):
-        print(i)
+    def print_value(self,i):
+        self.selected = i
+
+    def call_event(self):
+        # print(self.selected)
+        if(self.selected == '--version--'):
+            print("please select a version for windows")
+        else:
+            self.windows_crash(self.selected,self.cmd)
+    
+    def call_reset(self):
+        self.procces_stop()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Windows Crash"))
         self.pushButton.setText(_translate("MainWindow", "Active"))
-        self.pushButton_2.setText(_translate("MainWindow", "Close"))
+        self.pushButton_2.setText(_translate("MainWindow", "Rest"))
         self.comboBox.setCurrentText(_translate("MainWindow", " "))
-        self.comboBox.setItemText(0, _translate("MainWindow", "Win10 Pro"))
-        self.comboBox.setItemText(1, _translate("MainWindow", "Win10 Pro N"))
-        self.comboBox.setItemText(2, _translate("MainWindow", "Win10 edu"))
-        self.comboBox.setItemText(3, _translate("MainWindow", "Win8.1 Pro"))
-        self.comboBox.setItemText(4, _translate("MainWindow", "Win8 Pro"))
-        self.comboBox.setItemText(5, _translate("MainWindow", "Win7 Pro"))
+        for index in range(0,len(list(self.kms.keys()))) :
+            self.comboBox.setItemText(index, _translate("MainWindow", (list(self.kms.keys()))[index]))
