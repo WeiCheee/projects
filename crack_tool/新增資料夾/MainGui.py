@@ -10,12 +10,14 @@ class Mainwindows(QMainWindow, Ui_MainWindow):
         self.cmd = cmd
         self.windows_crash = windows_crash
         self.procces_stop = procces_stop
-        self.selected = '--version--' # 需要給selected物件預設值
         # self.windows_crash('win10_64_pro',self.cmd)
         # print(self.windows_crash)
-        # self.print_value(self)
+
         self.setupUi(self)
-        
+
+
+
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     comboxDemo = Mainwindows()

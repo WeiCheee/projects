@@ -31,6 +31,7 @@ cmd = {
 def kms_key(ver, cmd):
     # origin_str = cmd['process']['kms_ins']
     cmd_kms_ins = cmd['process']['kms_ins'].split(" ",2)
+
     print(cmd_kms_ins)
     cmd_kms_ins = cmd_kms_ins[0] + " " + cmd_kms_ins[1]
     print(cmd_kms_ins)
@@ -57,12 +58,8 @@ def printcmd():
     print("--------------------------------------------------\n")
     for item in cmd['process']:
         print("%s %s"%(cmd['exe_path'],cmd['process'][item]))
-    # while True:
-    #     print("stop")
-        # time.sleep(10)
   
 def procces_stop():
     subprocess.call("pause", shell=True)
-    # print ("iii")
 
 
