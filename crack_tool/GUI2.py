@@ -100,3 +100,4 @@ class Ui_MainWindow(object):
             self.comboBox.setItemText(index, _translate("MainWindow", (list(self.kms.keys()))[index]))
     def thread_jobs(self):
         t = threading.Thread(target=call_event)
+#print("111111")
