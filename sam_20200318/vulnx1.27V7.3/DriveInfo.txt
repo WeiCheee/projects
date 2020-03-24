@@ -1,0 +1,11 @@
+
+
+LiteOn SSD Utility 
+For Linux | Version 1.27 | x64
+
+
+HOST DEV_PATH       ID CH LUN MODEL_NAME                               F/W     
+==== ============== == == === ======================================== ========
+4    /dev/sda       0  0  0   LITEON CVZ-S364                          CY66402 
+5    /dev/sdb       0  0  0   LITEON CVZ-83128                         CX7RDM1 
+==== ============== == == === ======================================== ========
