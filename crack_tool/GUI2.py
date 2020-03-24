@@ -67,8 +67,8 @@ class Ui_MainWindow(object):
 
         self.comboBox.currentIndexChanged[str].connect(self.print_value) # 条目发生改变，发射信号，传递条目内容
         self.comboBox.currentIndexChanged[int].connect(self.print_value)  # 条目发生改变，发射信号，传递条目索引
-        self.pushButton.clicked.connect(t.start()) # buttom1 event
-        self.pushButton_2.clicked.connect(t.)
+        self.pushButton.clicked.connect(self.thread_jobs) # buttom1 event
+        self.pushButton_2.clicked.connect(self.call_reset)
 
         # self.comboBox.highlighted[str].connect(self.print_value)  # 在下拉列表中，鼠标移动到某个条目时发出信号，传递条目内容
         # self.comboBox.highlighted[int].connect(self.print_value)  # 在下拉列表中，鼠标移动到某个条目时发出信号，传递条目索引
@@ -82,13 +82,13 @@ class Ui_MainWindow(object):
     def call_event(self):    
         print("----------------------------------------")    
         if(self.selected == '--version--'):
-            self.kms_key(self.selected,self.cmd)
+            self.kms_key(self.selected, self.cmd)
             print("please select a version for windows")
         else:
-            self.windows_crash(self.selected,self.cmd)
+            self.windows_crash(self.selected, self.cmd)
 
     def call_reset(self):
-        self.procces_stop()
+        self.t.procces_stop()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -98,6 +98,8 @@ class Ui_MainWindow(object):
         self.comboBox.setCurrentText(_translate("MainWindow", " "))
         for index in range(0,len(list(self.kms.keys()))) :
             self.comboBox.setItemText(index, _translate("MainWindow", (list(self.kms.keys()))[index]))
+    
     def thread_jobs(self):
-        t = threading.Thread(target=call_event)
+        self.t = threading.Thread(target=self.call_event)
+        self.t.start()
 #print("111111")

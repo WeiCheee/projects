@@ -2,6 +2,7 @@ import sys
 from GUI2 import Ui_MainWindow
 from PyQt5.QtWidgets import QMainWindow,QApplication
 from crack import *
+import threading
 
 class Mainwindows(QMainWindow, Ui_MainWindow): 
     def __init__(self, parent=None):
@@ -15,6 +16,8 @@ class Mainwindows(QMainWindow, Ui_MainWindow):
         # print(self.windows_crash)
         # self.print_value(self)
         self.setupUi(self)
+        self.t = threading.Thread.__init__(self)
+        # self.call_event(self)
         
 if __name__ == '__main__':
     app = QApplication(sys.argv)
