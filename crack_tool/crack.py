@@ -27,6 +27,7 @@ cmd = {
     },
 
 }
+avilable = True
 
 def kms_key(ver, cmd):
     # origin_str = cmd['process']['kms_ins']
@@ -41,15 +42,17 @@ def kms_key(ver, cmd):
 
 def windows_crash(ver, cmd):
     success = kms_key(ver,cmd)
-    # print(success)
+
     if(success):
-        # for item in cmd['process']:
-        #     p = subprocess.call("%s %s"%(cmd['exe_path'],cmd['process'][item]) , shell=True)
-        #     time.sleep(3)
-        #     win32api.keybd_event(13,0,0,0)
-        #     win32api.keybd_event(13,0,win32con.KEYEVENTF_KEYUP,0)
-        #     time.sleep(1)
-        printcmd()
+        for item in cmd['process']:
+            p = subprocess.call("%s %s"%(cmd['exe_path'],cmd['process'][item]) , shell=True)
+            time.sleep(3)
+            win32api.keybd_event(13,0,0,0)
+            win32api.keybd_event(13,0,win32con.KEYEVENTF_KEYUP,0)
+            # time.sleep(1)
+        # for i in range(100000):
+        #     print(i)
+            # printcmd()
     else:
         print("Error input")
 
@@ -57,13 +60,3 @@ def printcmd():
     print("--------------------------------------------------\n")
     for item in cmd['process']:
         print("%s %s"%(cmd['exe_path'],cmd['process'][item]))
-    # while True:
-    #     print("stop")
-        # time.sleep(10)
-  
-def procces_stop():
-    subprocess.call("pause", shell=True)
-    # print ("iii")
-
-
-#print("111111")

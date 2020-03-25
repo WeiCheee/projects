@@ -67,19 +67,16 @@ class Ui_MainWindow(object):
 
         self.comboBox.currentIndexChanged[str].connect(self.print_value) # 条目发生改变，发射信号，传递条目内容
         self.comboBox.currentIndexChanged[int].connect(self.print_value)  # 条目发生改变，发射信号，传递条目索引
-        self.pushButton.clicked.connect(self.thread_jobs) # buttom1 event
-        self.pushButton_2.clicked.connect(self.call_reset)
+        self.pushButton.clicked.connect(self.call_event) # buttom1 event
+        self.pushButton_2.clicked.connect(self.call_stop)
 
         # self.comboBox.highlighted[str].connect(self.print_value)  # 在下拉列表中，鼠标移动到某个条目时发出信号，传递条目内容
         # self.comboBox.highlighted[int].connect(self.print_value)  # 在下拉列表中，鼠标移动到某个条目时发出信号，传递条目索引
     
     def print_value(self,i):
         self.selected = i
-        # print(self.selected)
-        # self.comboBox.setText(self.print_value)
-        # print(self.setupUi.currentText())
 
-    def call_event(self):    
+    def thread_jobs(self):
         print("----------------------------------------")    
         if(self.selected == '--version--'):
             self.kms_key(self.selected, self.cmd)
@@ -87,8 +84,19 @@ class Ui_MainWindow(object):
         else:
             self.windows_crash(self.selected, self.cmd)
 
-    def call_reset(self):
-        self.t.procces_stop()
+    def call_event(self):    
+        self.t = threading.Thread(target=self.thread_jobs, args=())
+        # self.setDaemon(True)
+        self.t.start()
+        # if not self.stopped:
+        #     self.t.join(self.timeout)
+        # print("thread stop")
+
+    def call_stop(self):
+        self.stopped = True
+
+    def isStopped(self):
+        return self.stopped
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -99,7 +107,31 @@ class Ui_MainWindow(object):
         for index in range(0,len(list(self.kms.keys()))) :
             self.comboBox.setItemText(index, _translate("MainWindow", (list(self.kms.keys()))[index]))
     
-    def thread_jobs(self):
-        self.t = threading.Thread(target=self.call_event)
-        self.t.start()
-#print("111111")
+
+# class TestThread(threading.Thread):
+
+#     def __init__(self, thread_num=0, timeout=1.0):
+#         super(TestThread, self).__init__()
+#         self.thread_num = thread_num
+
+#         self.stopped = False
+#         self.timeout = timeout
+
+#     def run(self):
+#         def target_func():
+#             inp = raw_input("Thread %d: " % self.thread_num)
+#             print('Thread %s input %s' % (self.thread_num, inp))
+#         subthread = threading.Thread(target=target_func, args=())
+#         subthread.setDaemon(True)
+#         subthread.start()
+
+#         while not self.stopped:
+#             subthread.join(self.timeout)
+
+#         print('Thread stopped')
+
+#     def stop(self):
+#         self.stopped = True
+
+#     def isStopped(self):
+#         return self.stopped
