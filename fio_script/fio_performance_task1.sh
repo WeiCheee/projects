@@ -10,8 +10,8 @@
 
 #fio --output=./${engine}_${block}_${rw}_${dp}_${size}_$COUNTS --name=$rw --filename=/data/files${COUNTS} --ioengine=$engine --size=$size --direct=1 --thread=1  --blocksize=$block --rw=$rw --iodepth=$dp --numjobs=1
 
-time fio -output=/home/hsu/Desktop/fio_result/ -name=test -filename=/dev/sda -ioengine=libaio -size=63G -direct=1 -thread=1 -blocksize=4k -rw=write -iodepth=32 -numjobs=1
-
+time fio -output=/home/hsu/Desktop/fio_result/Fillup -name=test1 -filename=/dev/sda -ioengine=libaio -size=63G -direct=1 -thread=1 -blocksize=4k -rw=write -iodepth=32 -numjobs=1
+sleep 10
 
 # # rm -rf /media/hsu/testRW
 
@@ -20,7 +20,8 @@ rwarray=(write)  ## randread randwrite
 dparray=(32)
 sizearray=(63G)
 enginearray=(libaio)
-countarray=(1)
+countarray=(2)
+task=(task1)
 
 for a in {0..7}
 do 
@@ -34,8 +35,8 @@ do
 				do 
 					for f in {0..0}
 					do 
-						#fio -output=/home/luopan/${blockarray[a]}_${rwarray[b]}_${dparray[c]}_${sizearray[d]}_${enginearray[e]} -name=${rwarray[b]} -filename=/dev/sdb -ioengine=${enginearray[e]} -size=${sizearray[d]} -direct=1 -thread=1  -blocksize=${blockarray[a]} -rw=${rwarray[b]} -iodepth=${dparray[c]} -numjobs=1
-						time fio -output=/home/hsu/Desktop/fio_result/${blockarray[a]}_${rwarray[b]}_${dparray[c]}_${sizearray[d]}_${enginearray[e]}_${countarray[f]} -name=test -filename=/dev/sda -ioengine=${enginearray[e]} -size=${sizearray[d]} -direct=1 -thread=1  -blocksize=${blockarray[a]} -rw=${rwarray[b]} -iodepth=${dparray[c]} -numjobs=1 -runtime=600						
+						#fio -output=/home/luopan/${blockarray[a]}_${rwarray[b]}_${dparray[c]}_${sizearray[d]}_${enginearray[e]} -name=${rwarray[b]} -filename=/dev/sda -ioengine=${enginearray[e]} -size=${sizearray[d]} -direct=1 -thread=1  -blocksize=${blockarray[a]} -rw=${rwarray[b]} -iodepth=${dparray[c]} -numjobs=1
+						time fio -output=/home/hsu/Desktop/fio_result/${task[0]}_${blockarray[a]}_${rwarray[b]}_${dparray[c]}_${sizearray[d]}_${enginearray[e]}_${countarray[f]} -name=test -filename=/dev/sda -ioengine=${enginearray[e]} -direct=1 -thread=1 -blocksize=${blockarray[a]} -rw=${rwarray[b]} -iodepth=${dparray[c]} -numjobs=1 -runtime=600	-time_based=1					
 						sleep 10
 						#rm -rf /media/hsu/test${countarray[f]}
 						#sleep 10
@@ -51,7 +52,8 @@ rwarray=(randwrite)  ## randread randwrite
 dparray=(32)
 sizearray=(63G)
 enginearray=(libaio)
-countarray=(1)
+countarray=(3)
+task=(task2)
 
 for a in {0..0}
 do 
@@ -65,8 +67,8 @@ do
 				do 
 					for f in {0..0}
 					do 
-						#fio -output=/home/luopan/${blockarray[a]}_${rwarray[b]}_${dparray[c]}_${sizearray[d]}_${enginearray[e]} -name=${rwarray[b]} -filename=/dev/sdb -ioengine=${enginearray[e]} -size=${sizearray[d]} -direct=1 -thread=1  -blocksize=${blockarray[a]} -rw=${rwarray[b]} -iodepth=${dparray[c]} -numjobs=1
-						time fio -output=/home/hsu/Desktop/fio_result/${blockarray[a]}_${rwarray[b]}_${dparray[c]}_${sizearray[d]}_${enginearray[e]}_${countarray[f]} -name=test -filename=/dev/sda -ioengine=${enginearray[e]} -size=${sizearray[d]} -direct=1 -thread=1  -blocksize=${blockarray[a]} -rw=${rwarray[b]} -iodepth=${dparray[c]} -numjobs=1 -runtime=14400						
+						#fio -output=/home/luopan/${blockarray[a]}_${rwarray[b]}_${dparray[c]}_${sizearray[d]}_${enginearray[e]} -name=${rwarray[b]} -filename=/dev/sda -ioengine=${enginearray[e]} -size=${sizearray[d]} -direct=1 -thread=1  -blocksize=${blockarray[a]} -rw=${rwarray[b]} -iodepth=${dparray[c]} -numjobs=1
+						time fio -output=/home/hsu/Desktop/fio_result/${task[0]}_${blockarray[a]}_${rwarray[b]}_${dparray[c]}_${sizearray[d]}_${enginearray[e]}_${countarray[f]} -name=test -filename=/dev/sda -ioengine=${enginearray[e]} -direct=1 -thread=1 -blocksize=${blockarray[a]} -rw=${rwarray[b]} -iodepth=${dparray[c]} -numjobs=1 -runtime=14400 -time_based=1						
 						sleep 10
 						# rm -rf /media/hsu/test${countarray[f]}
 						#sleep 10
@@ -82,12 +84,12 @@ rwarray=(randwrite write)  ## randread randwrite
 dparray=(32)
 sizearray=(63G)
 enginearray=(libaio)
-countarray=(2)
+countarray=(4)
+task=(task3)
 
-
-for a in {0..7}
+for b in {0..1}
 do 
-	for b in {0..1}
+	for a in {0..7}
 	do
 		for c in {0..0}
 		do 
@@ -97,8 +99,8 @@ do
 				do 
 					for f in {0..0}
 					do 
-						#fio -output=/home/luopan/${blockarray[a]}_${rwarray[b]}_${dparray[c]}_${sizearray[d]}_${enginearray[e]} -name=${rwarray[b]} -filename=/dev/sdb -ioengine=${enginearray[e]} -size=${sizearray[d]} -direct=1 -thread=1  -blocksize=${blockarray[a]} -rw=${rwarray[b]} -iodepth=${dparray[c]} -numjobs=1
-						time fio -output=/home/hsu/Desktop/fio_result/${blockarray[a]}_${rwarray[b]}_${dparray[c]}_${sizearray[d]}_${enginearray[e]}_${countarray[f]} -name=test -filename=/dev/sda -ioengine=${enginearray[e]} -size=${sizearray[d]} -direct=1 -thread=1  -blocksize=${blockarray[a]} -rw=${rwarray[b]} -iodepth=${dparray[c]} -numjobs=1 -runtime=600
+						#fio -output=/home/luopan/${blockarray[a]}_${rwarray[b]}_${dparray[c]}_${sizearray[d]}_${enginearray[e]} -name=${rwarray[b]} -filename=/dev/sda -ioengine=${enginearray[e]} -size=${sizearray[d]} -direct=1 -thread=1  -blocksize=${blockarray[a]} -rw=${rwarray[b]} -iodepth=${dparray[c]} -numjobs=1
+						time fio -output=/home/hsu/Desktop/fio_result/${task[0]}_${blockarray[a]}_${rwarray[b]}_${dparray[c]}_${sizearray[d]}_${enginearray[e]}_${countarray[f]} -name=test -filename=/dev/sda -ioengine=${enginearray[e]} -direct=1 -thread=1 -blocksize=${blockarray[a]} -rw=${rwarray[b]} -iodepth=${dparray[c]} -numjobs=1 -runtime=600 -time_based=1
 						#sleep 10
 						# rm -rf /media/hsu/test${countarray[f]}
 						# sleep 10
