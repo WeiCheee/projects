@@ -25,9 +25,8 @@ cmd = {
         'ato':"slmgr.vbs -ato",
         'vbs':"slmgr.vbs –dlv",
     },
-
 }
-avilable = True
+
 
 def kms_key(ver, cmd):
     # origin_str = cmd['process']['kms_ins']
@@ -40,19 +39,26 @@ def kms_key(ver, cmd):
    
     return 1
 
-def windows_crash(ver, cmd):
-    success = kms_key(ver,cmd)
+stop = 0
 
+def windows_crash(ver, cmd, this):
+    success = kms_key(ver,cmd)
     if(success):
-        for item in cmd['process']:
-            p = subprocess.call("%s %s"%(cmd['exe_path'],cmd['process'][item]) , shell=True)
-            time.sleep(3)
-            win32api.keybd_event(13,0,0,0)
-            win32api.keybd_event(13,0,win32con.KEYEVENTF_KEYUP,0)
+        # for item in cmd['process']:
+            # p = subprocess.call("%s %s"%(cmd['exe_path'],cmd['process'][item]) , shell=True)
+            # time.sleep(3)
+            # win32api.keybd_event(13,0,0,0)
+            # time.sleep(0.5)
+            # win32api.keybd_event(13,0,win32con.KEYEVENTF_KEYUP,0)
             # time.sleep(1)
-        # for i in range(100000):
-        #     print(i)
-            # printcmd()
+        for i in range(10):
+            if (this.stop == 1):
+                print('Cmd Break')
+                break
+            else:
+                printcmd()
+                print(i)
+                time.sleep(2)
     else:
         print("Error input")
 

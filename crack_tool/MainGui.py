@@ -14,10 +14,8 @@ class Mainwindows(QMainWindow, Ui_MainWindow):
         self.selected = '--version--' # 需要給selected物件預設值
         self.setupUi(self)
         self.t = threading.Thread.__init__(self)
-        # self.thread_num = thread_num
-        # self.call_event(self)
-        self.stopped = False
         self.timeout = 10
+        self.stop = 0
 
 if __name__ == '__main__':
 
@@ -25,5 +23,3 @@ if __name__ == '__main__':
     comboxDemo = Mainwindows()
     comboxDemo.show()
     sys.exit(app.exec_())
-
-    #print("111111")
