@@ -25,13 +25,12 @@ cmd = {
         'ato':"slmgr.vbs -ato",
         'vbs':"slmgr.vbs –dlv",
     },
-
 }
+
 
 def kms_key(ver, cmd):
     # origin_str = cmd['process']['kms_ins']
     cmd_kms_ins = cmd['process']['kms_ins'].split(" ",2)
-
     print(cmd_kms_ins)
     cmd_kms_ins = cmd_kms_ins[0] + " " + cmd_kms_ins[1]
     print(cmd_kms_ins)
@@ -40,17 +39,24 @@ def kms_key(ver, cmd):
    
     return 1
 
-def windows_crash(ver, cmd):
+def windows_crash(ver, cmd, this):
     success = kms_key(ver,cmd)
-    # print(success)
     if(success):
         # for item in cmd['process']:
-        #     p = subprocess.call("%s %s"%(cmd['exe_path'],cmd['process'][item]) , shell=True)
-        #     time.sleep(3)
-        #     win32api.keybd_event(13,0,0,0)
-        #     win32api.keybd_event(13,0,win32con.KEYEVENTF_KEYUP,0)
-        #     time.sleep(1)
-        printcmd()
+            # p = subprocess.call("%s %s"%(cmd['exe_path'],cmd['process'][item]) , shell=True)
+            # time.sleep(3)
+            # win32api.keybd_event(13,0,0,0)
+            # time.sleep(0.5)
+            # win32api.keybd_event(13,0,win32con.KEYEVENTF_KEYUP,0)
+            # time.sleep(1)
+        for i in range(10):
+            if (this.stop == 1):
+                print('Cmd Break')
+                break
+            else:
+                printcmd()
+                print(i)
+                time.sleep(2)
     else:
         print("Error input")
 
@@ -58,8 +64,3 @@ def printcmd():
     print("--------------------------------------------------\n")
     for item in cmd['process']:
         print("%s %s"%(cmd['exe_path'],cmd['process'][item]))
-  
-def procces_stop():
-    subprocess.call("pause", shell=True)
-
-

@@ -39,30 +39,37 @@ def kms_key(ver, cmd):
    
     return 1
 
-stop = 0
-
 def windows_crash(ver, cmd, this):
     success = kms_key(ver,cmd)
     if(success):
-        # for item in cmd['process']:
-            # p = subprocess.call("%s %s"%(cmd['exe_path'],cmd['process'][item]) , shell=True)
-            # time.sleep(3)
-            # win32api.keybd_event(13,0,0,0)
-            # time.sleep(0.5)
-            # win32api.keybd_event(13,0,win32con.KEYEVENTF_KEYUP,0)
-            # time.sleep(1)
-        for i in range(10):
-            if (this.stop == 1):
-                print('Cmd Break')
-                break
-            else:
-                printcmd()
-                print(i)
+        for item in cmd['process']:
+            if(this.stop ==1):
+                keybd(3)
+                print("Cmd Break")
+            else:             
+                p = subprocess.call("%s %s"%(cmd['exe_path'],cmd['process'][item]) , shell=True)
                 time.sleep(2)
+                keybd(6)
+        # for i in range(10):
+        #     if (this.stop == 1):
+        #         print('Cmd Break')
+        #         break
+        #     else:
+        #         printcmd()
+        #         print(i)
+        #         time.sleep(2)
     else:
         print("Error input")
 
-def printcmd():
-    print("--------------------------------------------------\n")
-    for item in cmd['process']:
-        print("%s %s"%(cmd['exe_path'],cmd['process'][item]))
+# def printcmd():
+#     print("--------------------------------------------------\n")
+#     for item in cmd['process']:
+#         print("%s %s"%(cmd['exe_path'],cmd['process'][item]))
+
+def keybd(k):
+    for i in range(k):
+        win32api.keybd_event(13,0,0,0)
+        time.sleep(0.5)
+        win32api.keybd_event(13,0,win32con.KEYEVENTF_KEYUP,0)
+        time.sleep(0.5)
+        print("times:%d"%i)

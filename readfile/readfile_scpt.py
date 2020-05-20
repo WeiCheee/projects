@@ -40,10 +40,6 @@ def read_excel():
     return data, arr_data #,json_data# 
 
 def getinfo():
-    # os.system("start " + files_grab[0])
-    # os.system("start " + files_grab[1])
-    # os.system("start " + files_grab[2])    
-    #all_param, data, arr_data = read_excel() #read files
     data, arr_data = read_excel()
 
     print("--------------------------------------------------------\n")
@@ -59,27 +55,24 @@ def getinfo():
     return 1
 
 if __name__ == '__main__':
-    # datapath = "C:\\Users\\test\\Desktop\\readfile\\datafile\\.*"
-    datapath = "C:\\Users\\test\\Desktop\\readfile\\datafile"
+    datapath = "C:\\Users\\test\\Desktop\\projects\\readfile\\datafile\\"
     types = ['.txt', '.dat', '.xls'] ###grab file type###
     files_path_name = []
     path = os.listdir(datapath) 
-    # print("11111", path)
-    # os.system("pause")  
-
-    for i in path:
-        for j in types:
-            if os.path.splitext(i)[1] == str(types[j]):
-                print(i)
+    print(path)
+    # os.system("pause")
+    print(types[2])  
+    for getfile in path:
+        if (os.path.splitext(getfile)[1] == types[2]):
+            print(getfile)
     os.system("pause")
-    
-    for files in types: ###process###
-        filename = glob.glob(datapath + files)
-        # print(filename)
-        files_path_name.extend(filename)
-    print(files_path_name)   
-    
+    # for files in types: ###process###
+    #     filename = glob.glob(datapath + files)
+    #     # print(filename)
+    #     files_path_name.extend(filename)
+    # print(files_path_name)   
     success = getinfo()
+    
     if(success):
         print("\nprocess succed")
         os.system("pause")

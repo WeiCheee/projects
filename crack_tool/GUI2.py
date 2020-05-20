@@ -6,7 +6,6 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 import threading
 import time
@@ -45,14 +44,15 @@ class Ui_MainWindow(object):
         for label in choice:
             self.comboBox.addItem(label)
             print(label)
-   
+#---------------------------設定物件位置與名稱--------------------------
         self.progressBar = QtWidgets.QProgressBar(self.centralwidget)
         self.progressBar.setGeometry(QtCore.QRect(30, 180, 161, 16))
         self.progressBar.setProperty("value", 24)
         self.progressBar.setObjectName("progressBar")
-        self.openGLWidget = QtWidgets.QOpenGLWidget(self.centralwidget)
+        self.openGLWidget = QtWidgets.QTextEdit(self.centralwidget)
         self.openGLWidget.setGeometry(QtCore.QRect(190, 20, 151, 181))
         self.openGLWidget.setObjectName("openGLWidget")
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 373, 21))
@@ -86,7 +86,7 @@ class Ui_MainWindow(object):
         self.t.start()
 
     def call_stop(self):
-        self.stop = 1
+        self.stop = 1       
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -94,5 +94,5 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "Active"))
         self.pushButton_2.setText(_translate("MainWindow", "Reset"))
         self.comboBox.setCurrentText(_translate("MainWindow", " "))
-        for index in range(0,len(list(self.kms.keys()))) :
+        for index in range(0,len(list(self.kms.keys()))):
             self.comboBox.setItemText(index, _translate("MainWindow", (list(self.kms.keys()))[index]))

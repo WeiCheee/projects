@@ -6,9 +6,9 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import threading
+import time
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -40,16 +40,19 @@ class Ui_MainWindow(object):
         self.comboBox.setMouseTracking(False)
         self.comboBox.setTabletTracking(False)
         self.comboBox.setObjectName("comboBox")
-        for i in range(7):
-            self.comboBox.addItem("")
-   
+        choice = ['1','2','3','4','5','6','7']
+        for label in choice:
+            self.comboBox.addItem(label)
+            print(label)
+#---------------------------設定物件位置與名稱--------------------------
         self.progressBar = QtWidgets.QProgressBar(self.centralwidget)
         self.progressBar.setGeometry(QtCore.QRect(30, 180, 161, 16))
         self.progressBar.setProperty("value", 24)
         self.progressBar.setObjectName("progressBar")
-        self.openGLWidget = QtWidgets.QOpenGLWidget(self.centralwidget)
+        self.openGLWidget = QtWidgets.QTextEdit(self.centralwidget)
         self.openGLWidget.setGeometry(QtCore.QRect(190, 20, 151, 181))
         self.openGLWidget.setObjectName("openGLWidget")
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 373, 21))
@@ -62,32 +65,37 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        self.comboBox.currentIndexChanged[str].connect(self.print_value) # 条目发生改变，发射信号，传递条目内容
-        self.comboBox.currentIndexChanged[int].connect(self.print_value)  # 条目发生改变，发射信号，传递条目索引
+        self.comboBox.currentIndexChanged[str].connect(self.print_value) # 項目改變，則傳項目內容
+        self.comboBox.currentIndexChanged[int].connect(self.print_value)  # 項目改變，則傳遞索引值
         self.pushButton.clicked.connect(self.call_event) # buttom1 event
-        self.pushButton_2.clicked.connect(self.call_reset)
-
-        # self.comboBox.highlighted[str].connect(self.print_value)  # 在下拉列表中，鼠标移动到某个条目时发出信号，传递条目内容
-        # self.comboBox.highlighted[int].connect(self.print_value)  # 在下拉列表中，鼠标移动到某个条目时发出信号，传递条目索引
-    
+        self.pushButton_2.clicked.connect(self.call_stop) # buttom call stop
+       
     def print_value(self,i):
         self.selected = i
 
-    def call_event(self):
-        # print(self.selected)
+    def thread_jobs(self):
+        print("----------------------------------------")    
         if(self.selected == '--version--'):
+            self.kms_key(self.selected, self.cmd)
             print("please select a version for windows")
         else:
-            self.windows_crash(self.selected,self.cmd)
-    
-    def call_reset(self):
-        self.procces_stop()
+            self.windows_crash(self.selected, self.cmd, self)
+
+    def call_event(self):    
+        self.t = threading.Thread(target=self.thread_jobs, args=())
+        self.t.start()
+        # self.openGLWidget.clear()
+
+
+    def call_stop(self):
+        self.stop = 1
+        
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Windows Crash"))
         self.pushButton.setText(_translate("MainWindow", "Active"))
-        self.pushButton_2.setText(_translate("MainWindow", "Rest"))
+        self.pushButton_2.setText(_translate("MainWindow", "Reset"))
         self.comboBox.setCurrentText(_translate("MainWindow", " "))
         for index in range(0,len(list(self.kms.keys()))) :
             self.comboBox.setItemText(index, _translate("MainWindow", (list(self.kms.keys()))[index]))
