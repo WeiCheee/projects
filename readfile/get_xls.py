@@ -8,6 +8,13 @@ from types import *
 import filetype
 import time 
 from tabulate import tabulate
+import pandas as pd
+import win32com.client as win32
+# from GrabzIt import GrabzItClient
+write_to_txt = 1
+write_to_mail = 0
+import matplotlib.pyplot as plt
+import numpy as np
 
 def read_excel(path, number):
     row = number+1
@@ -48,31 +55,64 @@ def getinfo(number):
         getName = os.path.splitext(getfile)[0]
         if (getName == filename):
             returnPath = datapath + getNamebefore
+        else:
+            print("get file path Error!!")
+    ###----------get 2D list data------------
     arr_data = read_excel(returnPath, number)
     html_table = tabulate(arr_data, tablefmt='html')
-    print(html_table)  
+    html_table = str(html_table)
+    print(html_table)
+    print(type(html_table))  
     print("--------------------------------------------------------\n")   
     print("---------------arr_data : ------------------------\n", arr_data)
+    
 
-    try:    
-        with open('test_Info.txt', 'w+', encoding="utf-8") as f:
-            f.write("test files:\n")
-            f.write(returnPath + '\n') 
-            f.write("info:\n")
-            for items in arr_data:
-                f.write(str(items))
-                f.write("\n")
-            f.write("html table : \n")
-            f.write(html_table)
-        f.close()
+    if(write_to_mail):
+        send_after = tansfer_table(returnPath, number)
+        if(send_after):
+            return 1
+        else:
+            return 0
 
-        with open('test_table.txt', 'w+', encoding="utf-8") as f:
-            f.write(html_table)
-        f.close()               
+    if(write_to_txt):
+        try:    
+            with open('test_Info.txt', 'w+', encoding="utf-8") as f:
+                f.write("test files:\n")
+                f.write(returnPath + '\n') 
+                f.write("info:\n")
+                for items in arr_data:
+                    f.write(str(items))
+                    f.write("\n")
+                f.write("html table : \n")
+                f.write(html_table)
+            f.close()
+
+            with open('test_table.txt', 'w+', encoding="utf-8") as f:
+                f.write(html_table)
+            f.close()               
+        except:
+            print("write file Error!!!")
+            return 0
+    return 1
+
+def tansfer_table(path, num):
+    df = pd.read_excel(path, index_col=False, nrows = num,  usecols = "A:L")
+    html_table = df.to_html()  
+    print(html_table)
+    outlook = win32.gencache.EnsureDispatch('Outlook.Application')
+    mail_item = outlook.CreateItem(0)
+    mail_item.To = 'Charles.Hsu@ssstc.com'
+    mail_item.Attachments.Add(Source=path)
+    # body = "<h1>Dear ABC</h1>This is the Table <br><br>   "+html_table+"   <br><br> this is image <br><br><img src=ownload.png><br><br>Thanks"
+    body = html_table
+    mail_item.HTMLBody = (body)
+    try:
+        mail_item.Send()
     except:
-        print("write file Error!!!")
+        print("send mail fail")
         return 0
     return 1
+
 
 if __name__ == '__main__':
     number = 8
