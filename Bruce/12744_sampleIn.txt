@@ -1,9 +1,0 @@
-1000 800 0 15
-7
-0 100 10 Sam Sick
-0 200 60 Mary Masked
-0 400 70 Kim Healthy
-1 400 71 Bob Sick
-1 400 69 Jev Sick
-2 401 70 Ono Sick
-2 399 70 Lat Sick
